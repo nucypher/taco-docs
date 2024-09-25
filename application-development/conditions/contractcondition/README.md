@@ -61,6 +61,6 @@ In other words, our condition is only satisfied if  `ERC721.balanceOf(:userAddre
 
 ### Learn more
 
-* [references.md](../../references.md "mention")
+* [references.md](../../../references.md "mention")
 * [Broken link](broken-reference "mention")
 

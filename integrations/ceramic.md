@@ -1,4 +1,4 @@
-# Ceramic + TACo
+# Ceramic
 
 This guide demonstrates how to integrate TACo with one of Ceramic's data services, [ComposeDB](https://developers.ceramic.network/docs/composedb/getting-started). TACo and Ceramic's data services are essential and mutually complementary components of the Web3 stack, offering developers ‘Web 2.0’ functionality without compromising on decentralization.
 
@@ -204,7 +204,7 @@ We're now going to enable _data consumers_ to access the underlying data, if and
 * `Provider` – Web3 provider to connect to Polygon.
 * `Domain` – which TACo network (`Mainnet`, `Testnet` ).
 * `encryptedMessage`/`ThresholdMessageKit` – this contains the encrypted plaintext and the access conditions, supplied to the _data consumer_ via a side channel.
-* `conditionContext` – this enables on-the-fly, programmatic population of [context variable](../conditions/conditioncontext-and-context-variables.md) values used within conditions, the most important being data consumer authentication. Developers can predicate certain authentication methods on certain conditions. For example:
+* `conditionContext` – this enables on-the-fly, programmatic population of [context variable](../application-development/conditions/conditioncontext-and-context-variables.md) values used within conditions, the most important being data consumer authentication. Developers can predicate certain authentication methods on certain conditions. For example:
   * If conditions are based around EVM state, authenticate via SIWE.
   * (In future versions) If conditions are based around social account ownership, authenticate via OAuth.&#x20;
 

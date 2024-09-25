@@ -32,7 +32,7 @@ Adopting developers pay in advance for use of TACo mainnet by transacting with t
 
 The `sponsor` and `cohortAdmin` roles can use the same address or use different addresses. For example, the `cohortAdmin` could be a cold wallet address, while the `sponsor` might simply be a one-off software address. External developers may also prefer to set a DAO, a Multisig, or any kind of smart contract as the `cohortAdmin`, which would reduce the trust burden on their end-users with respect to control over encryptors and the TACo cohort.
 
-Currently, initializing a DKG ritual is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team. Prospective `sponsor`s should follow the instructions on the [Mainnet Integration](integration-guides/mainnet-taco-beta-program.md) page.
+Currently, initializing a DKG ritual is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team. Prospective `sponsor`s should follow the instructions on the [Mainnet Integration](mainnet-taco-beta-program.md) page.
 
 
 

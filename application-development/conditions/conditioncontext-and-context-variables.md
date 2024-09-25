@@ -218,5 +218,5 @@ const decryptedMessage = await decrypt(
 
 ### Learn more&#x20;
 
-* [references.md](../references.md "mention")
+* [references.md](../../references.md "mention")
 * [Broken link](broken-reference "mention")

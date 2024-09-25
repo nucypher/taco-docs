@@ -59,4 +59,4 @@ First, let's take a look at `myFunctionAbi`:
 
 ### Learn more
 
-* See how to implement access control revocation using custom contract calls [here](../conditions/implementing-revocation-via-smart-contract.md).
+* See how to implement access control revocation using custom contract calls [here](../implementing-revocation-via-smart-contract.md).

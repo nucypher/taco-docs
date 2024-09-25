@@ -96,7 +96,7 @@ Since `ownsNFT` condition refers to an NFT owned by the recipient, `decrypt` cal
 
 Learn more about using TACo on the testnet - [get-started-with-tac.md](get-started-with-tac.md "mention").&#x20;
 
-Learn more about testnet trust assumptions and limitations - [testnet-trust-assumptions](../trust-assumptions/testnet-trust-assumptions/ "mention")
+Learn more about testnet trust assumptions and limitations - [Broken link](broken-reference "mention")
 
 ### Example applications
 

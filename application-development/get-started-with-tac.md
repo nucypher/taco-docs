@@ -2,6 +2,12 @@
 
 ## Testnet domains
 
+{% hint style="info" %}
+Testnets exist to help developers familiarize themselves with the TACo API and related architecture. **It is not intended to be utilized as a trust-minimized or decentralized service**.&#x20;
+
+Hence, the trust assumptions are strictly worse than the Mainnet version, particularly with respect to the node array managing decryption fragments and validating condition (non/)fulfillment. Testnet nodes are running on a staker-facing Testnet, are operated primarily by members of the NuCypher commercial entity, and are not subject to a cryptoeconomic protocol or required to lock any collateral.
+{% endhint %}
+
 To run TACo on testnet, it needs to be configured to use one of the two available domains:
 
 ```typescript
@@ -17,7 +23,7 @@ domains.TESTNET // "tapir" network
 We encourage you to use the `TESTNET` domain for developing `taco` based apps, and to use `DEVNET` to test compatibility with the upcoming `taco` release and new, experimental features.
 
 {% hint style="warning" %}
-Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the [trust assumptions](../trust-assumptions/testnet-trust-assumptions/) section.
+Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the [trust assumptions](broken-reference) section.
 {% endhint %}
 
 ## Testnet configuration

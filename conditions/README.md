@@ -1,4 +1,6 @@
-# Conditions
+# Access Control
+
+_Relation between access control and conditionality._&#x20;
 
 This section focuses on `Condition` types and composition. There are three distinct, high-level categories of TACo access conditions:&#x20;
 

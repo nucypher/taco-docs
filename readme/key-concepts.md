@@ -1,4 +1,4 @@
-# Key Concepts
+# How it works (basic)
 
 **Threshold Decryption**
 
@@ -6,7 +6,7 @@ Under the hood, TACo involves splitting a joint secret – a decryption key – 
 
 
 
-<figure><img src=".gitbook/assets/taco_dkg (2).png" alt=""><figcaption><p>Distributed Key Generation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/taco_dkg (2).png" alt=""><figcaption><p>Distributed Key Generation</p></figcaption></figure>
 
 **Conditionality**
 
@@ -23,7 +23,7 @@ A range of access condition types can be defined by the data owner. For example:
 
 These conditions are also composable and can be combined in any logical sequence or decision tree.
 
-<figure><img src=".gitbook/assets/taco_encryption.png" alt=""><figcaption><p>Encryption with Conditions</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/taco_encryption.png" alt=""><figcaption><p>Encryption with Conditions</p></figcaption></figure>
 
 **Condition Fulfillment Verification**
 
@@ -31,7 +31,7 @@ In most use cases, requesters prove their association with condition fulfillment
 
 This signature can be cached by the application for a use case-appropriate period of time, such that the user does not have to repeatedly re-sign for access later. However, verification still takes place in the background – for example, if a wallet address is removed from an NFT-gated group-chat by dint of changing the access-granting NFT, they will immediately be unable to see new messages. The cached signature will not give them access any longer than is specified by the data owner/encryptor.
 
-<figure><img src=".gitbook/assets/cbd_decryption.png" alt=""><figcaption><p>Condition Fulfillment Decryption</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/cbd_decryption.png" alt=""><figcaption><p>Condition Fulfillment Decryption</p></figcaption></figure>
 
 **Network Parameterization**
 

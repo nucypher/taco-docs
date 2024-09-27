@@ -1,4 +1,4 @@
-# Integrations
+# Ecosystem Integrations
 
 This section provides guides on how to integrate TACo into your application. Note that the underlying trust assumptions vary between versions, technologies, networks, and compatible third-party infrastructure. These nuances are explored in the [trust assumptions](../trust-assumptions/) section.&#x20;
 
@@ -6,7 +6,7 @@ This section provides guides on how to integrate TACo into your application. Not
 
 TACo is available on three networks; Lynx (bleeding edge testnet), Tapir (stable testnet) and Mainnet, each of which has contracts deployed on an L1 (Ethereum) and L2 (Polygon). You can request support for a new chain or L2 in the Threshold Discord [#taco](https://discord.com/channels/866378471868727316/870383642751430666) channel.&#x20;
 
-Get started with Tapir and the testnet integration [guide](../application-development/get-started-with-tac.md).&#x20;
+Get started with Tapir and the testnet integration [guide](../taco-integration/get-started-with-tac.md).&#x20;
 
 ## Example applications
 

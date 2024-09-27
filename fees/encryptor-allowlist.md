@@ -2,7 +2,7 @@
 description: Explains how to enable encryption for your rituals
 ---
 
-# Encryptor allowlist
+# Encryptor Allowlist
 
 ## Introduction
 
@@ -23,4 +23,4 @@ During the beta program of `taco`, the process of initiating the ritual and mana
 
 In the early release, it is possible to use one of the premade rituals on the testnet without any extra steps outlined in the setup above. You can simply configure `taco` to use one of those rituals and use any encryptor (wallet address) to perform the encryption
 
-You can find the current ritual configurations in the [testnet integration section](../application-development/get-started-with-tac.md#testnet-configuration).&#x20;
+You can find the current ritual configurations in the [testnet integration section](../taco-integration/get-started-with-tac.md#testnet-configuration).&#x20;

@@ -1,18 +1,24 @@
-# ConditionContext and Context Variables
+# ConditionContext
 
-In this section, we introduce the `ConditionContext`, a container for dynamic values to be used in conditions at decryption time (e.g. decryptor's wallet address). We call those values "context variables" and can recognize them by the `:` prefix. They act as a placeholder to be specified at the encryption time and filled at the decryption time.
+A `ConditionContext` is a container for dynamic values to be used in conditions at decryption time.  A `ConditionContext` contains `ContextVariables` and their corresponding values.
+
+## Context Variables
+
+Context variables are recognized by the `:` prefix. They act as a placeholder within conditions to be specified at the encryption time, whose value is provided at decryption time.&#x20;
 
 Context variables are broken up into two groups:
 
-*   _Reserved context variables_: these have special functionality within `taco`. There are two such context variables:
+*   _**Reserved context variables**_**:** these have special functionality within `taco`.\
+    \
+    For now, there are only two such reserved context variables:
 
     * `:userAddress`
     * `:userAddressExternalEIP4361`
 
-    These context variables require the use of [Authentication Providers](conditioncontext-and-context-variables.md#authentication-providers) to provide verifiable proof of values specified by the decryptor. Applications should be cognizant of which reserved context variable they use based on their needs.
-* _Custom context variables_:  these are application-specific, simple key-value pairs where the decryptor can directly specify the values without any verification.
+    which require the use of [Authentication Providers](conditioncontext-and-context-variables.md#authentication-providers) to provide verifiable proof of values specified by the decryptor. Applications should be cognizant of which reserved context variable they use based on their needs.
+* _**Custom context variables**_**:**  these are application-specific, simple key-value pairs where the decryptor can directly specify the values without any verification.
 
-## Authentication Providers
+### Authentication Providers
 
 Some dynamic conditions require specific information about the decryptor, which needs to be verified/authenticated, such as wallet address or other identity-related information. This verification needs to be done in a way that doesn't allow the decryptor to simply provide \*\*any\*\* value. Instead, the decryptor should provide proof that can be verified so that the validity of the value can be confirmed and the value subsequently used for properly evaluating conditions.
 
@@ -25,7 +31,7 @@ Instead of directly providing the necessary information (e.g., wallet address), 
 * `EIP4361AuthProvider`
 * `SingleSignOnEIP4361AuthProvider`
 
-### `EIP4361AuthProvider`
+#### `EIP4361AuthProvider`
 
 This implementation must be used whenever the `:userAddress` context variable is present in a decryption condition. It prompts the user to sign a  `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the decryptor's wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
 
@@ -50,7 +56,7 @@ conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 To negate the need for repeated wallet signatures for every decryption request by the same decryptor, the corresponding proof that is generated is cached until an expiry is triggered, after which the decryptor will be prompted again.
 {% endhint %}
 
-### `SingleSignOnEIP4361AuthProvider`
+#### `SingleSignOnEIP4361AuthProvider`
 
 This implementation must be used whenever the `:userAddressExternalEIP4361` context variable is present in the decryption condition.&#x20;
 
@@ -174,7 +180,7 @@ For **custom context variables** specifically, time should be taken to think thr
 There is a place for custom context variables e.g. providing a Merkle tree root as a parameter to a contract function, but such an example would be overly complex.
 {% endhint %}
 
-## Checking required context variables
+## Checking for required context variables
 
 If your application utilizes many different conditions each with different context variables, the required context variables for decryption can be queried.&#x20;
 
@@ -216,7 +222,7 @@ const decryptedMessage = await decrypt(
 );
 ```
 
-### Learn more&#x20;
+## Learn more&#x20;
 
 * [references.md](../../references.md "mention")
 * [Broken link](broken-reference "mention")

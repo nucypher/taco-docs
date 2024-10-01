@@ -1,13 +1,13 @@
 # TimeCondition
 
-`TimeCondition` allows data access based on the evaluation of the timestamp (Unix epoch) of the latest block for a target chain.
+`TimeCondition` allows data access based on evaluating the timestamp (Unix epoch) of the latest block for a target chain.
 
 Here is an example of using  `TimeCondition` .
 
 ```typescript
 import { conditions } from '@nucypher/taco';
 
-const ownsNFT = new conditions.base.time.TimeCondition({
+const timeCondition = new conditions.base.time.TimeCondition({
   chain: 1,
   returnValueTest: {
     comparator: '>=',

@@ -96,12 +96,8 @@ overallCondition = new conditions.compound.CompoundCondition({
   operator: 'and',
   operands: [conditionA, conditionB, cOrD, notE],
 });
-
 ```
-
-
 
 ### Learn more&#x20;
 
 * [references.md](../../references.md "mention")
-* [Broken link](broken-reference "mention")

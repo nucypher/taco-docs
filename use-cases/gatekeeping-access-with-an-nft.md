@@ -45,5 +45,6 @@ const ownsNFTRaw = new conditions.base.contract.ContractCondition({
 
 ### Learn more&#x20;
 
-* [references.md](../../../references.md "mention")
-* [Broken link](broken-reference "mention")
+* [ContractCondition](../conditions/contractcondition/)
+* [references.md](../references.md "mention")
+

@@ -22,5 +22,4 @@ const timeCondition = new conditions.base.time.TimeCondition({
 ### Learn more&#x20;
 
 * [references.md](../../references.md "mention")
-* [Broken link](broken-reference "mention")
 

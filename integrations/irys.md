@@ -21,7 +21,7 @@ yarn add @irys/sdk
 ## 1. Define access condition & encrypt the data&#x20;
 
 {% hint style="warning" %}
-This guide utilizes the parameters `ritualId = 0` and `domains.TESTNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](broken-reference).&#x20;
+This guide utilizes the parameters `ritualId = 0` and `domains.TESTNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [trust assumptions section](../trust-assumptions/).&#x20;
 {% endhint %}
 
 First, we initialize the `taco-web` [library](https://github.com/nucypher/taco-web).&#x20;

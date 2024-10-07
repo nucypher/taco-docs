@@ -23,7 +23,7 @@ domains.TESTNET // "tapir" network
 We encourage you to use the `TESTNET` domain for developing `taco` based apps, and to use `DEVNET` to test compatibility with the upcoming `taco` release and new, experimental features.
 
 {% hint style="warning" %}
-Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the [trust assumptions](broken-reference) section.
+Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads.
 {% endhint %}
 
 ## Testnet configuration

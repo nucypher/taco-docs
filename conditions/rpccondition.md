@@ -50,5 +50,4 @@ In other words, our condition is only satisfied if `eth_getBalance(:userAddress)
 ### Learn more&#x20;
 
 * [references.md](../references.md "mention")
-* [Broken link](broken-reference "mention")
 

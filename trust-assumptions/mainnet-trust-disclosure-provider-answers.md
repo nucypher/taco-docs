@@ -38,7 +38,7 @@ Stakers are mobilized to install the first or latest versions of the node client
 TACo software automates much of the coordination burden for stakers. The node-facing client connects to the network, joins cohorts, runs a DKG initialization (and refresh) rituals, holds decryption fragments, receives requests for decryption, checks condition fulfillment, and provisions decryption material – all without any intervention from the staker. However, they (and the public) are privy to all the [code](https://github.com/nucypher/nucypher) that performs these automations, and can check their client code for any unexpected behavior.&#x20;
 
 _Future Versions_\
-In later versions, TACo will charge an _action-based_ fee. As with the _availability-based_ fee, it will likely be converted into T before distribution, and further the incentive to follow the protocol and provide a reliable/secure service. More detail on this fee model can be found on the [Action-based fees](broken-reference) page.
+In later versions, TACo will charge an _action-based_ fee. As with the _availability-based_ fee, it will likely be converted into T before distribution, and further the incentive to follow the protocol and provide a reliable/secure service. More detail on this fee model can be found on the [Fees](../fees/) page.
 
 ### E**ntities with disproportionate power**
 
@@ -96,7 +96,7 @@ _Genesis_
 * TACo can be built from the code directly or run from sources with signatures checked.&#x20;
 * Both the [user-facing client](https://github.com/nucypher/nucypher-ts) and [node-facing client](https://github.com/nucypher/nucypher) are 100% open source.&#x20;
 * External developers and adopters can contribute and submit pull requests freely.&#x20;
-* Repository issues track the current system limitations and the corresponding mitigations in place. For example, in the [nucypher/nucypher](https://github.com/nucypher/nucypher/issues) and [nucypher/nucypher-ts](https://github.com/nucypher/nucypher-ts/issues) repos.
+* Repository issues track the current system limitations and the corresponding mitigations in place. For example, in the [nucypher/nucypher](https://github.com/nucypher/nucypher/issues) and [nucypher/taco-web](https://github.com/nucypher/taco-web) repos.
 * Conversations among core contributors to TACo (voice & typed) are publicly available for the most part in the Discord [server](https://discord.com/channels/866378471868727316/870383642751430666).&#x20;
 * TACo's [roadmap](https://github.com/orgs/nucypher/projects/31/views/2) (v7.0.0) is currently public, and roadmaps for subsequent versions will be made public once v.7.0.0 is released.&#x20;
 * A detailed [trust model ](mainnet-trust-model-foundation.md)for Mainnet is also featured in the documentation.&#x20;

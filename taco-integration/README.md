@@ -1,4 +1,4 @@
-# Integration
+# Integrating TACo into your app
 
 Note that using TACo in production requires a unique DKG initialization ritual, DKG public key and cohort of nodes running TACo software – these are accessed via a unique `ritualID` parameter in the third step below. Please see the [beta program](../fees/mainnet-taco-beta-program.md) page for instructions on how to initialize a DKG ritual.
 
@@ -49,7 +49,7 @@ With this out of the way, we're ready to use `taco` in our app.
 
 Before we encrypt our data, we have to define the decryption _conditions_.
 
-_Conditions_ are the requirements for a data recipient to access the plaintext data – i.e. what they will need to prove later to gain decryption rights. There are multiple [`Condition` types](broken-reference) we can use here, including predefined conditions such as `ERC721Ownership.`
+_Conditions_ are the requirements for a data recipient to access the plaintext data – i.e. what they will need to prove later to gain decryption rights. There are multiple [`Condition` types](../application-development/conditions/) we can use here, including predefined conditions such as `ERC721Ownership.`
 
 The `ERC721Ownership` condition checks the owner of a given token ID. It can be customized by using the `ownerOf` contract method and comparing it with the requestor's signature. For more information, see the [References](../references.md) section.
 

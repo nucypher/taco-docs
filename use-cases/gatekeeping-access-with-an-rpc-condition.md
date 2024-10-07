@@ -18,5 +18,5 @@ const hasAnyNativeAsset = new conditions.base.rpc.RpcCondition({
 
 ### Learn more&#x20;
 
-* [references.md](../../../references.md "mention")
-* [Broken link](broken-reference "mention")
+* [RPCCondition](../conditions/rpccondition.md)
+* [references.md](../references.md "mention")

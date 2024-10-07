@@ -96,8 +96,6 @@ Since `ownsNFT` condition refers to an NFT owned by the recipient, `decrypt` cal
 
 Learn more about using TACo on the testnet - [get-started-with-tac.md](taco-integration/get-started-with-tac.md "mention").&#x20;
 
-Learn more about testnet trust assumptions and limitations - [Broken link](broken-reference "mention")
-
 ### Example applications
 
 The following samples showcase integrations with React-based web apps, and serve as an 'end-to-end' reference for creating conditions-based encryption & decryption:

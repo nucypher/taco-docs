@@ -7,6 +7,7 @@ This section focuses on `Condition` types, composition and usage.
 * [`TimeCondition`](timecondition.md) – time-based conditions using block height and other blockchain-based timestamps. E.g. allow access for one week after the first request is made.&#x20;
 * [`RpcCondition`](../../conditions/rpccondition.md) –  based on RPC calls as defined in Ethereum's Official API [documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/#json-rpc-methods). E.g. allow access if the address held ETH before 2020.&#x20;
 * [`ContractCondition`](../../conditions/contractcondition/) – based on on-chain state, and can be any arbitrary contract function call. E.g. allow access if this requestor holds a special-purpose NFT.&#x20;
+* [`JsonApiCondition`](../../conditions/future-enhancements/jsonapicondition.md) - condition evaluated by reading from a JSON HTTPS endpoint.
 
 Each base condition defines a `returnValueTest` used to compare the obtained execution value with the expected value for the condition.
 

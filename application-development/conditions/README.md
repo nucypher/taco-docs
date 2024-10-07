@@ -1,8 +1,6 @@
 # Access Control
 
-This section focuses on `Condition` types and composition.&#x20;
-
-This section focuses on `Condition` types and composition. There are three distinct, high-level categories of TACo access conditions:&#x20;
+This section focuses on `Condition` types, composition and usage.
 
 ## Base Conditions
 
@@ -15,7 +13,8 @@ Each base condition defines a `returnValueTest` used to compare the obtained exe
 ## Multi-Conditions
 
 * [`CompoundCondition`](condition-set.md) - access conditions can be logically combined using the `or`, `and` & `not` operators.
-* [`SequentialCondition`](../../conditions/sequentialcondition.md) - access conditions can be chained and executed in order where the outcome of one condition execution can be used by subsequent conditions.
+* [`SequentialCondition`](../../conditions/future-enhancements/sequentialcondition.md) - access conditions can be chained and executed in order where the outcome of one condition execution can be used by subsequent conditions.
+* [`IfThenElseCondition`](../../conditions/future-enhancements/ifthenelsecondition.md) - uses branching logic for access conditions i.e. **IF** `CONDITION A` **THEN** `CONDITION B` **ELSE** `CONDITION_C`
 
 {% hint style="info" %}
 Since condition evaluations may require making remote calls (e.g. RPC calls, etc.), the number of conditions allowed within a `Multi-Condition` is limited.&#x20;

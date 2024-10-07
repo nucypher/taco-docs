@@ -13,7 +13,7 @@ The `ConditionVariable` object represents a condition whose result is tied to a 
 `ConditionVariables` have two mandatory attributes:
 
 * `varName`: The name of the variable used to store the execution result of the condition.
-* `condition`: Any [`Condition`](../application-development/conditions/) to evaluate, and includes allows nesting of a `SequentialCondition` within itself.
+* `condition`: Any [`Condition`](../../application-development/conditions/) to evaluate, and includes allows nesting of a `SequentialCondition` within itself.
 
 For example:
 
@@ -33,7 +33,7 @@ const conditionVariable = {
 }
 </code></pre>
 
-In this case, the condition variable will store the current block time obtained and used by the `timeCondition` in the `timeValue` variable. Variable names are considered [Custom Context Variables](../application-development/conditions/conditioncontext-and-context-variables.md#context-variables) and can be referenced by using the string `:<varName>` i.e. `:timeValue` from this example, in subsequent conditions.
+In this case, the condition variable will store the current block time obtained and used by the `timeCondition` in the `timeValue` variable. Variable names are considered [Custom Context Variables](../../application-development/conditions/conditioncontext-and-context-variables.md#context-variables) and can be referenced by using the string `:<varName>` i.e. `:timeValue` from this example, in subsequent conditions.
 
 ## Example
 
@@ -84,17 +84,21 @@ const sequentialCondition = new conditions.sequential.SequentialCondition({
 
 In this example, the sequential condition is evaluated as follows:
 
-1. `conditionVariableA` is assessed by executing `conditionA`, which is a [`ContractCondition`](contractcondition/).
+1. `conditionVariableA` is assessed by executing `conditionA`, which is a [`ContractCondition`](../contractcondition/).
    * `conditionA` will invoke `methodForA` on the relevant contract, passing the validated user address as an argument.
    * The result of this function is then checked to ensure it is not an empty byte.
    * If `conditionA` fails, the sequential condition is immediately marked as failed, and no further conditions are evaluated. If it succeeds, the result is stored as `:value_a`, and the evaluation proceeds to `conditionVariableB`.
-2. `conditionVariableB`, also a [`ContractCondition`](contractcondition/), invokes `methodForB` on the relevant contract, using the output from `conditionA` (`:value_a`) as the argument.
+2. `conditionVariableB`, also a [`ContractCondition`](../contractcondition/), invokes `methodForB` on the relevant contract, using the output from `conditionA` (`:value_a`) as the argument.
    * The result is verified to ensure it is not equal to 0.
    * If `conditionB` fails, the entire sequential condition is marked as failed. If it passes, the result is stored as `:value_b`.
 
 Since no further condition variables remain and both `conditionA` and `conditionB` have passed, the sequential condition is considered satisfied.
 
-## Learn More
+{% hint style="info" %}
+Individual conditions within the `SequentialCondition` use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
+{% endhint %}
 
-* [Initial Implementation](https://github.com/nucypher/taco-web/pull/581)
-* [references.md](../references.md "mention")
+## Code Changes
+
+* Client-side: [https://github.com/nucypher/taco-web/pull/581](https://github.com/nucypher/taco-web/pull/581)
+* Server-side: [https://github.com/nucypher/nucypher/pull/3500](https://github.com/nucypher/nucypher/pull/3500)

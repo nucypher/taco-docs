@@ -2,7 +2,7 @@
 
 `CompoundConditon` allow conditions to be combined into more complex logical statements. The logical operators allowed are `or`, `and`, and `not`.
 
-### `or`/`and` operators
+## `or`/`and` operators
 
 `or` & `and` operators require >= 2 operands to be specified.
 
@@ -49,7 +49,7 @@ const atLeastOneMustMatch = new conditions.compound.CompoundCondition.or([
 ]);
 ```
 
-### `not` operator
+## `not` operator
 
 The `not` operator only allows one operand.
 
@@ -66,7 +66,7 @@ const notA = new conditions.compound.CompoundCondition({
 });
 ```
 
-### Nested Combinations
+## Nested Combinations
 
 `CompoundCondition` objects can be nested on itself i.e. you can create compound conditions of compound conditions.
 
@@ -98,6 +98,10 @@ overallCondition = new conditions.compound.CompoundCondition({
 });
 ```
 
-### Learn more&#x20;
+{% hint style="info" %}
+Individual conditions within the `CompoundCondition`can use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
+{% endhint %}
+
+## Learn more&#x20;
 
 * [references.md](../../references.md "mention")

@@ -1,8 +1,6 @@
 # Table of contents
 
-* [Overview](README.md)
-  * [What is TACo?](readme/simple-overview.md)
-  * [Value Propositions](readme/value-propositions.md)
+* [What is TACo?](README.md)
   * [How it works (basic)](readme/key-concepts.md)
 * [Use Cases](use-cases/README.md)
   * [Gatekeeping access with an RPC condition](use-cases/gatekeeping-access-with-an-rpc-condition.md)

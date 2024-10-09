@@ -15,7 +15,7 @@ Each base condition defines a `returnValueTest` used to compare the obtained exe
 
 * [`CompoundCondition`](condition-set.md) - access conditions can be logically combined using the `or`, `and` & `not` operators.
 * [`SequentialCondition`](../../conditions/future-enhancements/sequentialcondition.md) - access conditions can be chained and executed in order where the outcome of one condition execution can be used by subsequent conditions.
-* [`IfThenElseCondition`](../../conditions/future-enhancements/ifthenelsecondition.md) - uses branching logic for access conditions i.e. **IF** `CONDITION A` **THEN** `CONDITION B` **ELSE** `CONDITION_C`
+* [`IfThenElseCondition`](../../conditions/future-enhancements/ifthenelsecondition.md) - uses branching logic for access conditions i.e. **IF** `CONDITION_A` **THEN** `CONDITION_B` **ELSE** `CONDITION_C`
 
 {% hint style="info" %}
 Since condition evaluations may require making remote calls (e.g. RPC calls, etc.), the number of conditions allowed within a `Multi-Condition` is limited.&#x20;

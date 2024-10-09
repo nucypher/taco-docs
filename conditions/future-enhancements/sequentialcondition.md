@@ -98,7 +98,7 @@ Since no further condition variables remain and both `conditionA` and `condition
 Individual conditions within the `SequentialCondition` use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
 {% endhint %}
 
-## Code Changes
+## Development References
 
 * Client-side: [https://github.com/nucypher/taco-web/pull/581](https://github.com/nucypher/taco-web/pull/581)
 * Server-side: [https://github.com/nucypher/nucypher/pull/3500](https://github.com/nucypher/nucypher/pull/3500)

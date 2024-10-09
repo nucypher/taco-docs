@@ -2,7 +2,7 @@
 
 A condition that can be evaluated by reading from a JSON HTTPS endpoint.
 
-## Code Changes
+## Development References
 
 * Client-side:
   * [https://github.com/nucypher/taco-web/pull/550](https://github.com/nucypher/taco-web/pull/550)

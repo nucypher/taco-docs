@@ -33,7 +33,7 @@ const conditionVariable = {
 }
 </code></pre>
 
-In this case, the condition variable will store the current block time obtained and used by the `timeCondition` in the `timeValue` variable. Variable names are considered [Custom Context Variables](../../application-development/conditions/conditioncontext-and-context-variables.md#context-variables) and can be referenced by using the string `:<varName>` i.e. `:timeValue` from this example, in subsequent conditions.
+In this case, the condition variable will store the current block time obtained and used by the `timeCondition` in the `timeValue` variable. Variable names are considered [Custom Context Variables](../../authentication/conditioncontext-and-context-variables.md#context-variables) and can be referenced by using the string `:<varName>` i.e. `:timeValue` from this example, in subsequent conditions.
 
 ## Example
 

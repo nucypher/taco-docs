@@ -25,7 +25,7 @@ A single `Multi-Condition` can contain a maximum of five conditions. Additionall
 
 ## Context Variables
 
-[Context variables](conditioncontext-and-context-variables.md) provide the ability for placeholder values to be defined within conditions at encryption time, and be dynamically populated at decryption time e.g. current user wallet address.
+[Context variables](../../authentication/conditioncontext-and-context-variables.md) provide the ability for placeholder values to be defined within conditions at encryption time, and be dynamically populated at decryption time e.g. current user wallet address.
 
 {% hint style="info" %}
 Multiple helper objects are provided to streamline the creation of conditions. An expressive API allows for granular control of conditions and examples of methods wherever possible.

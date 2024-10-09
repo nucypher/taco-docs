@@ -1,10 +1,10 @@
-# ConditionContext
+# Condition Context
 
 A `ConditionContext` is a container for dynamic values to be used in conditions at decryption time.  A `ConditionContext` contains `ContextVariables` and their corresponding values.
 
 ## Context Variables
 
-Context variables are recognized by the `:` prefix. They act as a placeholder within conditions to be specified at the encryption time, whose value is provided at decryption time.&#x20;
+Context variables can be recognized by the `:` prefix. They act as placeholders within conditions to be specified at the encryption time, whose value is provided at decryption time.&#x20;
 
 Context variables are broken up into two groups:
 
@@ -12,28 +12,15 @@ Context variables are broken up into two groups:
     \
     For now, there are only two such reserved context variables:
 
-    * `:userAddress`
-    * `:userAddressExternalEIP4361`
+    * [`:userAddress`](conditioncontext-and-context-variables.md#useraddress)
+    * [`:userAddressExternalEIP4361`](conditioncontext-and-context-variables.md#useraddressexternaleip4361)
 
-    which require the use of [Authentication Providers](conditioncontext-and-context-variables.md#authentication-providers) to provide verifiable proof of values specified by the decryptor. Applications should be cognizant of which reserved context variable they use based on their needs.
+    which require the use of [Authentication Providers](./) to provide verifiable proof of values specified by the decryptor. Applications should be cognizant of which reserved context variable they use based on their needs.
 * _**Custom context variables**_**:**  these are application-specific, simple key-value pairs where the decryptor can directly specify the values without any verification.
 
-### Authentication Providers
+### `:userAddress`
 
-Some dynamic conditions require specific information about the decryptor, which needs to be verified/authenticated, such as wallet address or other identity-related information. This verification needs to be done in a way that doesn't allow the decryptor to simply provide \*\*any\*\* value. Instead, the decryptor should provide proof that can be verified so that the validity of the value can be confirmed and the value subsequently used for properly evaluating conditions.
-
-In the case of a wallet address, the decryptor must sign a message with the private key corresponding to the public wallet address. This signature serves as proof of ownership, which can then be verified by nodes before using the corresponding wallet address for decryption condition evaluation. Otherwise, the decryptor could simply specify a wallet address that they do not own but still satisfy the required condition e.g. pretend to be `vitalik.eth` to satisfy an ETH balance condition.
-
-`AuthProvider` is an abstraction provided by `@nucypher/taco-auth` that plays a critical role in generating the necessary proof for verifying information about the decryptor. This proof is then used for condition evaluation during the decryption process.&#x20;
-
-Instead of directly providing the necessary information (e.g., wallet address), which could be falsified, the decryptor uses an `AuthProvider` to generate the requisite proof. At the moment, there are two `AuthProvider` implementations, with more expected to be added in the future:
-
-* `EIP4361AuthProvider`
-* `SingleSignOnEIP4361AuthProvider`
-
-#### `EIP4361AuthProvider`
-
-This implementation must be used whenever the `:userAddress` context variable is present in a decryption condition. It prompts the user to sign a  `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the decryptor's wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
+Whenever the `:userAddress` context variable is present in a decryption condition, the decryptor must use the `EIP4361AuthProvider`. This authentication provider will prompt the user to sign a  `EIP-4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the decryptor's wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
 
 ```typescript
 import { conditions } from '@nucypher/taco';
@@ -53,16 +40,16 @@ conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 ```
 
 {% hint style="info" %}
-To negate the need for repeated wallet signatures for every decryption request by the same decryptor, the corresponding proof that is generated is cached until an expiry is triggered, after which the decryptor will be prompted again.
+To negate the need for repeated wallet signatures for every decryption request by the same decryptor, the corresponding proof that is generated is cached until an expiry is triggered, after which the decryptor will be prompted again.&#x20;
 {% endhint %}
 
-#### `SingleSignOnEIP4361AuthProvider`
+### `:userAddressExternalEIP4361`
 
-This implementation must be used whenever the `:userAddressExternalEIP4361` context variable is present in the decryption condition.&#x20;
+The `:userAddressExternalEIP4361` context variable in conditions requires the use of the `SingleSignOnEIP4361AuthProvider` for decryption.&#x20;
 
-It integrates decryptor wallet authentication into a broader identity management system, allowing users to authenticate once and access multiple services.
+The `SingleSignOnEIP4361AuthProvider` integrates decryptor wallet authentication into a broader Sign-in With Ethereum (SIWE) identity management system already used by an application, allowing users to authenticate once with the application and re-use that authentication with TACo.
 
-However, unlike the `EIP4361AuthProvider` it integrates with an underlying application that already uses Sign-in With Ethereum (SIWE) for identity management and requires users to sign in before using the application. Therefore, the existing application-specific sign-in message and signature can be reused with TACo and provide a seamless user experience during TACo decryption, without the need to sign multiple messages.
+Therefore, the existing application-specific SIWE sign-in message and signature can be reused with TACo and provide a seamless user experience during TACo decryption without the need to sign multiple messages.
 
 ```typescript
 import { conditions } from '@nucypher/taco';
@@ -83,6 +70,10 @@ const authProvider = SingleSignOnEIP4361AuthProvider.fromExistingSiweInfo(
 // set auth provider for ":userAddressExternalEIP4361"
 conditionContext.addAuthProvider(USER_ADDRESS_PARAM_EXTERNAL_EIP4361, authProvider);
 ```
+
+{% hint style="warning" %}
+TACo requires that Sign-In With Ethereum (SIWE) messages be issued within the last 2 hours based on the "Issued At" timestamp. For single sign-on usage, the application should refresh the user's cached SIWE login accordingly.
+{% endhint %}
 
 ## Illustrative Example
 
@@ -120,7 +111,7 @@ In this example, we can see two different context variables
 * `:userAddress` - A reserved context variable
 * `:selectedBalance` - A custom context variable
 
-To replace the `:userAddress` context variable with an actual wallet address during decryption, `taco` needs to be provided with an `AuthProvider` for the user to sign an `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to confirm wallet ownership at the decryption time.
+To replace the `:userAddress` context variable with an actual wallet address during decryption, TACo needs to be provided with an `AuthProvider` for the user to sign an `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to confirm wallet ownership at the decryption time.
 
 Additionally, the `:selectedBalance` custom context variable has to be provided to the `decrypt` function by the decryptor.
 
@@ -175,9 +166,9 @@ With those context parameters, the condition will be evaluated by nodes at decry
 {% hint style="info" %}
 This is a contrived example. \
 \
-For **custom context variables** specifically, time should be taken to think through the use case since these are provided by the decryptor and can be set to any value. In this case the `selectedBalance`  value can simply be set to `-1` by the requester which would grant them access without owning any NFT.\
+For **custom context variables** specifically, time should be taken to think through the use case since the decryptor provides these and can be set to any value. In this case, the `selectedBalance`  value can simply be set to `-1` by the requester, which would grant them access without their owning any NFT.\
 \
-There is a place for custom context variables e.g. providing a Merkle tree root as a parameter to a contract function, but such an example would be overly complex.
+Custom context variables, such as providing a Merkle tree root as a parameter to a contract function, are appropriate, but such an example would be overly complex.
 {% endhint %}
 
 ## Checking for required context variables
@@ -186,7 +177,7 @@ If your application utilizes many different conditions each with different conte
 
 The `requestedContextParameters` property of the `ConditionContext` object can be used to identify the necessary context variables for decryption. By querying this property, the application can understand the context variables required for the relevant condition.
 
-In this way, the application doesn't need to have prior knowledge of the condition used but can dynamically determine the context variables needed based on the specific condition being handled.
+In this way, the application doesn't need prior knowledge of the condition used but can dynamically determine the context variables needed based on the specific condition being handled.
 
 ```typescript
 // create condition context
@@ -224,4 +215,4 @@ const decryptedMessage = await decrypt(
 
 ## Learn more&#x20;
 
-* [references.md](../../references.md "mention")
+* [references.md](../references.md "mention")

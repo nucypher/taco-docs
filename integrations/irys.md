@@ -26,7 +26,7 @@ This guide utilizes the parameters `ritualId = 0` and `domains.TESTNET`. These r
 
 First, we initialize the `taco-web` [library](https://github.com/nucypher/taco-web).&#x20;
 
-As the data producer, we create an access condition. Here we use the simple condition `ownsNFT` – data consumers must prove ownership of a specific ERC-721 NFT in order to gain decryption material pertaining to the encrypted message. More on condition types [here](../application-development/conditions/).\
+As the data producer, we create an access condition. Here we use the simple condition `ownsNFT` – data consumers must prove ownership of a specific ERC-721 NFT in order to gain decryption material pertaining to the encrypted message. More on condition types [here](../conditions/).\
 \
 We encrypt the message using the `ownsNFT` condition, specifying the aforementioned testnet `domain` and `ritualID`, and a standard web3 provider/signer. The output of this function is a `messageKit` – a payload containing both the encrypted data and embedded condition metadata necessary for a qualifying data consumer to decrypt the message. Finally, we convert the `messageKit`to a hex string format, which will help us upload it via Irys in a single transaction.&#x20;
 

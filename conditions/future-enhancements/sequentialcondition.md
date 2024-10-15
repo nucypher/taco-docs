@@ -13,7 +13,7 @@ The `ConditionVariable` object represents a condition whose result is tied to a 
 `ConditionVariables` have two mandatory attributes:
 
 * `varName`: The name of the variable used to store the execution result of the condition.
-* `condition`: Any [`Condition`](../../application-development/conditions/) to evaluate, and includes allows nesting of a `SequentialCondition` within itself.
+* `condition`: Any [`Condition`](../) to evaluate, and includes allows nesting of a `SequentialCondition` within itself.
 
 For example:
 
@@ -30,7 +30,7 @@ const timeCondition = new conditions.base.time.TimeCondition({
 const conditionVariable = {
 <strong>  varName: 'timeValue',
 </strong>  condition: timeCondition,
-}
+};
 </code></pre>
 
 In this case, the condition variable will store the current block time obtained and used by the `timeCondition` in the `timeValue` variable. Variable names are considered [Custom Context Variables](../../authentication/conditioncontext-and-context-variables.md#context-variables) and can be referenced by using the string `:<varName>` i.e. `:timeValue` from this example, in subsequent conditions.
@@ -54,7 +54,7 @@ const conditionA = new conditions.base.contract.ContractCondition({
 <strong>const conditionVariableA = {
 </strong>    varName: 'value_a',
     condition: conditionA,
-}
+};
 
 // second condition variable
 const conditionB = new conditions.base.contract.ContractCondition({
@@ -71,7 +71,7 @@ const conditionB = new conditions.base.contract.ContractCondition({
 const conditionVariableB = {
     varName: 'value_b',
     condition: conditionB,
-}
+};
 
 // sequential condition
 const sequentialCondition = new conditions.sequential.SequentialCondition({

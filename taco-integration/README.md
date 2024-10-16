@@ -1,8 +1,8 @@
-# Integrating TACo into your app
+# Integrating TACo into apps
 
 Note that using TACo in production requires a unique DKG initialization ritual, DKG public key and cohort of nodes running TACo software – these are accessed via a unique `ritualID` parameter in the third step below. Please see the [beta program](../fees/mainnet-taco-beta-program.md) page for instructions on how to initialize a DKG ritual.
 
-## 0. Pick an appropriate `taco` version
+## 0. Pick an appropriate `taco` domain
 
 Before we install `taco`, we need to consider which domain we would like to use:
 

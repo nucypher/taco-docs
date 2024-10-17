@@ -69,6 +69,10 @@ const condition = new conditions.ifThenElse.IfThenElseCondition({
 });
 ```
 
+{% hint style="info" %}
+Individual conditions within the `IfThenElseCondition` can use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
+{% endhint %}
+
 ## Development References
 
 * Client-side: [https://github.com/nucypher/taco-web/pull/593](https://github.com/nucypher/taco-web/pull/593)

@@ -95,7 +95,7 @@ In this example, the sequential condition is evaluated as follows:
 Since no further condition variables remain and both `conditionA` and `conditionB` have passed, the sequential condition is considered satisfied.
 
 {% hint style="info" %}
-Individual conditions within the `SequentialCondition` use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
+Individual conditions within the `SequentialCondition` can use different chain IDs as long as the chain IDs are supported by the `domain` network being used.
 {% endhint %}
 
 ## Development References

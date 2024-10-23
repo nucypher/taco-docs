@@ -26,6 +26,7 @@
     * [JsonAPICondition](conditions/wip-feature-requests/jsonapicondition.md)
     * [SequentialCondition](conditions/wip-feature-requests/sequentialcondition.md)
     * [IfThenElseCondition](conditions/wip-feature-requests/ifthenelsecondition.md)
+    * [OAuth](conditions/wip-feature-requests/oauth.md)
 * [Fees](fees/README.md)
   * [Mainnet Fees](fees/mainnet-fees.md)
   * [Mainnet Beta Program](fees/mainnet-taco-beta-program.md)

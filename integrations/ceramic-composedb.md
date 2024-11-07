@@ -1,12 +1,17 @@
-# Ceramic
+# ComposeDB (Ceramic)
 
-This guide demonstrates how to integrate TACo with one of Ceramic's data services, [ComposeDB](https://developers.ceramic.network/docs/composedb/getting-started). TACo and Ceramic's data services are essential and mutually complementary components of the Web3 stack, offering developers ‘Web 2.0’ functionality without compromising on decentralization.
+\
+This guide explains how to integrate TACo with [ComposeDB](https://developers.ceramic.network/docs/introduction/composedb-overview), a[ ](https://ceramic.network/)GraphQL-based data service from [Ceramic](https://ceramic.network/). TACo and Ceramic are mutually complementary components of the Web3 stack, both offering developers ‘Web 2.0’ functionality without compromising on decentralization.
 
 On completion of this tutorial, it will be possible to:&#x20;
 
 1. Specify fine-grained access control logic for encrypted data/streams saved to the ComposeDB graph database.
-2. Have data requesters authenticate themselves with a reused Ceramic sign-in (a Sign-In With Ethereum message) in order to decrypt the retrieved data/stream.
-3. Securely gate-keep any format, size or throughput of data stream, with access collectively managed by a permissionless and customizable group of TACo nodes.&#x20;
+2. Have data consumers authenticate themselves with a reused Ceramic sign-in – a Sign-In With Ethereum message – in order to decrypt the retrieved data/stream.
+3. Securely gate-keep any format, size or throughput of data stream, with access to it collectively managed by a permissionless and customizable group of TACo nodes.&#x20;
+
+{% hint style="info" %}
+A version of this tutorial is also hosted in Ceramic's [documentation](https://developers.ceramic.network/docs/composedb/examples/taco-access-control).&#x20;
+{% endhint %}
 
 ## ComposeDB Overview
 
@@ -16,7 +21,7 @@ ComposeDB can be leveraged in concert with TACo, to ensure that returned data an
 
 ## Use Cases
 
-* **Social networks & Knowledge Bases**. Leverage Ceramic's verifiable credentials and TACo's credential-based decryption to ensure that private user-generated content is only viewable by those who are supposed to see it, and nobody else.
+* **Social networks & knowledge bases**. Leverage Ceramic's verifiable credentials and TACo's credential-based decryption to ensure that private user-generated content is only viewable by those who are supposed to see it, and nobody else.
 * **IoT event streams**. Let sensitive data flow from sensors to legitimate recipients, without trusting an intermediary server to handle the routing and harvest metadata. For example, a medical professional can be issued a temporary access token if a patient's wearable output data rises above a certain threshold.
 * **LLM chatbots**. Messages to and from a chatbot should be 100% private, not mined by a UX-providing intermediary. Harness Ceramic's web-scale transaction processing and TACo's per-message encryption granularity to provide a smooth and private experience for users of LLM interfaces.
 

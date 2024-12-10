@@ -17,6 +17,7 @@
   * [Irys](integrations/irys.md)
   * [ComposeDB (Ceramic)](integrations/ceramic-composedb.md)
   * [OrbisDB (Ceramic)](integrations/orbisdb-ceramic.md)
+  * [Waku](integrations/waku.md)
 * [Encrypt & Decrypt API](encrypt-and-decrypt-api.md)
 * [Authentication](authentication/README.md)
   * [Condition Context](authentication/conditioncontext-and-context-variables.md)

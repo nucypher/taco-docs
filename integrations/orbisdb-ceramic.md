@@ -23,11 +23,11 @@ Built upon [Ceramic](https://ceramic.network/), OrbisDB is an open-source relati
 
 Skip to Section II below for an in-depth guide to leveraging TACo in the context of the DeForum app.&#x20;
 
-Section I explains how TACo can be used with OrbisDB in a general sense.&#x20;
+***
 
 ## Section I – Integration steps
 
-To integrate TACo into an OrbisDB app yourself, follow these instructions:&#x20;
+This section covers how TACo can be used in concert with OrbisDB across domains and use cases. Follow these instructions to integrate TACo into a your OrbisDB app.&#x20;
 
 ### 1. Install required dependencies
 
@@ -212,7 +212,7 @@ async function decryptWithTACo(
 
 ***
 
-## Section II – Using the DeForum app to encrypt and decrypt forum posts
+## Section II – Encrypting & decrypting forum posts via the DeForum web application&#x20;
 
 Below, forum post bodies are encrypted so only data consumers that satisfy given conditions can view them as plaintext. The following code snippet also executes query to store the posts on OrbisDB in said encrypted format, so that only authenticated and qualifying consumers can access them.&#x20;
 

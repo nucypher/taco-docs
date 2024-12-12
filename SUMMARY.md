@@ -1,16 +1,14 @@
 # Table of contents
 
 * [What is TACo?](README.md)
-  * [How it works (basic)](readme/key-concepts.md)
+  * [How TACo works](readme/key-concepts.md)
 * [Use cases](use-cases/README.md)
   * [Seed phrase recovery & transfer](use-cases/seed-phrase-recovery-and-transfer.md)
   * [Digital Rights Management for on-chain assets](use-cases/digital-rights-management-for-on-chain-assets.md)
   * [Trustless channels for journalists, archivists & whistleblowers](use-cases/trustless-channels-for-journalists-archivists-and-whistleblowers.md)
   * [Crowdsourcing real-world data with trustless contribution](use-cases/crowdsourcing-real-world-data-with-trustless-contribution.md)
-  * [Gatekeeping access with an RPC condition](use-cases/gatekeeping-access-with-an-rpc-condition.md)
-  * [Gatekeeping access with an NFT](use-cases/gatekeeping-access-with-an-nft.md)
 * [Quickstart (Testnet)](quickstart-testnet.md)
-* [Integrating TACo into apps](taco-integration/README.md)
+* [Integrating TACo into applications](taco-integration/README.md)
   * [Testnets](taco-integration/get-started-with-tac.md)
   * [Deploying to Mainnet](taco-integration/deploying-to-mainnet.md)
 * [Ecosystem Integrations](integrations/README.md)

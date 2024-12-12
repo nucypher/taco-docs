@@ -15,12 +15,12 @@ Context variables are broken up into two groups:
     * [`:userAddress`](conditioncontext-and-context-variables.md#useraddress)
     * [`:userAddressExternalEIP4361`](conditioncontext-and-context-variables.md#useraddressexternaleip4361)
 
-    which require the use of [Authentication Providers](./) to provide verifiable proof of values specified by the decryptor. Applications should be cognizant of which reserved context variable they use based on their needs.
-* _**Custom context variables**_**:**  these are application-specific, simple key-value pairs where the decryptor can directly specify the values without any verification.
+    which require the use of [Authentication Providers](./) to provide verifiable proof of values specified by the _data consumer_. Applications should be cognizant of which reserved context variable they use based on their needs.
+* _**Custom context variables**_**:**  these are application-specific, simple key-value pairs where the _data consumer_ can directly specify the values without any verification.
 
 ### `:userAddress`
 
-Whenever the `:userAddress` context variable is present in a decryption condition, the decryptor must use the `EIP4361AuthProvider`. This authentication provider will prompt the user to sign a  `EIP-4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the decryptor's wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
+Whenever the `:userAddress` context variable is present in a decryption condition, the _data consumer_ must use the `EIP4361AuthProvider`. This authentication provider will prompt the user to sign a  `EIP-4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the _data consumer's_ wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
 
 ```typescript
 import { conditions } from '@nucypher/taco';
@@ -40,14 +40,14 @@ conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 ```
 
 {% hint style="info" %}
-To negate the need for repeated wallet signatures for every decryption request by the same decryptor, the corresponding proof that is generated is cached until an expiry is triggered, after which the decryptor will be prompted again.&#x20;
+To negate the need for repeated wallet signatures for every decryption request by the same _data consumer_, the corresponding proof that is generated is cached until an expiry is triggered, after which the _data consumer_ will be prompted again.&#x20;
 {% endhint %}
 
 ### `:userAddressExternalEIP4361`
 
 The `:userAddressExternalEIP4361` context variable in conditions requires the use of the `SingleSignOnEIP4361AuthProvider` for decryption.&#x20;
 
-The `SingleSignOnEIP4361AuthProvider` integrates decryptor wallet authentication into a broader Sign-in With Ethereum (SIWE) identity management system already used by an application, allowing users to authenticate once with the application and re-use that authentication with TACo.
+The `SingleSignOnEIP4361AuthProvider` integrates _data consumer_ wallet authentication into a broader Sign-in With Ethereum (SIWE) identity management system already used by an application, allowing users to authenticate once with the application and re-use that authentication with TACo.
 
 Therefore, the existing application-specific SIWE sign-in message and signature can be reused with TACo and provide a seamless user experience during TACo decryption without the need to sign multiple messages.
 
@@ -113,7 +113,7 @@ In this example, we can see two different context variables
 
 To replace the `:userAddress` context variable with an actual wallet address during decryption, TACo needs to be provided with an `AuthProvider` for the user to sign an `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to confirm wallet ownership at the decryption time.
 
-Additionally, the `:selectedBalance` custom context variable has to be provided to the `decrypt` function by the decryptor.
+Additionally, the `:selectedBalance` custom context variable has to be provided to the `decrypt` function by the _data consumer_.
 
 Both context variables need to be provided to a `ConditionContext` which is then used by the `decrypt` function.
 
@@ -166,7 +166,7 @@ With those context parameters, the condition will be evaluated by nodes at decry
 {% hint style="info" %}
 This is a contrived example. \
 \
-For **custom context variables** specifically, time should be taken to think through the use case since the decryptor provides these and can be set to any value. In this case, the `selectedBalance`  value can simply be set to `-1` by the requester, which would grant them access without their owning any NFT.\
+For **custom context variables** specifically, time should be taken to think through the use case since the _data consumer_ provides these and can be set to any value. In this case, the `selectedBalance`  value can simply be set to `-1` by the requester, which would grant them access without their owning any NFT.\
 \
 Custom context variables, such as providing a Merkle tree root as a parameter to a contract function, are appropriate, but such an example would be overly complex.
 {% endhint %}

@@ -1,8 +1,10 @@
-# Integrating TACo into apps
+# Integrating TACo into applications
 
-Note that using TACo in production requires a unique DKG initialization ritual, DKG public key and cohort of nodes running TACo software – these are accessed via a unique `ritualID` parameter in the third step below. Please see the [beta program](../fees/mainnet-taco-beta-program.md) page for instructions on how to initialize a DKG ritual.
+{% hint style="warning" %}
+Note that using TACo in production requires a unique DKG initialization ritual, DKG public key and cohort of nodes running TACo software. These are available via a unique `ritualID` parameter. See the [beta program](../fees/mainnet-taco-beta-program.md) page for instructions on how to initialize a DKG ritual.
+{% endhint %}
 
-## 0. Pick an appropriate `taco` domain
+### 0. Pick an appropriate `taco` domain
 
 Before we install `taco`, we need to consider which domain we would like to use:
 
@@ -21,7 +23,7 @@ You can learn more about the current state of `mainnet` and test networks here:
 * [mainnet-taco-beta-program.md](../fees/mainnet-taco-beta-program.md "mention")
 * [get-started-with-tac.md](get-started-with-tac.md "mention")
 
-## 1. Install and integrate `taco`
+### 1. Install and integrate `taco`
 
 To begin, we need to install the `taco` , and `taco-auth`libraries:
 
@@ -45,7 +47,7 @@ await initialize();
 
 With this out of the way, we're ready to use `taco` in our app.
 
-## 2. Define decryption conditions
+### 2. Define decryption conditions
 
 Before we encrypt our data, we have to define the decryption _conditions_.
 
@@ -79,7 +81,7 @@ const conditions = new conditions.compound.CompoundCondition({
 });
 ```
 
-## 3. Encrypt the plaintext
+### 3. Encrypt the plaintext
 
 We're ready to encrypt our plaintext and gate access to the encrypted contents with our conditions, `NFTOwnership`.
 
@@ -101,7 +103,7 @@ const messageKit = await encrypt(
 
 The resulting `messageKit` contains the encrypted data and associated conditions.
 
-## 4. Request decryption
+### 4. Request decryption
 
 Finally, we will test the conditional access control service by requesting decryption:
 
@@ -137,7 +139,7 @@ At decryption time, the requester will be asked to verify their address by signi
 Note that the requester does not need to manually sign the next time they seek access to the data, as the `taco` client will cache their signature. Fresh plaintexts encrypted under any conditions involving the same wallet address are automatically accessible to any requester who has signed at least once, provided they still fulfill any requisite conditions, and the cached signature has not expired.&#x20;
 {% endhint %}
 
-## Complete example
+### Complete example
 
 This is the complete, end-to-end example of `taco` integration
 

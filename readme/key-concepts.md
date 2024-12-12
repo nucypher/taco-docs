@@ -15,11 +15,11 @@ Conditions are 'attached' on a per-ciphertext basis. In other words, each and ev
 A range of access condition types can be defined by the data owner. For example:
 
 * EVM-based\
-  _e.g. Does the requester own a given NFT?_
+  &#xNAN;_&#x65;.g. Does the requester own a given NFT?_
 * RPC-driven\
-  _e.g. Does the requester have at least X amount of a given token in their wallet?_
+  &#xNAN;_&#x65;.g. Does the requester have at least X amount of a given token in their wallet?_
 * Time-based\
-  _e.g. Has a predefined period elapsed, after which requests will be ignored?_
+  &#xNAN;_&#x65;.g. Has a predefined period elapsed, after which requests will be ignored?_
 
 These conditions are also composable and can be combined in any logical sequence or decision tree.
 

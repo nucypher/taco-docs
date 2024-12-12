@@ -55,7 +55,7 @@ The more trustful constituent in the DAO is the Threshold Council, a multisig th
 
 In terms of the software itself, the Council also has control over several upgradeable application [contracts](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/TACoApplication.sol) (e.g. Polygon child application). Although this power means the Council could push an update that prevent TACo from working, they cannot force adopting developers into downloading a client that unlawfully decrypts user data, and certainly not do so surreptitiously. \
 \
-_Future_\
+&#xNAN;_&#x46;uture_\
 The Threshold Council may be expanded, discontinued or have the scope of its powers reduced in order to minimize the attack surface via this weaker, more centralized component of Threshold Governance.&#x20;
 
 ### I**nfrastructural and software-related centralization**&#x20;
@@ -76,7 +76,7 @@ The default API is a web-oriented API written in Typescript ([taco-ts](https://g
 * The user-facing library has various dependencies, both internal (e.g. [nucypher/nucypher](https://github.com/nucypher/nucypher), [nucypher/nucypher-core](https://github.com/nucypher/nucypher-core)) and external (e.g. [ethers](https://github.com/ethers-io/ethers.js)). There are also indirect cryptographic dependencies like [nucypher/ferveo](https://github.com/nucypher/ferveo).
 
 _Future Versions_\
-_C_ommunity-run Porters are currently being scoped out and developed. These will enable automated fall-backs if one Porter is non-available or deliberately blocking service. It is undecided as to whether Porter instances should become an extra component of running a TACo node, thus decentralizing it to the same extent.&#x20;
+_&#x43;_&#x6F;mmunity-run Porters are currently being scoped out and developed. These will enable automated fall-backs if one Porter is non-available or deliberately blocking service. It is undecided as to whether Porter instances should become an extra component of running a TACo node, thus decentralizing it to the same extent.&#x20;
 
 #### How does the infrastructure provider connect to the Ethereum network (or alternative base layer)?
 

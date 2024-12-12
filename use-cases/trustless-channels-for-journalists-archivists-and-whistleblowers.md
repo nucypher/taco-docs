@@ -23,7 +23,7 @@ _Protocol schematic_\
 Journalist Device <> TACo Nodes <> 3rd Party APIs (e.g. ProofMode) + EVM <> Qualifying Consumer
 
 _Authentication_ \
-_\*_SIWE for encryptors\
+_\*_&#x53;IWE for encryptors\
 \*OAuth for decryptors&#x20;
 
 _Advanced TACo features_  \

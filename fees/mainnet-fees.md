@@ -5,9 +5,9 @@
 Adopting developers pay for the TACo service via a dual fee model, which covers:&#x20;
 
 1. Availability of the service, via a **duration-based fee**\
-   _Currently 0.5 DAI per node per day_
+   &#xNAN;_&#x43;urrently 0.5 DAI per node per day_
 2. Usage of the service via a **fee** **based on the number of unique data producer identities encrypting data at any one time**\
-   _Currently 2.5 DAI per encryptor slot per year_\
+   &#xNAN;_&#x43;urrently 2.5 DAI per encryptor slot per year_\
    \
    Note that encrypting privileges can be added and removed from identites/addresses at will, without charge or limit, provided the sponsor has pre-paid for sufficient credits and there are slots available.
 

@@ -10,10 +10,10 @@ Nevertheless, there is no such thing as a third-party integration (or service in
 
 In TACo's case, the trust assumptions are: \
 \
-_non-binary –_ not reducible to 'trustless' or 'trustful'.
+&#xNAN;_&#x6E;on-binary –_ not reducible to 'trustless' or 'trustful'.
 
 _non-static –_ they evolve over time based on in-protocol features and exogeneous phenomena. \
 \
-_tunable –_ adopting developers will eventually select from a range of explicit trust assumptions on behalf of their user base, and/or surface that optionality for end-users to choose themselves.&#x20;
+&#xNAN;_&#x74;unable –_ adopting developers will eventually select from a range of explicit trust assumptions on behalf of their user base, and/or surface that optionality for end-users to choose themselves.&#x20;
 
 This section serves to explain the implicit and explicit trust assumptions baked into TACo, for both the [Mainnet and Testnet](../taco-integration/) versions. In later versions, these assumptions will be synthesized and exposed to the vast majority of adopting developers in the form of pre-configured network parameter packages.&#x20;

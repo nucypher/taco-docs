@@ -7,13 +7,13 @@ This section focuses on `Condition` types, composition and usage.
 Base conditions define specific criteria for access, and each includes a `returnValueTest` to compare the actual execution result with the expected value. These include:
 
 * [`TimeCondition`](timecondition.md) – time-based conditions using block height and other blockchain-based timestamps. \
-  _Example:_ only allow access after a certain timestamp.
+  &#xNAN;_&#x45;xample:_ only allow access after a certain timestamp.
 * [`RpcCondition`](rpccondition.md) –  based on RPC calls as defined in Ethereum's Official [API](https://ethereum.org/en/developers/docs/apis/json-rpc/#json-rpc-methods). \
-  _Example:_ allow access if the requestor address holds a minimum ETH balance.
+  &#xNAN;_&#x45;xample:_ allow access if the requestor address holds a minimum ETH balance.
 * [`ContractCondition`](contractcondition/) – uses on-chain state, allowing arbitrary contract function calls. \
-  _Example:_ allow access if this requestor holds a special-purpose NFT.&#x20;
+  &#xNAN;_&#x45;xample:_ allow access if this requestor holds a special-purpose NFT.&#x20;
 * [`JsonApiCondition`](wip-feature-requests/jsonapicondition.md) - uses state from a JSON HTTPS endpoint.\
-  _Example:_ allow discount on event tickets/merchandise if there is "bad" weather according to a specific weather API.
+  &#xNAN;_&#x45;xample:_ allow discount on event tickets/merchandise if there is "bad" weather according to a specific weather API.
 
 Each base condition defines a [`returnValueTest`](./#return-value-test) used to compare the obtained execution value with the expected value for the condition.
 

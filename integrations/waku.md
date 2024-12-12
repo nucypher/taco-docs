@@ -1,16 +1,34 @@
 # Waku
 
-This guide explains how to leverage [Waku](https://docs.waku.org/) and TACo in combination, providing developers with a general-purpose, conditions-based, end-to-end encrypted and censorship-resistance messaging layer. This integration enables a variety of high-performance decentralized applications, including the location-sharing app [Arc](https://github.com/nucypher/Arc), a reference prototype and repo accompanying this tutorial.&#x20;
+This guide explains how to integrate [Waku](https://docs.waku.org/) and TACo, which together offer developers a comprehensive _Web3 privacy development toolkit –_ i.e. a general-purpose, censorship-resistant, end-to-end encrypted messaging layer where the access logic for delivered messages is programmable and conditions-based. This enables a variety of performant decentralized applications – including the location-sharing app [Arc](https://lionfish-app-rtgbk.ondigitalocean.app/), a reference prototype and [repository](https://github.com/nucypher/Arc) that accompanies this tutorial.&#x20;
 
-This tutorial helps set up a minimum viable integration, which includes setting up relevant services, encrypting and sending messages with embedded, NFT-based access conditions, and receiving and decrypting said messages.&#x20;
+This guide sets up a minimum viable integration of the two SDKs/protocols, that can be used across use cases and domains. This includes setting up relevant services and dependencies, encrypting/sending messages with NFT-based access conditions, and receiving/decrypting said messages.&#x20;
 
 ## Waku overview
 
-Waku's protocols provide decentralized message transport and routing, efficiently supporting in-browser light clients, and offering protocol-level metadata privacy. Ephemeral, real-time messaging with minimal persistence ensures quick and secure communication within adopting applications. Like TACo, Waku does not make compromises with respect to permissionlessness, trust-minimization and decentralization. For more on Waku's JavaScript SDK, check out their [documen](https://docs.waku.org/guides/js-waku/)[tation](https://docs.waku.org/guides/js-waku/).
+Waku's communication protocols provide gas-free message transport and routing – supporting in-browser light clients, and ensuring protocol-level metadata privacy and end-user anonymity. Ephemeral, real-time messaging with minimal persistence brings efficient data/message transmission within adopting applications. Like TACo, Waku's underlying network makes no compromises with respect to permissionlessness, trust-minimization and decentralization.&#x20;
+
+For more on Waku's JavaScript SDK, check out their [documen](https://docs.waku.org/guides/js-waku/)[tation](https://docs.waku.org/guides/js-waku/).
+
+## Use case ideas
+
+* **Crowdsourcing.** Whether it's weather, flight tracking, large geospatical models, traffic data, or even verifying the ingredients used by restaurants, contributors in large-scale crowdsourcing projects are often taken for granted – both in terms of their privacy and their share of the spoils. Leverage Waku's anonymity-preserving data stream transmission, and TACo's payment-conditioned access, to ensure contributors to highly valuable data sets are able to maintain their anonymity while guaranteeing their compensation.&#x20;
+* **Medical Wearables.** Don't rely on HIPAA or the moral compass of medical device manufacturers. Waku's the ideal transport layer for devices which stream small data payloads, while TACo enables strict sharing requirements via composable condition logic. Health data applications which integrate Waku & TACo can uniquely offer their end-users total sovereignty over their sensitive data, where they alone control flows of information to their healthcare providers.&#x20;
+* **GenAI Inference.** Messages to and from an LLM model/chatbot should be 100% private and censorship-resistant, not harvested by an intermediary or blocked by a central authority. Harness Waku's efficient, ephemeral message transmission, alongside TACo's per-message/ciphertext encryption granularity, to provide a smooth and private experience for users of GenAI interfaces. Both TACo and Waku's decentralized/P2P frameworks ensure messages (and decryption material) can propagate without any single entity being able to unilaterally censor interactions with the model.&#x20;
+
+***
+
+## Example application & repo
+
+[Arc](https://github.com/nucypher/Arc) is an experimental, privacy-preserving, permissionless, decentralized location-sharing application that combines Waku & TACo's capabilites. Arc provides secure, end-to-end encrypted location sharing with fine-grained, on-chain access control, making it a powerful tool for individuals, groups or applications seeking a way to selectively share their location without trusting an intermediary platform.&#x20;
+
+In this version of Arc, users may set on-chain conditions for accessing their real-time location, such as a specific time window for access (based on block time), a minimum token balance, or the ownership of a special-purpose NFT.&#x20;
 
 ***
 
 ## Integration steps&#x20;
+
+This section walks through a _minimum viable integration_ to get developers started. For more powerful extensions and advanced condition logic, check out the [Access Control ](../conditions/wip-feature-requests/)section.&#x20;
 
 ### 1. Required imports
 
@@ -38,7 +56,9 @@ const encoder = createEncoder({ contentTopic: CONTENT_TOPIC })
 const decoder = createDecoder(CONTENT_TOPIC)
 ```
 
+{% hint style="info" %}
 Note that _content topics_ are metadata strings embedded into outgoing messages that facilitate protocol-level features like selectively processing incoming messages. These strings can be thought of as 'channels', which determine, among other things, the path of messages through the network. Learn more about content topics [here](https://docs.waku.org/learn/concepts/content-topics/).&#x20;
+{% endhint %}
 
 ### 3. Set up Web3 provider
 
@@ -198,3 +218,11 @@ await node.filter.subscribe([decoder], async (wakuMessage) => {
   }
 })
 ```
+
+***
+
+## Using Waku & TACo in production&#x20;
+
+The parameters specified in this guide are for testing and hacking only. For real-world use cases, the production version of TACo is required – i.e. a funded Mainnet `ritualID` which connects the encrypt/decrypt API to a cohort of independently operated nodes, and corresponds to a DKG public key generated by independent parties.&#x20;
+
+A dedicated `ritualID` for Waku + TACo integrations will be sponsored in early 2025. Watch for updates here or in the[ #taco](https://discord.com/channels/866378471868727316/870383642751430666) channel on the Threshold Network discord server.&#x20;

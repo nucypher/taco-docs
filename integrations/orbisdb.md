@@ -1,4 +1,4 @@
-# OrbisDB (Ceramic)
+# OrbisDB
 
 This guide walks through how to use [OrbisDB](https://developers.ceramic.network/docs/introduction/orbisdb-overview) and TACo in combination, using the DeForum web application and [repo](https://github.com/nucypher/deforum-taco) as an example. OrbisDB is an easy-to-use SQL interface for querying data stored via the [Ceramic](https://ceramic.network/) network, and alongside TACo, another fundmental building block for the Web3 stack.&#x20;
 
@@ -10,14 +10,15 @@ DeForum is a decentralized web forum that allows end-users to create token-gated
 
 Built upon [Ceramic](https://ceramic.network/), OrbisDB is an open-source relational database designed for Web3 applications and beyond. OrbisDB offers a flexible and developer-friendly experience via a (1) web app & SDK for storing and managing datasets, (2) support for SQL and GraphQL queries, and (3) hosted nodes to facilitate DevOps.  The Ceramic network, as with ComposeDB, enables sovereign data ownership, composability and scalability. Decentralization is achieved through a population of node operators numbering in the hundreds, that anyone can permissionlessly join to provide  data services.&#x20;
 
-## Use cases
+## Use case ideas
 
 * **DeSci.** Even movements centered around open access necessitate private channels, including draft papers, raw data analysis, peer reviews, funding, and other forms of collaboration. OrbisDB and TACo together offer storage and sharing of scientific work that maximizes the researcher's control and sovereignty. Additionally, the combination enables scientific data marketplaces with no trusted intermediary facilitating monetization.&#x20;
-* **AI Datasets.** Leverage OrbisBD's provenance verification tooling and TACo's granular (row-level) condition decryption to enable safe collaboration on sensitive training data while simultaneously verifying data integrity and quality.&#x20;
+* **AI datasets.** Leverage OrbisBD's provenance verification tooling and TACo's granular (row-level) conditionality to enable safe collaboration on sensitive training data while simultaneously verifying data integrity and quality.&#x20;
+* **Shared knowledge bases.** Combine Ceramic's verifiable credentials with credential-based secrets management to enforce fine-grained, per-page access to organizational resources. OrbisDB enables migration of non-public external data (e.g. via an API or static CSV) which can then be encrypted via TACo for specific group members (e.g. stakers in a network).&#x20;
 
 ***
 
-## Example Application & Repo&#x20;
+## Example application & repo&#x20;
 
 [DeForum](https://github.com/ceramicstudio/deforum-taco) illustrates how TACo and OrbisD can be combined in a browser-based forum app, and also provides a template for virtually any form of token-gated content platform. The demo can run on a public node instance provided by OrbisDB studio for testing, or you can set up your own node in order to save data on the Ceramic network in production. The demo also requires a ThirdWeb account to help with image file upload and storage on IPFS.&#x20;
 
@@ -27,7 +28,7 @@ Skip to Section II below for an in-depth guide to leveraging TACo in the context
 
 ## Section I – Integration steps
 
-This section covers how TACo can be used in concert with OrbisDB across domains and use cases. Follow these instructions to integrate TACo into a your OrbisDB app.&#x20;
+This section covers how TACo can be used in concert with OrbisDB across domains and use cases. Follow these instructions to integrate TACo into your OrbisDB app.&#x20;
 
 ### 1. Install required dependencies
 

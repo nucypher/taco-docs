@@ -4,13 +4,23 @@ This three-step guide explains how to integrate TACo with [Irys](https://docs.ir
 \
 There are plenty of reasons to combine these technologies. Irys's sub-millisecond upload & data egress can be parallelized with TACo's low-latency decryption flow, ensuring rapid access to shared data. Provenance features like transaction receipts and cryptographic proof-of-time are fully compatible with TACo and are equally (or arguably more) important for sensitive information and messages. Broadly, integrating Irys & TACo offers long-term sovereignty to end-users – i.e. that their private data will remain accessible to qualifying devices forever.&#x20;
 
-## Use cases&#x20;
+## Use case ideas
 
 * **Governance.** Generate tamper-proof, timestamped records of voting activity, enhancing transparency and reducing trust assumptions.&#x20;
 * **Connected Vehicles.** Store sensitive real-time vehicle diagnostics and geolocation data, such that the data stream is instantly available when required (e.g. while driving) but not leaked beyond known and legitimate recipients (e.g. a smart city traffic system).&#x20;
 * **Private NFTs.** Move beyond the status quo of symbolic receipts stored on centralized platforms, to a world where one owns the _decryption rights_ to a movie, track, in-game asset, or piece of art – trustlessly and in perpetuity.&#x20;
 
-## Installation & dependencies
+***
+
+## Example application & repo
+
+Check out this [token-gated photo album](https://github.com/lukecd/irys-threshold), an intuitive mini-app that demonstrates the power and simplicity of using Irys & TACo in concert. Images are encrypted via the TACo API and stored on-chain via Irys. To view the images, users must prove they hold special-purpose NFT.&#x20;
+
+***
+
+## Integration steps
+
+### 1. Installation & dependencies
 
 ```typescript
 yarn add @nucypher/taco
@@ -18,11 +28,7 @@ yarn add @nucypher/taco-auth
 yarn add @irys/sdk
 ```
 
-## 1. Define access condition & encrypt the data&#x20;
-
-{% hint style="warning" %}
-This guide utilizes the parameters `ritualId = 0` and `domains.TESTNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [trust assumptions section](../trust-assumptions/).&#x20;
-{% endhint %}
+### 2. Define access condition & encrypt the data&#x20;
 
 First, we initialize the `taco-web` [library](https://github.com/nucypher/taco-web).&#x20;
 
@@ -58,7 +64,11 @@ const messageKit = await encrypt(
 const encryptedMessageHex = toHexString(messageKit.toBytes());
 </code></pre>
 
-## 2. Connect to Irys & store the data&#x20;
+{% hint style="warning" %}
+This guide utilizes the parameters `ritualId = 0` and `domains.TESTNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [trust assumptions section](../trust-assumptions/).&#x20;
+{% endhint %}
+
+### 3. Connect to Irys & store the data&#x20;
 
 First, we connect to an Irys [Devnet](https://docs.irys.xyz/developer-docs/using-devnet) node. This requires funding a wallet with any of the devnet [tokens](https://docs.irys.xyz/overview/supported-tokens) supported by Irys. In this example, we're using Polygon (Amoy) MATIC.&#x20;
 
@@ -83,7 +93,7 @@ await webIrys.ready();
 console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
 </code></pre>
 
-## 3. Retrieve & decrypt the data
+### 4. Retrieve & decrypt the data
 
 From the data consumer's perspective, we now use the `receiptID` to find and retrieve the encrypted payload via an Irys gateway. Note that the same data identifier works with Arweave gateways.&#x20;
 
@@ -119,9 +129,7 @@ const decryptedMessage = await decrypt(
 console.log(decryptedMessage);
 ```
 
-## Example integration
-
-Check out this [token-gated photo album](https://github.com/lukecd/irys-threshold), an intuitive mini-app that demonstrates the power and simplicity of using Irys & TACo in concert. Images are encrypted via the TACo API and stored on-chain via Irys. To view the images, users must prove they hold special-purpose NFT.&#x20;
+***
 
 ## Using Irys & TACo in production&#x20;
 

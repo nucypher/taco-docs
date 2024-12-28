@@ -1,3 +1,17 @@
+---
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Turbo
 
 This guide explains how to integrate TACo with [Turbo](https://docs.ardrive.io/docs/turbo/what-is-turbo.html) – a bundler SDK which facilitates uploading, retrieving, indexing, and paying for data hosted on [Arweave](https://search.brave.com/search?q=arweave+docs\&source=desktop). Developers who combine TACo and Turbo can offer their end-users permanent data storage that is _private by default_, wherein all sensitive payloads are encrypted, with fine-grained access conditions, prior to being uploaded. Given that Arweave offers access to data in perpetuity, it is even more critical that non-public data will only be decryptable by legitimate and qualifying consumers.&#x20;

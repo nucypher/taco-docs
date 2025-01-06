@@ -9,7 +9,7 @@ It is composed of the following properties:
 * `endpoint`: the HTTPS URI for the JSON API endpoint that will be queried, e.g.`https://api.example.com/user/status`
 * `parameters`_(Optional)_: a key-value mapping of parameter names and values to pass as part of the HTTPS GET request. These parameters will be appended to the URL as query string parameters.
 * `query`_(Optional)_: a `JSONPath` query used to extract specific data from the JSON response.
-* [`authorizationToken`](jsonapicondition.md#authorization-token) (Optional): A bearer token that will be included in the HTTPS `Authorization` header. It enables the use of endpoints that require OAuth/JWT authorization.&#x20;
+* [`authorizationToken`](./#authorization) (Optional): A bearer token that will be included in the HTTPS `Authorization` header. It enables the use of endpoints that require OAuth/JWT authorization.&#x20;
 * [`returnValueTest`](../../#returnvaluetest): the test to validate the value extracted by the JSONPath query.&#x20;
 
 **Error Handling**

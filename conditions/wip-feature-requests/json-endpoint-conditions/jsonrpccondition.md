@@ -12,7 +12,7 @@ It is composed of the following properties:
 * `method`: the JSON RPC method to be invoked
 * `params`_(Optional)_: Parameters for the specified method, provided as either a dictionary or an array.
 * `query`_(Optional)_: a `JSONPath` query used to extract specific data from the JSON response. The query is relative to the `result` entry included in the JSON response.
-* [`authorizationToken`](jsonrpccondition.md#authorization-token) _(Optional)_: A bearer token that will be included in the HTTPS `Authorization` header. It enables the use of endpoints that require OAuth/JWT authorization.&#x20;
+* [`authorizationToken`](./#authorization) _(Optional)_: A bearer token that will be included in the HTTPS `Authorization` header. It enables the use of endpoints that require OAuth/JWT authorization.&#x20;
 * [`returnValueTest`](../../#returnvaluetest): the test to validate the value extracted by the JSONPath query.&#x20;
 
 **Error Handling**

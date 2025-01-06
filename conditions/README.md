@@ -12,7 +12,7 @@ Base conditions define specific criteria for access, and each includes a `return
   &#xNAN;_&#x45;xample:_ allow access if the requestor address holds a minimum ETH balance.
 * [`ContractCondition`](contractcondition/) – uses on-chain state, allowing arbitrary contract function calls. \
   &#xNAN;_&#x45;xample:_ allow access if this requestor holds a special-purpose NFT.&#x20;
-* [`JsonApiCondition`](wip-feature-requests/jsonapicondition.md) - uses state from a JSON HTTPS endpoint.\
+* [`JsonApiCondition`](wip-feature-requests/json-endpoint-conditions/jsonapicondition.md) - uses state from a JSON HTTPS endpoint.\
   &#xNAN;_&#x45;xample:_ allow discount on event tickets/merchandise if there is "bad" weather according to a specific weather API.
 
 Each base condition defines a [`returnValueTest`](./#return-value-test) used to compare the obtained execution value with the expected value for the condition.

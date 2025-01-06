@@ -31,7 +31,7 @@ A typical OAuth workflow involves:
 
 ## Potential Application to TACo
 
-TACo could function as part of a client system, using an already obtained access token to verify off-chain conditions. A possible use case for OAuth within TACo would involve scenarios where off-chain API endpoints, such as those used for [jsonapicondition.md](jsonapicondition.md "mention"), require user authentication via access tokens.
+TACo could function as part of a client system, using an already obtained access token to verify off-chain conditions. A possible use case for OAuth within TACo would involve scenarios where off-chain API endpoints, such as those used for [jsonapicondition.md](json-endpoint-conditions/jsonapicondition.md "mention"), require user authentication via access tokens.
 
 In TACo's case, steps 1-3 of the OAuth process would be handled by the underlying application, not TACo itself. The application simply provides TACo with the access token, which could then be used to verify off-chain conditions requiring user authentication.
 

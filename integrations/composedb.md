@@ -106,7 +106,7 @@ This time, when we hit the Decrypt button and ping the TACo API, the assigned gr
 To clear the session data and restart the demo, click the _Reset_ button in the navigation bar.
 
 {% hint style="warning" %}
-Note that this tutorial utilizes the parameters `ritualId` = 0 and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](https://docs.threshold.network/app-development/threshold-access-control-tac/integration-guides/get-started-with-tac#testnet-configuration) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](https://docs.threshold.network/app-development/threshold-access-control-tac/trust-assumptions).
+Note that this tutorial utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](../taco-integration/get-started-with-tac.md) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](../trust-assumptions/README.md).
 {% endhint %}
 
 ***
@@ -155,7 +155,7 @@ Next, we’ll logically combine this condition with a second  condition via a `C
 });
 </code></pre>
 
-Read more about condition types [here](https://docs.threshold.network/app-development/threshold-access-control-tac/conditions).
+Read more about condition types [here](../conditions/README.md).
 
 ### 2. Encrypting & saving the data
 

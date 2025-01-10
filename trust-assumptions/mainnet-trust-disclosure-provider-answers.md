@@ -31,7 +31,7 @@ Correct operator behavior is economically incentivized in the following ways:&#x
 3. **Token Holdings** \
    This is perhaps the most powerful incentive to follow the protocol correctly – because node operators' rewards, revenue and stake (collateral) are denominated in the T token, they are exposed to the perception of the network more than any other stakeholder. Although market forces have a large extraneous component, the collective behavior of stakers remains a key factor in the perceived utility and value of the applications hosted on Threshold. Moreover, the primary value of the T token is derived from the requirement to buy and stake T in order to earn revenue as a T node operator. Hence, it would be an act of economic self-harm to diverge from the protocol in any way, since it invariably reduces service quality, the utility of the Threshold network, the applications' current and potential revenue generation, by extension reduce the value of the T token, and hence every single operator's holdings and income.&#x20;
 
-Stakers are recruited through the Threshold community, which primarily lives on the Threshold Discord server. There are also special events held like the Staker Townhall, which are an opportunity for both sides of the TACo market – adopters and stakers – to hear from one another. \
+Stakers are recruited through the Threshold community, which primarily lives on the [Threshold Discord server](https://discord.com/channels/866378471868727316/870383642751430666). There are also special events held like the Staker Townhall, which are an opportunity for both sides of the TACo market – adopters and stakers – to hear from one another. \
 \
 Stakers are mobilized to install the first or latest versions of the node client through announcements in the Threshold Discord server, and can check their node is active and running using the [Threshold Dashboard](https://dashboard.threshold.network/overview/network).
 
@@ -69,7 +69,7 @@ The primary conduit to the Threshold network to access TACo services is via [_Po
 * Porter cannot decrypt private data, as the data remains end-to-end encrypted through the Porter stage of an access request. However, Porter can theoretically block requests.&#x20;
 * The NuCypher team runs a permanent Porter instance, but it is entirely [open source](https://github.com/nucypher/nucypher-porter). Threshold encourages TACo's adopting developers to spin up their own Porter, if that improves the trust burden – this depends on the unique trust assumptions of their use case(s).&#x20;
 
-The default API is a web-oriented API written in Typescript ([taco-ts](https://github.com/nucypher/nucypher-ts)). There is also a reference Python API.&#x20;
+The default API is a web-oriented API written in Typescript ([taco-ts](https://github.com/nucypher/taco-web)). There is also a reference Python API.&#x20;
 
 * Code is primarily maintained and packaged by Threshold contributors, including in large part the NuCypher team.&#x20;
 * All the code is open source and subject to formal and informal third-party oversight.&#x20;
@@ -94,7 +94,7 @@ Web3 provider diversity helps prevent the attack theorized above. It is quite st
 _Genesis_
 
 * TACo can be built from the code directly or run from sources with signatures checked.&#x20;
-* Both the [user-facing client](https://github.com/nucypher/nucypher-ts) and [node-facing client](https://github.com/nucypher/nucypher) are 100% open source.&#x20;
+* Both the [user-facing client](https://github.com/nucypher/taco-web) and [node-facing client](https://github.com/nucypher/nucypher) are 100% open source.
 * External developers and adopters can contribute and submit pull requests freely.&#x20;
 * Repository issues track the current system limitations and the corresponding mitigations in place. For example, in the [nucypher/nucypher](https://github.com/nucypher/nucypher/issues) and [nucypher/taco-web](https://github.com/nucypher/taco-web) repos.
 * Conversations among core contributors to TACo (voice & typed) are publicly available for the most part in the Discord [server](https://discord.com/channels/866378471868727316/870383642751430666).&#x20;

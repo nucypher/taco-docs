@@ -69,7 +69,7 @@ The primary conduit to the Threshold network to access TACo services is via [_Po
 * Porter cannot decrypt private data, as the data remains end-to-end encrypted through the Porter stage of an access request. However, Porter can theoretically block requests.&#x20;
 * The NuCypher team runs a permanent Porter instance, but it is entirely [open source](https://github.com/nucypher/nucypher-porter). Threshold encourages TACo's adopting developers to spin up their own Porter, if that improves the trust burden – this depends on the unique trust assumptions of their use case(s).&#x20;
 
-The default API is a web-oriented API written in Typescript ([taco-ts](https://github.com/nucypher/taco-web)). There is also a reference Python API.&#x20;
+The default API is a web-oriented API written in Typescript ([taco-ts](https://github.com/nucypher/taco-web)). 
 
 * Code is primarily maintained and packaged by Threshold contributors, including in large part the NuCypher team.&#x20;
 * All the code is open source and subject to formal and informal third-party oversight.&#x20;

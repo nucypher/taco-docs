@@ -25,7 +25,7 @@ To run the code examples below, you will need the `ritualId` encryption paramete
 \
 Additionally, we have [publicly available testnet rituals](taco-integration/get-started-with-tac.md#testnet-configuration) for use when developing your apps.
 
-## Define decryption condition and encrypt data
+### 3. Define decryption condition and encrypt data
 
 With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.
 

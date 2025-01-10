@@ -169,7 +169,7 @@ import { ethers } from "ethers";
 await initialize();
 
 const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-const ritualId = 0
+const ritualId = 6
 const message = "I cannot trust a centralized access control layer with this message.";
 
 const messageKit = await encrypt(
@@ -188,7 +188,7 @@ const encryptedMessageHex = toHexString(messageKit.toBytes());
 We're now going to enable _data consumers_ to access the underlying data, if and only if the two conditions we specified are satisfied. Data consumers interact with the TACo API via the `decrypt` function, including the following arguments:&#x20;
 
 * `Provider` – Web3 provider to connect to Polygon.
-* `Domain` – which TACo network (`Mainnet`, `Testnet` ).
+* `Domain` – which TACo network (`MAINNET`, `TESTNET`, `DEVNET`).
 * `encryptedMessage`/`ThresholdMessageKit` – this contains the encrypted plaintext and the access conditions, supplied to the _data consumer_ via a side channel.
 * `conditionContext` – this enables on-the-fly, programmatic population of [context variable](../authentication/conditioncontext-and-context-variables.md) values used within conditions, the most important being data consumer authentication. Developers can predicate certain authentication methods on certain conditions. For example:
   * If conditions are based around EVM state, authenticate via SIWE.

@@ -34,6 +34,7 @@
       * [JsonApiCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonapicondition.md)
       * [JsonRpcCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonrpccondition.md)
     * [OAuth](conditions/wip-feature-requests/oauth.md)
+    * [Any (Major) EVM Chain Condition Support](conditions/wip-feature-requests/any-major-evm-chain-condition-support.md)
 * [Fees](fees/README.md)
   * [Mainnet Fees](fees/mainnet-fees.md)
   * [Mainnet Beta Program](fees/mainnet-taco-beta-program.md)

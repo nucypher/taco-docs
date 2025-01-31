@@ -63,7 +63,7 @@ The Threshold Council may be expanded, discontinued or have the scope of its pow
 #### How does the user-facing client connect to the infrastructure provider’s network? How does it connect to other layers?
 
 _Genesis_ \
-The primary conduit to the Threshold network to access TACo services is via [_Porter_](https://docs.threshold.network/app-development/threshold-access-control-tac/porter)_:_&#x20;
+The primary conduit to the Threshold network to access TACo services is via [_Porter_](../architecture/porter.md)_:_&#x20;
 
 * Porter is an intermediary gateway to the Threshold network. Adopters specify a Porter URI of their choice.&#x20;
 * Porter cannot decrypt private data, as the data remains end-to-end encrypted through the Porter stage of an access request. However, Porter can theoretically block requests.&#x20;

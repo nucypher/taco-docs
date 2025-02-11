@@ -25,11 +25,13 @@ To run the code examples below, you will need the `ritualId` encryption paramete
 \
 Additionally, we have [publicly available testnet rituals](taco-integration/get-started-with-tac.md#testnet-configuration) for use when developing your apps.
 
-### 3. Define decryption condition and encrypt data&#x20;
+### 3. Define decryption condition and encrypt data
 
-With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data:
+With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.
 
-<pre class="language-typescript"><code class="lang-typescript">import { initialize, encrypt, domains } from '@nucypher/taco';
+In this example, we will use our [`tapir` testnet](get-started-with-tac.md#testnet-configuration), where you can freely use `ritualId = 6`; also, make sure your web3 provider is connected to Polygon Amoy.
+
+<pre class="language-typescript"><code class="lang-typescript">import { initialize, encrypt, conditions, domains } from '@nucypher/taco';
 import { ethers } from "ethers";
 
 // We have to initialize the TACo library first
@@ -45,7 +47,7 @@ const ownsNFT = new conditions.predefined.erc721.ERC721Ownership({
 const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
 
 const message = "my secret message";
-const ritualId = 0
+const ritualId = 6
 
 // encrypt data
 const messageKit = await encrypt(

@@ -2,6 +2,7 @@
 
 * [What is TACo?](README.md)
   * [How TACo works](readme/key-concepts.md)
+  * [Value Propositions](readme/value-propositions.md)
 * [Use cases](use-cases/README.md)
   * [Seed phrase recovery & transfer](use-cases/seed-phrase-recovery-and-transfer.md)
   * [Digital Rights Management for on-chain assets](use-cases/digital-rights-management-for-on-chain-assets.md)
@@ -46,5 +47,6 @@
 * [Architecture](architecture/README.md)
   * [Porter](architecture/porter.md)
   * [Contract Addresses](architecture/contract-addresses.md)
+* [Extensions](extensions.md)
 * [API References](references.md)
 * [Threshold Community](threshold-community.md)

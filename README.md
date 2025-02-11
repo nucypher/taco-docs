@@ -1,6 +1,14 @@
 # What is TACo?
 
-**TACo** (**T**hreshold **A**ccess **Co**ntrol) is an **encrypt/decrypt API** for application developers who require:
+**TACo** (**T**hreshold **A**ccess **Co**ntrol) enables end-to-end encrypted data sharing and communication. There is no requirement to trust a centralized authority or entity, who might unilaterally deny service or even (surreptitiously) decrypt private end-user data.&#x20;
+
+It is currently the only access control layer available to Web3 developers that has been **decentralized from genesis** – via the live, well-collateralized, and battle-tested Threshold network. This means access to all data encrypted using a TACo Mainnet DKG public key is managed by a distributed set of machines, from the very first byte.
+
+{% hint style="warning" %}
+All third-party services – digital, Web3 and beyond – impose a trust burden on the user. TACo minimizes this trust burden by disassembling and distributing sensitive cryptographic operations – key generation, access condition verification, and decryption fragment provision – across a large group of independently operated nodes. To understand TACo's trust model and read the _Mainnet_ _Trust Disclosure_, head to the [Trust Assumptions](trust-assumptions/) section.&#x20;
+{% endhint %}
+
+TACo provides an **encrypt/decrypt API** for application developers who require:
 
 * end-to-end encrypted channels for their users to share private data safely&#x20;
 * programmable, composable access logic and conditionality  &#x20;

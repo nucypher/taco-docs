@@ -1,7 +1,7 @@
-# Integrating TACo into applications
+# Integrate TACo into apps
 
 {% hint style="warning" %}
-Note that using TACo in production requires a unique DKG initialization ritual, DKG public key and cohort of nodes running TACo software. These are available via a unique `ritualID` parameter. See the [beta program](../fees/mainnet-taco-beta-program.md) page for instructions on how to initialize a DKG ritual.
+Note that using TACo in production requires a unique DKG initialization ritual, unique DKG public key, and a unique cohort of nodes running TACo software. These are available via a unique `ritualID` parameter. See the Mainnet Access page for instructions on how to initialize a DKG ritual.
 {% endhint %}
 
 ### 0. Pick an appropriate `taco` domain
@@ -20,7 +20,7 @@ Once you've picked a network, install `@nucypher/taco` from [npm.js](https://www
 
 You can learn more about the current state of `mainnet` and test networks here:
 
-* [mainnet-taco-beta-program.md](../fees/mainnet-taco-beta-program.md "mention")
+* [mainnet-taco-beta-program.md](mainnet-taco-beta-program.md "mention")
 * [get-started-with-tac.md](get-started-with-tac.md "mention")
 
 ### 1. Install and integrate `taco`

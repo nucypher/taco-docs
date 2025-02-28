@@ -5,11 +5,11 @@
 Adopting developers pay for the TACo service via a dual fee model, which covers:&#x20;
 
 1. Availability of the service, via a **duration-based fee**\
-   &#xNAN;_&#x43;urrently 0.5 DAI per node per day_
-2. Usage of the service via a **fee** **based on the number of unique data producer identities encrypting data at any one time**\
+   &#xNAN;_&#x43;urrently 0.75 DAI per node per day_
+2. Usage of the service via a **fee based on the number of unique data producer identities encrypting data at any one time**\
    &#xNAN;_&#x43;urrently 2.5 DAI per encryptor slot per year_\
    \
-   Note that encrypting privileges can be added and removed from identites/addresses at will, without charge or limit, provided the sponsor has pre-paid for sufficient credits and there are slots available.
+   Note that encrypting privileges can be added and removed from identities/addresses at will, without charge or limit, provided the sponsor has pre-paid for sufficient credits and there are encryptor slots available.
 
 There is no charge, payment gate or limit on:
 
@@ -32,7 +32,7 @@ Adopting developers pay in advance for use of TACo mainnet by transacting with t
 
 The `sponsor` and `cohortAdmin` roles can use the same address or use different addresses. For example, the `cohortAdmin` could be a cold wallet address, while the `sponsor` might simply be a one-off software address. External developers may also prefer to set a DAO, a Multisig, or any kind of smart contract as the `cohortAdmin`, which would reduce the trust burden on their end-users with respect to control over encryptors and the TACo cohort.
 
-Currently, initializing a DKG ritual is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team. Prospective `sponsor`s should follow the instructions on the [Mainnet Integration](mainnet-taco-beta-program.md) page.
+Currently, initializing a DKG ritual is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team. Prospective `sponsor`s should follow the instructions on the [Mainnet Integration](../taco-integration/mainnet-taco-beta-program.md) page.
 
 
 

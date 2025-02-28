@@ -1,24 +1,16 @@
-# Deploying to Mainnet
+# Mainnet Deployment
 
-Once we are familiar with TACo, have successfully prototyped and tested the integration using TACo's [Testnet(s)](get-started-with-tac.md), we are ready to swith to TACo Mainnet and deploy our application to production. TACo Mainnet is the fully decentralized version of the TACo encrypt/decrypt API and network. Access to data encrypted under the Mainnet cryptosystem will be managed by a cohort of independent, staked and remunerated TACo nodes.&#x20;
+Following a successful prototyping/testing of the integration using TACo's [Testnet(s)](get-started-with-tac.md), we are ready to swith to TACo Mainnet and deploy our application to production. TACo Mainnet is the fully decentralized version of the TACo encrypt/decrypt API and network.&#x20;
 
-## Ritual generation
+## DKG Initialization&#x20;
 
 {% hint style="info" %}
-In order to use Mainnet TACo, developers must join the [beta program](../fees/mainnet-taco-beta-program.md).
+In order to use TACo in production, developers must request [Mainnet Access](mainnet-taco-beta-program.md).
 {% endhint %}
 
-The first step is to initiate a new TACo ritual. Once the ritual is successfully finished, a cohort of nodes randomly selected from the Threshold Network is associated to this ritual. These nodes are responsible for the decryption of the encrypted data if conditions are met.
+## Mainnet use of TACo post-DKG initialization&#x20;
 
-<mark style="color:yellow;">\[TODO following PRs: explain how a ritual is created in mainnet]</mark>
-
-## Ritual management
-
-<mark style="color:yellow;">\[TODO following PRs: explain how a ritual can be managed, i.e., add encryptors, extend the duration, cohort renewal, etc]</mark>
-
-## Use of TACo in mainnet
-
-There are no substantial changes in the code when we switch from using _testnet_ domain to _mainnet_ domain. When calling to the encryption or decryption functions, take into account that:
+There are no substantial changes in the code when one switches from using _testnet_ domain to _mainnet_ domain. However, when calling to the encryption or decryption functions, take into account the following:
 
 * The RPC provider URL (Infura, Alchemy, etc) must be changed to from Polygon Amoy (testnet) to Polygon (mainnet) since the L2 of TACo's mainnet domain is the latter.
 * The domain variable must be set to mainnet.

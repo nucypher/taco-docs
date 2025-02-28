@@ -1,9 +1,11 @@
 # Testnets
 
 {% hint style="warning" %}
-Testnets exist to help developers familiarize themselves with the taco-web API, and prototype an integration before switching to TACo Mainnet. **Testnets should not be utilized in production with the expectations of a decentralized or trust-minimized service**.&#x20;
+Testnets exist to help developers familiarize themselves with the taco-web API, and prototype an integration before deploying on TACo Mainnet. \
+\
+**Testnets should not be utilized in production with any expectation of a trust-minimized integration**.&#x20;
 
-Hence, the trust assumptions are strictly worse than the Mainnet version, particularly with respect to the node array managing decryption fragments and validating condition fulfillment. Testnet nodes are are operated primarily by members of the NuCypher commercial entity, and are not subject to a cryptoeconomic protocol nor required to stake any collateral.
+Hence, the trust assumptions are strictly worse than the Mainnet version, particularly with respect to the node array managing decryption fragments and validating condition fulfillment. Testnet nodes are are operated primarily by members of the NuCypher core developer team, and are not subject to a cryptoeconomic protocol nor required to stake any collateral.
 {% endhint %}
 
 ## Testnet domains

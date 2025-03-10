@@ -183,7 +183,7 @@ const condition = new conditions.predefined.erc721.ERC721Ownership({
 // Encrypt and send message
 const encoder = createEncoder({ contentTopic: CONTENT_TOPIC })
 const message = 'Hello, encrypted Waku world!'
-const ritualId = 0 // Replace with your actual ritual ID
+const ritualId = 6 // Replace with your actual ritual ID
 const messageKit = await encrypt(
   web3Provider,
   domains.TESTNET,

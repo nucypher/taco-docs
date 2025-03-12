@@ -10,7 +10,7 @@ For the latest updates and announcements regarding this transition, please stay 
 
 * Running a TACo node requires maintenance and comes with certain constraints. Please review the duties expected of a node operator, and make sure you are comfortable with the minimum deauthorization delay of 6 months.
 * Please review the system requirements for provisioning the TACo service.
-* Your operator account will need to be funded with at least 15 MATIC (Polygon POS) to connect to the Threshold network. You should transfer these funds after getting the node running.
+* Your operator account will need to be funded with at least 15 POL (Polygon POS) to connect to the Threshold network. You should transfer these funds after getting the node running.
 * Once TACo is running smoothly on your machine or VPS, the next step is to authorize your stake to the TACo app and register/bond the node to that provider address.
 
 ## Technical Overview
@@ -172,7 +172,7 @@ docker logs -f ursula
 ```
 
 The following is an example of the expected output for a TACo node that is both funded with\
-MATIC and correctly bonded to an operator on the threshold dashboard.
+POL and correctly bonded to an operator on the threshold dashboard.
 
 ```bash
 ...

@@ -58,3 +58,4 @@
 * [Stake Authorization](node-operator/stake-authorization.md)
 * [Run a TACo Node with Docker](node-operator/run-a-taco-node-with-docker.md)
 * [TACo Node Management](node-operator/taco-node-management.md)
+* [TACo Node Recovery](node-operator/taco-node-recovery.md)

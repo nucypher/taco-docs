@@ -127,6 +127,10 @@ Follow the in-terminal prompts. You will see a public key for your TACo node and
 
 ## 5. Launch the Node
 
+{% hint style="danger" %}
+The first time a taco node is launched the public key generated in the previous step is committed on-chain.  After this commitment, loss of the private keys is a protocol offensive that will result in reward withholding and/or stake slashing.
+{% endhint %}
+
 Run the following command to launch the node:
 
 ```bash

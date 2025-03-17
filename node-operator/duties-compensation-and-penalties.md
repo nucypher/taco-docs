@@ -8,9 +8,9 @@ Failure to adhere to node operator duties may result in on-chain punishments, in
 
 Operating a TACo node requires active engagement. To provide high-quality service and maintain the reliability of the Threshold Network, TACo node operators must:
 
-1. **Safeguard TACo private Keys and secret mnemonic**: This includes creating an off-site record of the mnemonic assigned to your node in the initialization step and securing a copy of the keystore directory and passwords.
-2. **Maintain continuous server accessibility**: Ensure the server or machine running TACo software is online and accessible at all times, allowing for immediate verification and response to incoming decryption requests. This prevents delays in reaching a threshold and providing decryption material to qualifying data recipients.
-3. **Update to the latest TACo version**: Ensure your node is running the latest version of TACo. New releases will be announced on the Threshold Discord #announcements channel; enable notifications to stay updated.
+1. **Safeguard TACo private Keys and secret mnemonic**: This includes creating an off-site record of the mnemonic assigned to your node in the initialization step and securing a copy of the keystore directory and passwords. Loss of the keystore (private keys) and password, or mnemonic will result in reward withholding and/or penalties.
+2. **Maintain continuous server accessibility**: Ensure the server or machine running TACo software is online and accessible at all times, allowing for immediate verification and response to incoming decryption requests. This prevents delays in reaching a threshold and providing decryption material to qualifying data recipients. Continuous downtime or network unavailability will result in reward withholding and/or penalties.
+3. **Update to the latest TACo version**: Ensure your node is running the latest version of TACo. New releases will be announced on the Threshold Discord #announcements channel; enable notifications to stay updated. Running an outdated version of TACo will result in reward withholding and/or penalties.
 
 ### Violations & Penalties
 

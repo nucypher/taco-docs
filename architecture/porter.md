@@ -8,7 +8,7 @@ Its goal is to simplify and abstract the complexities surrounding the TACo proto
 
 <figure><img src="../.gitbook/assets/porter_diagram (2).png" alt=""><figcaption></figcaption></figure>
 
-Any publicly available Porter can be used to interface with the Threshold Network, or some application developers opt to [run their own](porter.md#running-a-porter-instance).
+Any publicly available Porter can be used to interface with the Threshold Network, or some application developers opt to [run their own](../node-operator/run-a-porter-instance.md).
 
 ## Public Porter Instances
 
@@ -25,3 +25,5 @@ const devPorterUri = getPorterUri(domains.DEV);  // lynx testnet
 // OR
 const testnetPorterUri = getPorterUri(domains.TESTNET);  // tapir testnet
 ```
+
+Alternatively, you can use your own non-default Porter URIs.

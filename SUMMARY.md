@@ -59,3 +59,4 @@
 * [Run a TACo Node with Docker](node-operator/run-a-taco-node-with-docker.md)
 * [TACo Node Management](node-operator/taco-node-management.md)
 * [TACo Node Recovery](node-operator/taco-node-recovery.md)
+* [Run a Porter Instance](node-operator/run-a-porter-instance.md)

@@ -35,6 +35,7 @@
     * [JSON Endpoint Conditions](conditions/wip-feature-requests/json-endpoint-conditions/README.md)
       * [JsonApiCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonapicondition.md)
       * [JsonRpcCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonrpccondition.md)
+    * [JWT Conditions](conditions/wip-feature-requests/jwtcondition.md)
     * [OAuth](conditions/wip-feature-requests/oauth.md)
     * [Any (Major) EVM Chain Condition Support](conditions/wip-feature-requests/any-major-evm-chain-condition-support.md)
 * [Fees & Allowlists](fees/README.md)

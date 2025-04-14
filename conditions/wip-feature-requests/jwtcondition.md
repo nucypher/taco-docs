@@ -15,20 +15,20 @@ Conversely, in Web3 settings, TACo is fully compatible with decentralized JWT is
 
 ## Properties
 
-* `jwtToken`: The JWT token to validate
+* `jwtToken`: The JWT context variable to be instantiated during decryption with a JWT and validated.
 * `publicKey`: A string containing the digital signature public key in PEM format
 * `expectedIssuer` (Optional): A string representing the JWT issuer. If provided, it must match the token's [`issuer` claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1)
 
-**Error Handling**
+## Error Handling
 
 The condition will fail and access will be denied in the following cases:
 
-* If the JWT token is malformed or cannot be parsed
-* If the token's signature cannot be verified with the provided public key
-* If the token has expired (when `exp` claim is present)
-* If the token is not yet valid (when `nbf` claim is present)
-* If the `expectedIssuer` is provided but doesn't match the token's `iss` claim
-* If any required claims specified in the condition are missing from the token
+* If the JWT is malformed or cannot be parsed
+* If the JWT's signature cannot be verified with the provided public key
+* If the JWT has expired (when [`exp` (Expiration Time) claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4) is present)
+* If the JWT is not yet valid (when [`nbf` (Not Before) claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5) is present)
+* If the `expectedIssuer` is provided but doesn't match the JWT's [`iss` (Issuer) claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1)
+* If any required claims specified in the condition are missing from the JWT
 
 ## Example
 
@@ -43,9 +43,9 @@ const jwtCondition = new conditions.base.jwt.JWTCondition({
 
 // The condition would be satisfied if the JWT token:
 // 1. Has a valid signature verifiable with the provided public key
-// 2. Has not expired (if exp claim is present)
-// 3. Is currently valid (if nbf claim is present)
-// 4. Was issued by "https://some-jwt-issuer.com" (if expectedIssuer is provided)
+// 2. Has not expired (if exp claim is present in the JWT)
+// 3. Is currently valid (if nbf claim is present in the JWT)
+// 4. Was issued by "https://some-jwt-issuer.com" (since expectedIssuer was specified in the condition)
 ```
 
 ## Development References

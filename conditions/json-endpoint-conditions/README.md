@@ -1,10 +1,10 @@
 # JSON Endpoint Conditions
 
-JSON conditions are useful when access control decisions need to be based on data retrieved from an external HTTPS JSON endpoint ([API](jsonapicondition.md) or [RPC](jsonrpccondition.md)) that returns data in JSON format. They can be leveraged to integrate external off-chain data into your access control policies, ensuring access decisions are based on dynamic, real-time data retrieved from JSON endpoints.
+JSON conditions are useful when a data consumer's request for access is validated, in full or in part, based on data retrieved from an external HTTPS JSON endpoint ([API](jsonapicondition.md) or [RPC](jsonrpccondition.md)) that returns data in JSON format. They can be leveraged to integrate external off-chain data into your access control policies, ensuring access decisions are based on dynamic, real-time data retrieved from JSON endpoints.
 
 ## Authorization
 
-Some JSON endpoints require bearer tokens to verify authorization. Because an authorization token is specific to the requester, the `authorizationToken` value must always be provided as a [user-defined custom context variable](../../../authentication/conditioncontext-and-context-variables.md#context-variables). The application should provide this value at decryption time via the [Condition Context](../../../authentication/conditioncontext-and-context-variables.md).
+Some JSON endpoints require bearer tokens to verify authorization. Because an authorization token is specific to the requester, the `authorizationToken` value must always be provided as a [user-defined custom context variable](../../authentication/conditioncontext-and-context-variables.md#context-variables) - a placeholder within conditions to be specified at encryption time, and whose value is provided at decryption time via the [Condition Context](../../authentication/conditioncontext-and-context-variables.md).
 
 Where applicable, authorization tokens must be provided as context variables for the following reasons:
 

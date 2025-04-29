@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "title": "TACo Protocol Use Case Diagram - Structured Metadata",
+    "version": "1.0",
+    "lastUpdated": "2025-04-28",
+    "purpose": "This file provides structured, machine-readable information about the TACo Protocol Use Case Diagram, allowing AI assistants to understand the semantic meaning of the diagram elements without needing to interpret the visual representation.",
+    "workflowInstructions": [
+      "When updating the visual diagram in SAME-FILE-NAME.drawio, also update this file",
+      "Keep all IDs consistent between this file and references in documentation",
+      "Ensure descriptions accurately reflect current protocol implementation"
+    ],
+    "source": "use-case-diagram.drawio",
+    "svgFile": "use-case-diagram.svg",
+    "diagramType": "UML Use Case"
+  },
+  "title": "TACo Protocol Use Case Diagram",
+  "description": "Illustrates the interactions between actors and use cases in the TACo Protocol system",
+  "version": "1.0",
+  "lastUpdated": "2025-04-28",
+  "actors": [
+    {
+      "id": "adopting_developer",
+      "name": "Adopting Developer",
+      "description": "Cohort Authority that adopts the TACo protocol and sets network parameters"
+    },
+    {
+      "id": "data_producer",
+      "name": "Data Producer",
+      "description": "Entity that encrypts data using the TACo protocol"
+    },
+    {
+      "id": "data_consumer",
+      "name": "Data Consumer",
+      "description": "Entity that requests and decrypts data when conditions are met"
+    },
+    {
+      "id": "node_operator",
+      "name": "Node Operator",
+      "description": "Manages nodes that participate in distributed key generation and provide decryption services"
+    }
+  ],
+  "useCases": [
+    {
+      "id": "dkg",
+      "name": "Distributed Key Generation (DKG)",
+      "description": "Process to generate distributed cryptographic keys across nodes. DKG happens only once at network setup, not periodically."
+    },
+    {
+      "id": "manage_cohort",
+      "name": "Manage Cohort",
+      "description": "Activities related to managing the cohort of nodes, including economic staking and parameters set by the cohortAuthority"
+    },
+    {
+      "id": "set_network_parameters",
+      "name": "Set Network Parameters",
+      "description": "Configuration of network parameters for the TACo protocol"
+    },
+    {
+      "id": "encrypt_data",
+      "name": "Encrypt Data",
+      "description": "Process of encrypting data using the TACo protocol. Encryption operations are performed locally by data owners using the public key."
+    },
+    {
+      "id": "specify_access_conditions",
+      "name": "Specify Access Conditions",
+      "description": "Define conditions that must be met for decryption"
+    },
+    {
+      "id": "validate_eligibility",
+      "name": "Validate Eligibility for Encryption",
+      "description": "Verification that the data producer is eligible to use the encryption service"
+    },
+    {
+      "id": "verify_conditions",
+      "name": "Verify Conditions",
+      "description": "Verification of access conditions before providing decryption fragments"
+    },
+    {
+      "id": "provide_decryption_fragments",
+      "name": "Provide Decryption Fragments",
+      "description": "Nodes provide decryption fragments when access conditions are met"
+    },
+    {
+      "id": "combine_fragments",
+      "name": "Combine Fragments to Decrypt Data",
+      "description": "Process of combining decryption fragments to reconstruct the decryption key"
+    },
+    {
+      "id": "decrypt_data",
+      "name": "Decrypt Data",
+      "description": "Process of decrypting data using the reconstructed key"
+    }
+  ],
+  "relationships": [
+    {
+      "type": "actor_to_usecase",
+      "from": "adopting_developer",
+      "to": "dkg",
+      "description": "Initiates and participates in distributed key generation"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "adopting_developer",
+      "to": "manage_cohort",
+      "description": "Manages the cohort of nodes"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "adopting_developer",
+      "to": "set_network_parameters",
+      "description": "Sets network parameters for the TACo protocol"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "data_producer",
+      "to": "encrypt_data",
+      "description": "Encrypts data using the TACo protocol"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "data_producer",
+      "to": "specify_access_conditions",
+      "description": "Specifies conditions for data access"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "data_consumer",
+      "to": "decrypt_data",
+      "description": "Initiates data decryption process"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "node_operator",
+      "to": "dkg",
+      "description": "Participates in distributed key generation"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "node_operator",
+      "to": "verify_conditions",
+      "description": "Verifies access conditions"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "node_operator",
+      "to": "provide_decryption_fragments",
+      "description": "Provides decryption fragments when conditions are met"
+    },
+    {
+      "type": "actor_to_usecase",
+      "from": "node_operator",
+      "to": "validate_eligibility",
+      "description": "Validates eligibility for encryption"
+    },
+    {
+      "type": "include",
+      "from": "encrypt_data",
+      "to": "specify_access_conditions",
+      "description": "Encryption includes specifying access conditions"
+    },
+    {
+      "type": "include",
+      "from": "encrypt_data",
+      "to": "validate_eligibility",
+      "description": "Encryption includes validation of eligibility"
+    },
+    {
+      "type": "include",
+      "from": "decrypt_data",
+      "to": "verify_conditions",
+      "description": "Decryption includes verification of conditions"
+    },
+    {
+      "type": "include",
+      "from": "decrypt_data",
+      "to": "provide_decryption_fragments",
+      "description": "Decryption includes obtaining fragments from nodes"
+    },
+    {
+      "type": "include",
+      "from": "decrypt_data",
+      "to": "combine_fragments",
+      "description": "Decryption includes combining fragments to reconstruct the key"
+    }
+  ],
+  "systemBoundary": {
+    "name": "TACo Protocol System",
+    "description": "Boundary encompassing all TACo protocol operations"
+  }
+}

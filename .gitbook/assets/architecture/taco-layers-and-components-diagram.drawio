@@ -1,0 +1,291 @@
+<!-- 
+===================================================================================
+ TACo Protocol Use Case Diagram (draw.io source file)
+===================================================================================
+ WORKFLOW INSTRUCTIONS:
+ 1. Edit this file using draw.io or compatible tools (e.g., VS Code with draw.io extension)
+ 2. Export as SVG to SAME-FILE-NAME.svg for documentation display
+ 3. Keep SAME-FILE-NAME-metadata.json in sync with any changes to actors/use cases
+ 
+ NOTE: This file is the source of truth for the diagram's visual representation.
+       The metadata JSON file is the source of truth for the semantic meaning.
+===================================================================================
+-->
+<mxfile host="65bd71144e">
+    <diagram id="taco-components-diagram" name="TACo Components Diagram">
+        <mxGraphModel dx="4568" dy="2172" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="2600" background="#ccffcc" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <!-- Title -->
+                <mxCell id="title" value="TACo Protocol Layers &amp; Components" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=48;fontColor=#000000;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="500" y="360" width="1300" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- Application Layer -->
+                <mxCell id="app-integration" value="Applications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f1f1;strokeColor=#3498db;strokeWidth=2.5;arcSize=10;fontSize=32;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="392.5" y="50" width="1515" height="200" as="geometry"/>
+                </mxCell>
+                
+                <!-- Application Types -->
+                <mxCell id="web-apps-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3498db;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="622.5" y="140" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="web-apps-title" value="Web Apps" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="622.5" y="166" width="260" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="mobile-apps-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3498db;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1417.5" y="140" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="mobile-apps-title" value="Mobile Apps" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1417.5" y="164" width="260" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Application Integration Layer -->
+                <mxCell id="application-domain" value="Application Integration Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f1f1;strokeColor=#666666;strokeWidth=2;dashed=1;arcSize=5;fontSize=32;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="395" y="520" width="1510" height="770" as="geometry"/>
+                </mxCell>
+                
+                <!-- Client SDK -->
+                <mxCell id="authentication" value="Client SDK (taco-web)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf4fc;strokeColor=#2980b9;strokeWidth=2.5;arcSize=10;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="664" width="1380" height="566" as="geometry"/>
+                </mxCell>
+                <mxCell id="client-sdk-desc" value="Application Integration Library" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="720" width="540" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Authentication -->
+                <mxCell id="web3-signatures" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3498db;strokeWidth=1.5;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="524.5" y="780" width="1245.32" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="web3-signatures-title" value="Authentication" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="764.59" y="800" width="765.26" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="web3-signatures-desc" value="Request, Collect &amp; Cash Web3 Signatures" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="616.09" y="830" width="1062.44" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Access Control -->
+                <mxCell id="access-control" value="Define Decryption Conditions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=2.5;arcSize=10;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="890" width="1250.01" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="authorization-title" value="Define Data Authorization" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="965.82" y="960" width="378.37" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Condition Types -->
+                <mxCell id="time-condition" value="TimeCondition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="572" y="1000" width="178.06" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="rpc-condition" value="RpcCondition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="766.75" y="1000" width="178.06" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="contract-condition" value="ContractCondition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="959.82" y="1000" width="189.18" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="json-condition" value="JsonApiCondition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1165.7" y="1000" width="189.18" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="compound-condition" value="CompoundCondition (AND/OR/NOT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1369.35" y="1000" width="378.37" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="more-conditions" value="(AND MORE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f39c12;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1076.67" y="1060" width="178.06" height="45" as="geometry"/>
+                </mxCell>
+                <!-- Protocol Layer -->
+                <mxCell id="protocol-domain" value="Protocol Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f9fa;strokeColor=#666666;strokeWidth=2;dashed=1;arcSize=5;fontSize=32;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="1420" width="1510" height="1090" as="geometry"/>
+                </mxCell>
+                
+                <!-- Nodes Operations -->
+                <mxCell id="node-infrastructure" value="TACo Nodes Operations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8daef;strokeColor=#9b59b6;strokeWidth=2.5;arcSize=10;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="1560" width="600" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-participation" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9b59b6;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="1640" width="540" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-participation-title" value="Registration &amp; Staking" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1650" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-participation-desc" value="Economic Security Layer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1680" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-organization" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9b59b6;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="1740" width="540" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-organization-title" value="DKG Rituals Participation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1750" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-organization-desc" value="Triggered by Cohort Admin" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1780" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="verification-operations" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9b59b6;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="1840" width="540" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="verification-operations-title" value="Verification &amp; Operations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1850" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="verification-operations-desc" value="Condition Validation &amp; Partial Decryption" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1880" width="540" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Governance & Economics -->
+                <mxCell id="governance-economics" value="Governance &amp; Economics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf5fb;strokeColor=#2980b9;strokeWidth=2.5;arcSize=5;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="1565" width="750" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="protocol-governance" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2980b9;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="1635" width="650" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="protocol-governance-title" value="Protocol Governance" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1645" width="650" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="protocol-governance-desc" value="Parameter Management &amp; Coordinator Contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1675" width="650" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="fee-collection" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2980b9;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="1735" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fee-collection-title" value="Fee Collection" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1745" width="300" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="fee-collection-desc" value="Payment Processing &amp; Distribution" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1775" width="300" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="staking-slashing" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2980b9;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1490" y="1735" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="staking-slashing-title" value="Staking &amp; Slashing" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1490" y="1745" width="300" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="staking-slashing-desc" value="Economic Incentives" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1490" y="1775" width="300" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-authority-mgmt" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2980b9;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="1835" width="650" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-authority-mgmt-title" value="Cohort Authority Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1845" width="650" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cohort-authority-mgmt-desc" value="Authority Transfer &amp; Control" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="1875" width="650" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Porter Service -->
+                <mxCell id="porter-service" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3498db;strokeWidth=2.5;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="1270" width="300" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="porter-service-title" value="Porter Service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="990" y="1294" width="300" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="porter-service-desc" value="Protocol Abstraction &amp; Gateway" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="990" y="1355" width="300" height="48" as="geometry"/>
+                </mxCell>
+                
+                <!-- Ritual Management System -->
+                <mxCell id="ritual-management" value="Ritual Management System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8f3dc;strokeColor=#2d6a4f;strokeWidth=2.5;arcSize=10;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="465" y="1980" width="1375" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-id" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2ecc71;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="492.5" y="2080" width="305.56" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-id-title" value="RitualID Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="492.5" y="2100" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-id-desc" value="Unique Identifiers for DKG rituals" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="492.5" y="2140" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-coordination" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2ecc71;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="830.18" y="2080" width="305.56" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-coordination-title" value="Ritual Coordination" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="830.18" y="2100" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ritual-coordination-desc" value="Coordinating DKG participation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="830.18" y="2140" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="key-management" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2ecc71;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1167.86" y="2080" width="305.56" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="key-management-title" value="Key Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1167.86" y="2100" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="key-management-desc" value="Tracking public keys &amp; thresholds" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1167.86" y="2140" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-monitoring" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2ecc71;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1506.94" y="2080" width="305.56" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-monitoring-title" value="Nodes Monitoring" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1506.94" y="2100" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-monitoring-desc" value="Using dummy DKG rituals" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1506.94" y="2140" width="305.56" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Blockchain Integration -->
+                <mxCell id="blockchain-integration" value="Blockchain Integration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2f5;strokeColor=#34495e;strokeWidth=2.5;arcSize=5;fontSize=28;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="465" y="2300" width="1370" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="coordinator-contract" value="Coordinator Contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34495e;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="527.84" y="2388" width="377.06" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="staking-contract" value="Staking Contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34495e;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="967.75" y="2388" width="377.06" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fee-contract" value="Fee Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#34495e;strokeWidth=1.5;arcSize=10;fontSize=20;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1407.66" y="2388" width="377.06" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- Cryptographic Layer -->
+                <mxCell id="crypto-layer" value="Cryptographic Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f8f5;strokeColor=#16a085;strokeWidth=2.5;arcSize=10;fontSize=32;fontStyle=1;align=center;verticalAlign=top;spacingTop=20;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1950" y="790" width="510" height="1270" as="geometry"/>
+                </mxCell>
+                
+                <!-- DKG -->
+                <mxCell id="dkg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1abc9c;strokeWidth=2;arcSize=10;fontSize=24;align=center;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1980" y="1027.5" width="450" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="dkg-title" value="Distributed Key Generation (DKG)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="2009.9" y="1046.25" width="390.19" height="56.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="dkg-desc" value="Cohort Generates Public Key &amp; Private Fragments" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1992.1" y="1110" width="425.81" height="45" as="geometry"/>
+                </mxCell>
+                
+                <!-- Encryption -->
+                <mxCell id="encryption" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1abc9c;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1980" y="1288" width="450" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="encryption-title" value="Encryption" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1307" width="450" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="encryption-desc" value="(Client-side Operation by data providers)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1363" width="450" height="56" as="geometry"/>
+                </mxCell>
+                
+                <!-- Threshold Schemes -->
+                <mxCell id="threshold-schemes" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1abc9c;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1980" y="1549" width="450" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="threshold-schemes-title" value="Generate decrypted data fragment" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1568" width="450" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="threshold-schemes-desc" value="(Nodes Generate Data Fragments, if Conditions were fulfilled)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1624" width="450" height="56" as="geometry"/>
+                </mxCell>
+                
+                <!-- Decryption -->
+                <mxCell id="decryption" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1abc9c;strokeWidth=2;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1980" y="1810" width="450" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="decryption-title" value="Decryption" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1829" width="450" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="decryption-desc" value="(Client-side Operation using the collected data fragments)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#444444;" vertex="1" parent="1">
+                    <mxGeometry x="1980" y="1885" width="450" height="56" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

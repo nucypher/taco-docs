@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2300px" height="2600px" >
+  <defs>
+    <style type="text/css">
+      @font-face {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: normal;
+      }
+      .title-text {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 48px;
+        font-weight: bold;
+        text-anchor: middle;
+        fill: #000000;
+      }
+      .layer-box {
+        fill: #f1f1f1;
+        stroke: #666666;
+        stroke-width: 2;
+        stroke-dasharray: 5,5;
+      }
+      .layer-title {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+        fill: #000000;
+      }
+      .component-box {
+        stroke-width: 2.5;
+        rx: 10;
+        ry: 10;
+      }
+      .component-title {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        fill: #000000;
+      }
+      .subcomponent-box {
+        fill: #ffffff;
+        stroke-width: 2;
+        rx: 10;
+        ry: 10;
+      }
+      .subcomponent-title {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        fill: #000000;
+      }
+      .subcomponent-desc {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        fill: #444444;
+      }
+      .condition-box {
+        fill: #ffffff;
+        stroke: #f39c12;
+        stroke-width: 1.5;
+        rx: 10;
+        ry: 10;
+      }
+      .condition-text {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        text-anchor: middle;
+        fill: #000000;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="2300" height="2600" fill="#ccffcc"/>
+
+  <!-- Title -->
+  <text x="850" y="390" class="title-text">TACo Protocol Layers &amp; Components</text>
+  
+  <!-- Applications Layer -->
+  <rect x="92.5" y="50" width="1515" height="200" class="layer-box" rx="5" ry="5" stroke="#3498db" stroke-width="2.5"/>
+  <text x="102.5" y="100" class="layer-title" dx="20" dy="0">Applications</text>
+  
+  <!-- Web Apps -->
+  <rect x="322.5" y="140" width="260" height="80" class="subcomponent-box" stroke="#3498db"/>
+  <text x="452.5" y="176" class="subcomponent-title" text-anchor="middle">Web Apps</text>
+  
+  <!-- Mobile Apps -->
+  <rect x="1117.5" y="140" width="260" height="80" class="subcomponent-box" stroke="#3498db"/>
+  <text x="1247.5" y="176" class="subcomponent-title" text-anchor="middle">Mobile Apps</text>
+  
+  <!-- Application Integration Layer -->
+  <rect x="95" y="520" width="1510" height="770" class="layer-box" rx="5" ry="5"/>
+  <text x="105" y="560" class="layer-title" dx="20" dy="0">Application Integration Layer</text>
+
+  <!-- Client SDK -->
+  <rect x="160" y="664" width="1380" height="566" class="component-box" fill="#eaf4fc" stroke="#2980b9"/>
+  <text x="850" y="704" class="component-title" text-anchor="middle">Client SDK (taco-web)</text>
+  <text x="850" y="740" class="subcomponent-desc" text-anchor="middle">Application Integration Library</text>
+  
+  <!-- Authentication -->
+  <rect x="224.5" y="780" width="1245.32" height="90" class="subcomponent-box" stroke="#3498db" stroke-width="1.5"/>
+  <text x="847.16" y="820" class="subcomponent-title" text-anchor="middle">Authentication</text>
+  <text x="847.16" y="850" class="subcomponent-desc" text-anchor="middle">Request, Collect &amp; Cash Web3 Signatures</text>
+  
+  <!-- Access Control -->
+  <rect x="230" y="890" width="1250.01" height="230" class="component-box" fill="#ffffff" stroke="#f39c12" stroke-width="2.5" rx="0" ry="0"/>
+  <text x="855" y="925" class="component-title" text-anchor="middle">Define Decryption Conditions</text>
+  <text x="855" y="970" class="subcomponent-desc" text-anchor="middle">Define Data Authorization</text>
+  
+  <!-- Conditions -->
+  <rect x="272" y="1000" width="178.06" height="45" class="condition-box"/>
+  <text x="361.03" y="1030" class="condition-text">TimeCondition</text>
+  
+  <rect x="466.75" y="1000" width="178.06" height="45" class="condition-box"/>
+  <text x="555.78" y="1030" class="condition-text">RpcCondition</text>
+  
+  <rect x="659.82" y="1000" width="189.18" height="45" class="condition-box"/>
+  <text x="754.41" y="1030" class="condition-text">ContractCondition</text>
+  
+  <rect x="865.7" y="1000" width="189.18" height="45" class="condition-box"/>
+  <text x="960.29" y="1030" class="condition-text">JsonApiCondition</text>
+  
+  <rect x="1069.35" y="1000" width="378.37" height="45" class="condition-box"/>
+  <text x="1258.54" y="1030" class="condition-text">CompoundCondition (AND/OR/NOT)</text>
+  
+  <rect x="776.67" y="1060" width="178.06" height="45" class="condition-box"/>
+  <text x="865.7" y="1090" class="condition-text">(AND MORE)</text>
+  
+  <!-- Protocol Layer -->
+  <rect x="90" y="1420" width="1510" height="1090" class="layer-box" rx="5" ry="5"/>
+  <text x="100" y="1465" class="layer-title" dx="20" dy="0">Protocol Layer</text>
+  
+  <!-- Porter Service -->
+  <rect x="690" y="1270" width="300" height="170" class="subcomponent-box" stroke="#3498db" stroke-width="2.5"/>
+  <text x="840" y="1315" class="subcomponent-title" text-anchor="middle">Porter Service</text>
+  <text x="840" y="1355" class="subcomponent-desc" text-anchor="middle">Protocol Abstraction &amp; Gateway</text>
+  
+  <!-- TACo Nodes Operations -->
+  <rect x="160" y="1560" width="600" height="380" class="component-box" fill="#e8daef" stroke="#9b59b6"/>
+  <text x="460" y="1600" class="component-title" text-anchor="middle">TACo Nodes Operations</text>
+  
+  <!-- Node Operation Components -->
+  <rect x="190" y="1640" width="540" height="80" class="subcomponent-box" stroke="#9b59b6"/>
+  <text x="460" y="1670" class="subcomponent-title" text-anchor="middle">Registration &amp; Staking</text>
+  <text x="460" y="1700" class="subcomponent-desc" text-anchor="middle">Economic Security Layer</text>
+  
+  <rect x="190" y="1740" width="540" height="80" class="subcomponent-box" stroke="#9b59b6"/>
+  <text x="460" y="1770" class="subcomponent-title" text-anchor="middle">DKG Rituals Participation</text>
+  <text x="460" y="1800" class="subcomponent-desc" text-anchor="middle">Triggered by Cohort Admin</text>
+  
+  <rect x="190" y="1840" width="540" height="80" class="subcomponent-box" stroke="#9b59b6"/>
+  <text x="460" y="1870" class="subcomponent-title" text-anchor="middle">Verification &amp; Operations</text>
+  <text x="460" y="1900" class="subcomponent-desc" text-anchor="middle">Condition Validation &amp; Partial Decryption</text>
+  
+  <!-- Governance & Economics -->
+  <rect x="790" y="1565" width="750" height="370" class="component-box" fill="#ebf5fb" stroke="#2980b9"/>
+  <text x="1165" y="1605" class="component-title" text-anchor="middle">Governance &amp; Economics</text>
+  
+  <rect x="840" y="1635" width="650" height="80" class="subcomponent-box" stroke="#2980b9"/>
+  <text x="1165" y="1665" class="subcomponent-title" text-anchor="middle">Protocol Governance</text>
+  <text x="1165" y="1695" class="subcomponent-desc" text-anchor="middle">Parameter Management &amp; Coordinator Contract</text>
+  
+  <rect x="840" y="1735" width="300" height="80" class="subcomponent-box" stroke="#2980b9"/>
+  <text x="990" y="1765" class="subcomponent-title" text-anchor="middle">Fee Collection</text>
+  <text x="990" y="1795" class="subcomponent-desc" text-anchor="middle">Payment Processing &amp; Distribution</text>
+  
+  <rect x="1190" y="1735" width="300" height="80" class="subcomponent-box" stroke="#2980b9"/>
+  <text x="1340" y="1765" class="subcomponent-title" text-anchor="middle">Staking &amp; Slashing</text>
+  <text x="1340" y="1795" class="subcomponent-desc" text-anchor="middle">Economic Incentives</text>
+  
+  <rect x="840" y="1835" width="650" height="80" class="subcomponent-box" stroke="#2980b9"/>
+  <text x="1165" y="1865" class="subcomponent-title" text-anchor="middle">Cohort Authority Management</text>
+  <text x="1165" y="1895" class="subcomponent-desc" text-anchor="middle">Authority Transfer &amp; Control</text>
+  
+  <!-- Ritual Management System -->
+  <rect x="165" y="1980" width="1375" height="270" class="component-box" fill="#d8f3dc" stroke="#2d6a4f"/>
+  <text x="852.5" y="2020" class="component-title" text-anchor="middle">Ritual Management System</text>
+  
+  <rect x="192.5" y="2080" width="305.56" height="120" class="subcomponent-box" stroke="#2ecc71"/>
+  <text x="345.28" y="2120" class="subcomponent-title" text-anchor="middle">RitualID Management</text>
+  <text x="345.28" y="2150" class="subcomponent-desc" text-anchor="middle">Unique Identifiers for DKG rituals</text>
+  
+  <rect x="530.18" y="2080" width="305.56" height="120" class="subcomponent-box" stroke="#2ecc71"/>
+  <text x="682.96" y="2120" class="subcomponent-title" text-anchor="middle">Ritual Coordination</text>
+  <text x="682.96" y="2150" class="subcomponent-desc" text-anchor="middle">Coordinating DKG participation</text>
+  
+  <rect x="867.86" y="2080" width="305.56" height="120" class="subcomponent-box" stroke="#2ecc71"/>
+  <text x="1020.64" y="2120" class="subcomponent-title" text-anchor="middle">Key Management</text>
+  <text x="1020.64" y="2150" class="subcomponent-desc" text-anchor="middle">Tracking public keys &amp; thresholds</text>
+  
+  <rect x="1206.94" y="2080" width="305.56" height="120" class="subcomponent-box" stroke="#2ecc71"/>
+  <text x="1359.72" y="2120" class="subcomponent-title" text-anchor="middle">Nodes Monitoring</text>
+  <text x="1359.72" y="2150" class="subcomponent-desc" text-anchor="middle">Using dummy DKG rituals</text>
+  
+  <!-- Blockchain Integration -->
+  <rect x="165" y="2300" width="1370" height="170" class="component-box" fill="#eef2f5" stroke="#34495e"/>
+  <text x="850" y="2340" class="component-title" text-anchor="middle">Blockchain Integration</text>
+  
+  <rect x="227.84" y="2388" width="377.06" height="60" class="subcomponent-box" stroke="#34495e" stroke-width="1.5"/>
+  <text x="416.37" y="2423" class="condition-text">Coordinator Contract</text>
+  
+  <rect x="667.75" y="2388" width="377.06" height="60" class="subcomponent-box" stroke="#34495e" stroke-width="1.5"/>
+  <text x="856.28" y="2423" class="condition-text">Staking Contract</text>
+  
+  <rect x="1107.66" y="2388" width="377.06" height="60" class="subcomponent-box" stroke="#34495e" stroke-width="1.5"/>
+  <text x="1296.19" y="2423" class="condition-text">Fee Management</text>
+  
+  <!-- Cryptographic Layer -->
+  <rect x="1650" y="790" width="510" height="1270" class="component-box" fill="#e8f8f5" stroke="#16a085"/>
+  <text x="1905" y="830" class="component-title" text-anchor="middle">Cryptographic Layer</text>
+  
+  <!-- DKG -->
+  <rect x="1680" y="1027.5" width="450" height="150" class="subcomponent-box" stroke="#1abc9c"/>
+  <text x="1905" y="1070" class="subcomponent-title" text-anchor="middle">Distributed Key Generation (DKG)</text>
+  <text x="1905" y="1110" class="subcomponent-desc" text-anchor="middle">Cohort Generates Public Key &amp; Private Fragments</text>
+  
+  <!-- Encryption -->
+  <rect x="1680" y="1288" width="450" height="150" class="subcomponent-box" stroke="#1abc9c"/>
+  <text x="1905" y="1330" class="subcomponent-title" text-anchor="middle">Encryption</text>
+  <text x="1905" y="1370" class="subcomponent-desc" text-anchor="middle">(Client-side Operation by data providers)</text>
+  
+  <!-- Generate Decrypted Data Fragment -->
+  <rect x="1680" y="1549" width="450" height="150" class="subcomponent-box" stroke="#1abc9c"/>
+  <text x="1905" y="1591" class="subcomponent-title" text-anchor="middle">Generate decrypted data fragment</text>
+  <text x="1905" y="1631" class="subcomponent-desc" text-anchor="middle">(Nodes Generate Data Fragments, </text>
+  <text x="1905" y="1661" class="subcomponent-desc" text-anchor="middle">if Conditions were satisfied)</text>
+  
+  <!-- Decryption -->
+  <rect x="1680" y="1810" width="450" height="150" class="subcomponent-box" stroke="#1abc9c"/>
+  <text x="1905" y="1852" class="subcomponent-title" text-anchor="middle">Decryption</text>
+  <text x="1905" y="1892" class="subcomponent-desc" text-anchor="middle">(Client-side Operation</text>
+  <text x="1905" y="1932" class="subcomponent-desc" text-anchor="middle">using the collected data fragments)</text>
+</svg>

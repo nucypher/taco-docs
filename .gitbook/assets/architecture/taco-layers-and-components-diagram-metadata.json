@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "title": "TACo Protocol Layers & Components Diagram - Structured Metadata",
+    "version": "1.0",
+    "lastUpdated": "2025-04-28",
+    "purpose": "This file provides structured, machine-readable information about the TACo Protocol Layers & Components Diagram, allowing AI assistants to understand the semantic meaning of the diagram elements without needing to interpret the visual representation.",
+    "workflowInstructions": [
+      "When updating the visual diagram in SAME-FILE-NAME.drawio, also update this file",
+      "Keep all IDs consistent between this file and references in documentation",
+      "Ensure descriptions accurately reflect current protocol implementation"
+    ],
+    "source": "taco-layers-and-components-diagram.drawio",
+    "svgFile": "taco-layers-and-components-diagram.svg",
+    "diagramType": "UML Use Case"
+  },
+  "diagramId": "taco-components-diagram",
+  "name": "TACo Components Diagram",
+  "title": "TACo Protocol Layers & Components",
+  "layers": [
+    {
+      "id": "application-domain",
+      "name": "Application Integration Layer",
+      "type": "layer",
+      "style": {
+        "fillColor": "#f1f1f1",
+        "strokeColor": "#666666",
+        "dashed": true
+      },
+      "components": [
+        {
+          "id": "client-sdk",
+          "name": "Client SDK (taco-web)",
+          "description": "Application Integration Library",
+          "type": "component",
+          "style": {
+            "fillColor": "#eaf4fc",
+            "strokeColor": "#2980b9"
+          },
+          "subcomponents": [
+            {
+              "id": "web3-signatures",
+              "name": "Authentication",
+              "description": "Request, Collect & Cash Web3 Signatures",
+              "type": "subcomponent",
+              "style": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#3498db"
+              }
+            },
+            {
+              "id": "access-control",
+              "name": "Define Decryption Conditions",
+              "description": "Define Data Authorization",
+              "type": "subcomponent",
+              "style": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#f39c12"
+              },
+              "conditions": [
+                {
+                  "id": "time-condition",
+                  "name": "TimeCondition",
+                  "type": "condition"
+                },
+                {
+                  "id": "rpc-condition",
+                  "name": "RpcCondition",
+                  "type": "condition"
+                },
+                {
+                  "id": "contract-condition",
+                  "name": "ContractCondition",
+                  "type": "condition"
+                },
+                {
+                  "id": "json-condition",
+                  "name": "JsonApiCondition",
+                  "type": "condition"
+                },
+                {
+                  "id": "compound-condition",
+                  "name": "CompoundCondition (AND/OR/NOT)",
+                  "type": "condition"
+                },
+                {
+                  "id": "more-conditions",
+                  "name": "(AND MORE)",
+                  "type": "condition"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protocol-domain",
+      "name": "Protocol Layer",
+      "type": "layer",
+      "style": {
+        "fillColor": "#f7f9fa",
+        "strokeColor": "#666666",
+        "dashed": true
+      },
+      "components": [
+        {
+          "id": "porter-service",
+          "name": "Porter Service",
+          "description": "Protocol Abstraction & Gateway",
+          "type": "component",
+          "style": {
+            "fillColor": "#ffffff",
+            "strokeColor": "#3498db"
+          }
+        },
+        {
+          "id": "node-infrastructure",
+          "name": "TACo Nodes Operations",
+          "type": "component",
+          "style": {
+            "fillColor": "#e8daef",
+            "strokeColor": "#9b59b6"
+          },
+          "subcomponents": [
+            {
+              "id": "node-participation",
+              "name": "Registration & Staking",
+              "description": "Economic Security Layer",
+              "type": "subcomponent"
+            },
+            {
+              "id": "cohort-organization",
+              "name": "DKG Rituals Participation",
+              "description": "Triggered by Cohort Admin",
+              "type": "subcomponent"
+            },
+            {
+              "id": "verification-operations",
+              "name": "Verification & Operations",
+              "description": "Condition Validation & Partial Decryption",
+              "type": "subcomponent"
+            }
+          ]
+        },
+        {
+          "id": "governance-economics",
+          "name": "Governance & Economics",
+          "type": "component",
+          "style": {
+            "fillColor": "#ebf5fb",
+            "strokeColor": "#2980b9"
+          },
+          "subcomponents": [
+            {
+              "id": "protocol-governance",
+              "name": "Protocol Governance",
+              "description": "Parameter Management & Coordinator Contract",
+              "type": "subcomponent"
+            },
+            {
+              "id": "fee-collection",
+              "name": "Fee Collection",
+              "description": "Payment Processing & Distribution",
+              "type": "subcomponent"
+            },
+            {
+              "id": "staking-slashing",
+              "name": "Staking & Slashing",
+              "description": "Economic Incentives",
+              "type": "subcomponent"
+            },
+            {
+              "id": "cohort-authority-mgmt",
+              "name": "Cohort Authority Management",
+              "description": "Authority Transfer & Control",
+              "type": "subcomponent"
+            }
+          ]
+        },
+        {
+          "id": "ritual-management",
+          "name": "Ritual Management System",
+          "type": "component",
+          "style": {
+            "fillColor": "#d8f3dc",
+            "strokeColor": "#2d6a4f"
+          },
+          "subcomponents": [
+            {
+              "id": "ritual-id",
+              "name": "RitualID Management",
+              "description": "Unique Identifiers for DKG rituals",
+              "type": "subcomponent"
+            },
+            {
+              "id": "ritual-coordination",
+              "name": "Ritual Coordination",
+              "description": "Coordinating DKG participation",
+              "type": "subcomponent"
+            },
+            {
+              "id": "key-management",
+              "name": "Key Management",
+              "description": "Tracking public keys & thresholds",
+              "type": "subcomponent"
+            },
+            {
+              "id": "node-monitoring",
+              "name": "Nodes Monitoring",
+              "description": "Using dummy DKG rituals",
+              "type": "subcomponent"
+            }
+          ]
+        },
+        {
+          "id": "blockchain-integration",
+          "name": "Blockchain Integration",
+          "type": "component",
+          "style": {
+            "fillColor": "#eef2f5",
+            "strokeColor": "#34495e"
+          },
+          "subcomponents": [
+            {
+              "id": "coordinator-contract",
+              "name": "Coordinator Contract",
+              "type": "subcomponent"
+            },
+            {
+              "id": "staking-contract",
+              "name": "Staking Contract",
+              "type": "subcomponent"
+            },
+            {
+              "id": "fee-contract",
+              "name": "Fee Management",
+              "type": "subcomponent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crypto-layer",
+      "name": "Cryptographic Layer",
+      "type": "layer",
+      "style": {
+        "fillColor": "#e8f8f5",
+        "strokeColor": "#16a085"
+      },
+      "cryptoOperations": [
+        {
+          "id": "dkg",
+          "name": "Distributed Key Generation (DKG)",
+          "description": "Cohort Generates Public Key & Private Fragments",
+          "type": "operation",
+          "sequence": 1
+        },
+        {
+          "id": "encryption",
+          "name": "Encryption",
+          "description": "Client-side Operation by data providers",
+          "type": "operation",
+          "sequence": 2
+        },
+        {
+          "id": "threshold-schemes",
+          "name": "Generate decrypted data fragment",
+          "description": "Nodes Generate Data Fragments, if Conditions were fulfilled",
+          "type": "operation",
+          "sequence": 3
+        },
+        {
+          "id": "decryption",
+          "name": "Decryption",
+          "description": "Client-side Operation using the collected data fragments",
+          "type": "operation",
+          "sequence": 4
+        }
+      ]
+    }
+  ],
+  "applications": {
+    "id": "app-integration",
+    "name": "Applications",
+    "type": "layer",
+    "style": {
+      "fillColor": "#f1f1f1",
+      "strokeColor": "#3498db",
+      "dashed": true
+    },
+    "appTypes": [
+      {
+        "id": "web-apps",
+        "name": "Web Apps",
+        "type": "application"
+      },
+      {
+        "id": "mobile-apps",
+        "name": "Mobile Apps",
+        "type": "application"
+      }
+    ]
+  },
+  "flowDirections": {
+    "protocol": "top-down",
+    "cryptographic": "top-down"
+  }
+}

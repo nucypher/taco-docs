@@ -1,5 +1,17 @@
 # How TACo works
 
+## Sharing flow overview
+
+Apps that have integrated the TACo SDK automatically interact with the [taco-web](https://github.com/nucypher/taco-web) encrypt/decrypt API. This connects end-users directly to TACo's network of distributed nodes – with no intermediaries.&#x20;
+
+In a typical flow, private data is encrypted client-side by a _data producer._ This data payload will remain encrypted until it reaches the device of a qualifying _data consumer_. From a privacy point of view, this is equivalent to the end-to-end encryption guarantees in a messaging app like Signal. However, TACo is general-purpose and can protect data flows in all types of applications, rather than being optimized for point-to-point textual communication.&#x20;
+
+Whether or not a _data consumer_ qualifies to decrypt and view a given data payload depends on whether they fulfill certain access conditions. These conditions are specified in advance by the producer or owner of that data, or programmed into the application logic on their behalf. For example, a journalist-facing app might predicate access to submitted evidence based on the proven location of the witness (out of harm's way). \
+\
+To access the data, a given _data consumer_ will have to (1) authenticate themselves and (2) present proof they fulfill the pre-specified conditions. Both are evaluated by a group of TACo nodes, each of which individually validates the data consumer's request by comparing it to retrieved web/web3 state. For example, if perishable health data should not be shared after a certain date, TACo nodes will simply read the UNIX epoch via Ethereum's `block.timestamp` value.&#x20;
+
+If a sufficient number (a 'threshold') of nodes confirm that the requesting _data consumer_ qualifies to see the data, they will send their device some key fragments. These fragments can be put together by the requestor client-side, which produces a decrypting key. This decrypting key can then be used to decrypt the original private data – or more often, a sym key which provides a lightweight conduit to the underlying payload.
+
 ## Data sharing flow
 
 ### 1. Distributed Key Generation&#x20;

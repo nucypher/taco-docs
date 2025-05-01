@@ -1,6 +1,6 @@
 # Table of contents
 
-* [What is TACo?](README.md)
+* [TACo (Threshold Access Control)](README.md)
   * [How TACo works](readme/key-concepts.md)
   * [Value Propositions](readme/value-propositions.md)
 * [Use cases](use-cases/README.md)

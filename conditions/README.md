@@ -12,7 +12,7 @@ Base conditions define specific criteria for access, and each includes a `return
   &#xNAN;_&#x45;xample:_ allow access if the requestor address holds a minimum ETH balance.
 * [`ContractCondition`](contractcondition/) – uses on-chain state, allowing arbitrary contract function calls. \
   &#xNAN;_&#x45;xample:_ allow access if this requestor holds a special-purpose NFT.&#x20;
-* [`JsonApiCondition`](wip-feature-requests/json-endpoint-conditions/jsonapicondition.md) - uses state from a JSON HTTPS endpoint.\
+* [`JsonApiCondition`](json-endpoint-conditions/jsonapicondition.md) - uses state from a JSON HTTPS endpoint.\
   &#xNAN;_&#x45;xample:_ allow discount on event tickets/merchandise if there is "bad" weather according to a specific weather API.
 
 Each base condition defines a [`returnValueTest`](./#return-value-test) used to compare the obtained execution value with the expected value for the condition.
@@ -41,9 +41,9 @@ It consists of three key components:&#x20;
 
 Logical conditions use control structures to determine overall condition outcomes based on the results of underlying conditions. These include:
 
-* [`CompoundCondition`](condition-set.md) - allows access conditions to be combined using logical operators such as `or`, `and` & `not` .
-* [`SequentialCondition`](wip-feature-requests/sequentialcondition.md) - chains access conditions to be executed in a specific order, where the outcome of one condition can be used by subsequent conditions.
-* [`IfThenElseCondition`](wip-feature-requests/ifthenelsecondition.md) - implements branching logic for access conditions where the flow follows an if-then-else structure i.e. **IF** `CONDITION_A` **THEN** `CONDITION_B` **ELSE** `CONDITION_C`
+* [`CompoundCondition`](logical-conditions/condition-set.md) - allows access conditions to be combined using logical operators such as `or`, `and` & `not` .
+* [`SequentialCondition`](logical-conditions/sequentialcondition.md) - chains access conditions to be executed in a specific order, where the outcome of one condition can be used by subsequent conditions.
+* [`IfThenElseCondition`](logical-conditions/ifthenelsecondition.md) - implements branching logic for access conditions where the flow follows an if-then-else structure i.e. **IF** `CONDITION_A` **THEN** `CONDITION_B` **ELSE** `CONDITION_C`
 
 {% hint style="info" %}
 Since condition evaluations may require making remote calls (e.g. RPC calls, etc.), the number of conditions allowed within a `Logical Condition` is limited.&#x20;

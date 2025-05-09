@@ -1,6 +1,6 @@
 # Table of contents
 
-* [What is TACo?](README.md)
+* [TACo (Threshold Access Control)](README.md)
   * [How TACo works](readme/key-concepts.md)
   * [Value Propositions](readme/value-propositions.md)
 * [Use cases](use-cases/README.md)
@@ -28,15 +28,15 @@
   * [ContractCondition](conditions/contractcondition/README.md)
     * [Use custom contract calls](conditions/contractcondition/use-custom-contract-calls.md)
     * [Implement access revocation via smart contract](conditions/contractcondition/implementing-revocation-via-smart-contract.md)
-  * [CompoundCondition](conditions/condition-set.md)
+  * [JSON Endpoint Conditions](conditions/json-endpoint-conditions/README.md)
+    * [JsonApiCondition](conditions/json-endpoint-conditions/jsonapicondition.md)
+    * [JsonRpcCondition](conditions/json-endpoint-conditions/jsonrpccondition.md)
+  * [JWT Conditions](conditions/jwtcondition.md)
+  * [Logical Conditions](conditions/logical-conditions/README.md)
+    * [CompoundCondition](conditions/logical-conditions/condition-set.md)
+    * [IfThenElseCondition](conditions/logical-conditions/ifthenelsecondition.md)
+    * [SequentialCondition](conditions/logical-conditions/sequentialcondition.md)
   * [WIP / Feature Requests](conditions/wip-feature-requests/README.md)
-    * [SequentialCondition](conditions/wip-feature-requests/sequentialcondition.md)
-    * [IfThenElseCondition](conditions/wip-feature-requests/ifthenelsecondition.md)
-    * [JSON Endpoint Conditions](conditions/wip-feature-requests/json-endpoint-conditions/README.md)
-      * [JsonApiCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonapicondition.md)
-      * [JsonRpcCondition](conditions/wip-feature-requests/json-endpoint-conditions/jsonrpccondition.md)
-    * [JWT Conditions](conditions/wip-feature-requests/jwtcondition.md)
-    * [OAuth](conditions/wip-feature-requests/oauth.md)
     * [Any (Major) EVM Chain Condition Support](conditions/wip-feature-requests/any-major-evm-chain-condition-support.md)
 * [Fees & Allowlists](fees/README.md)
   * [Mainnet Fees](fees/mainnet-fees.md)
@@ -53,7 +53,6 @@
   * [Contract Addresses](architecture/contract-addresses.md)
 * [Extensions](extensions.md)
 * [API References](references.md)
-* [Threshold Community](threshold-community.md)
 
 ## NODE OPERATOR
 

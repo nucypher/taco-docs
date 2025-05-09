@@ -18,7 +18,7 @@ That said, there are valid concerns about whether this approach offers sufficien
 
 A potential solution for production could involve integrating API keys from services like Infura, Alchemy, or dRPC. Using these keys, nodes could dynamically derive RPC URLs for various blockchains. However, this method introduces a degree of centralization, as the API key templates would dictate which RPC services TACo supports.
 
-We are actively seeking feedback from adopters to refine our approach and ensure it aligns with their needs. Please chat with us in the #taco channel in the [Threshold Discord](https://discord.gg/threshold), or file [GitHub issues](https://github.com/nucypher/nucypher/issues).
+We are actively seeking feedback from adopters to refine our approach and ensure it aligns with their needs. Please chat with us in the #build channel in the [TACo Discord](https://discord.gg/buildwithtaco), or file [GitHub issues](https://github.com/nucypher/nucypher/issues).
 
 ## Development References
 

@@ -4,8 +4,6 @@ The `JsonRpcCondition` is designed for access control decisions that rely on dat
 
 The condition operates by sending an HTTPS `POST` request to a specified JSON RPC endpoint using a [`JSONPath`](https://goessner.net/articles/JsonPath/) query to extract relevant data from the response and comparing the extracted value to an expected result.
 
-Potential use cases include utilizing JSON RPC 2.0 endpoints, including sending JSON RPC requests to non-EVM blockchain RPC endpoints, e.g. getting the block time from Bitcoin or Solana. A separate non-EVM blockchain condition may be added if there is sufficient use in this area.
-
 It is composed of the following properties:
 
 * `endpoint`: the HTTPS URI for the JSON RPC endpoint that will be queried, e.g.`https://api.example.com`
@@ -13,13 +11,20 @@ It is composed of the following properties:
 * `params`_(Optional)_: Parameters for the specified method, provided as either a dictionary or an array.
 * `query`_(Optional)_: a `JSONPath` query used to extract specific data from the JSON response. The query is relative to the `result` entry included in the JSON response.
 * [`authorizationToken`](./#authorization) _(Optional)_: A bearer token that will be included in the HTTPS `Authorization` header. It enables the use of endpoints that require OAuth/JWT authorization.&#x20;
-* [`returnValueTest`](../../#returnvaluetest): the test to validate the value extracted by the JSONPath query.&#x20;
+* [`returnValueTest`](../#returnvaluetest): the test to validate the value extracted by the JSONPath query.&#x20;
 
 **Error Handling**
 
 * If the HTTPS response does not return a status code of `200`, the condition will fail automatically, and access will be denied.
 * If the `JSONPath` query is provided but cannot properly extract the desired value, the condition will fail, resulting in access being denied.
 * If an invalid `authorizationToken` is provided, the call to the API will fail, causing the condition to fail and access to be denied.
+
+## **Use Cases**
+
+Any JSON RPC 2.0 endpoint including:
+
+* Requests to non-EVM blockchain JSON RPC endpoints e.g. Bitcoin, Solana. _(A separate non-EVM blockchain condition may be added if there is sufficient use in this area)_
+* Oracle endpoints e.g. market data, prices
 
 ## Example
 

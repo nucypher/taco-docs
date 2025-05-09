@@ -1,10 +1,10 @@
-# TACo Protocol Use Cases
+# TACo Protocol's UML Use Case Diagram
 
 The TACo protocol enables secure, conditional access to encrypted data across a decentralized network. This document outlines the primary actors in the TACo ecosystem and their key interactions with the protocol.
 
 ## Core Actors
 
-<figure><img src="../.gitbook/assets/architecture/use-case-diagram.svg" alt=""><figcaption><p>TACo Protocol Use Case Diagram</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/architecture/use-case-diagram.svg" alt=""><figcaption><p>TACo Protocol's UML Use Case Diagram</p></figcaption></figure>
 
 The TACo protocol facilitates interactions between four main actors:
 

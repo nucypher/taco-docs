@@ -1,6 +1,6 @@
 # TACo Protocol Flow
 
-This document details the operational flow of the TACo protocol - how information and operations move through the system. For an overview of the actors involved and their roles, see the [Use Cases](./use-cases.md) document.
+This document details the operational flow of the TACo protocol - how information and operations move through the system. For an overview of the actors involved and their roles, see the [UML Use Case Diagram](./uml-usecase-diagram.md).
 
 The TACo protocol operations follow several distinct but interconnected flows:
 

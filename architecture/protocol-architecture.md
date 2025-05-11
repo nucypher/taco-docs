@@ -176,7 +176,7 @@ The TACo ecosystem involves four primary actors interacting with the protocol in
 - **Supporting Actor**: Node Operator
 - **Description**: Process involving condition verification, fragment provision, and client-side decryption
 
-For detailed descriptions of these use cases and actor interactions, see the [Use Cases](./use-cases.md) document.
+For detailed descriptions of these use cases and actor interactions, see the [UML Use Case Diagram](./uml-usecase-diagram.md).
 
 ## System Interconnections
 

@@ -1,16 +1,16 @@
 # ComposeDB
 
 {% hint style="info" %}
-A version of this tutorial is also hosted in Ceramic's [documentation](https://developers.ceramic.network/docs/composedb/examples/taco-access-control).&#x20;
+A version of this tutorial is also hosted in Ceramic's [documentation](https://developers.ceramic.network/docs/composedb/examples/taco-access-control).
 {% endhint %}
 
 This guide explains how to integrate TACo with [ComposeDB](https://developers.ceramic.network/docs/introduction/composedb-overview), a[ ](https://ceramic.network/)GraphQL-based data service from [Ceramic](https://ceramic.network/). TACo and Ceramic are mutually complementary components of the Web3 stack, both offering developers ‘Web 2.0’ functionality without compromising on decentralization.
 
-On completion of this tutorial, it will be possible to:&#x20;
+On completion of this tutorial, it will be possible to:
 
 1. Specify fine-grained access control logic for encrypted data/streams saved to the ComposeDB graph database.
 2. Have data consumers authenticate themselves with a reused Ceramic sign-in – a Sign-In With Ethereum message – in order to decrypt the retrieved data/stream.
-3. Securely gate-keep any format, size or throughput of data stream, with access to it collectively managed by a permissionless and customizable group of TACo nodes.&#x20;
+3. Securely gate-keep any format, size or throughput of data stream, with access to it collectively managed by a permissionless and customizable group of TACo nodes.
 
 ## ComposeDB overview
 
@@ -36,8 +36,8 @@ This demo [repo](https://github.com/nucypher/taco-composedb) is based on a fork 
 
 This demo requires:
 
-* A [Metamask](https://metamask.io/) wallet with [Polygon Amoy](https://polygon.technology/blog/introducing-the-amoy-testnet-for-polygon-pos) testnet added, and multiple accounts to mimic a real-world decryption flow.&#x20;
-* A positive balance of Polygon Amoy testnet tokens (> 0.00 MATIC) held in one of the accounts, in order to satisfy the default access conditions.&#x20;
+* A [Metamask](https://metamask.io/) wallet with [Polygon Amoy](https://polygon.technology/blog/introducing-the-amoy-testnet-for-polygon-pos) testnet added, and multiple accounts to mimic a real-world decryption flow.
+* A positive balance of Polygon Amoy testnet tokens (> 0.00 MATIC) held in one of the accounts, in order to satisfy the default access conditions.
 
 First, we’ll clone the reference repository.
 
@@ -51,13 +51,13 @@ Next, we install the dependencies. This requires _node v16_ running in our termi
 npm install 
 ```
 
-&#x20;Next, we’ll generate parameters for the local Ceramic node. This command defines the ComposeDB config file, and generates the admin seed & admin DID credentials.
+Next, we’ll generate parameters for the local Ceramic node. This command defines the ComposeDB config file, and generates the admin seed & admin DID credentials.
 
 ```
 npm run generate
 ```
 
-The commands above only need to be executed once.&#x20;
+The commands above only need to be executed once.
 
 Finally, we launch the browser application and Ceramic node. This is the only step required for subsequent runs.
 
@@ -67,31 +67,31 @@ npm run dev
 
 Open the app on [http://localhost:3000](http://localhost:3000) and sign in with Ceramic. Note that this signature can be reused to authenticate the data consumer later in the flow, if we maintain the same session.\
 \
-However, we begin as the _data producer_, and enter a message into the chat box element: &#x20;
+However, we begin as the _data producer_, and enter a message into the chat box element:
 
 <div align="left"><figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcCOLHqCBtpWUg02CuE1ps7SbDNU4LFH4GCu3gfG9smYBejjgVqSOETy6ocBjUBppbVYy2qPllmuqKHDk1R1D7Qcf1o_85WiJczBaA6CUDPB5nt4Ctpi6GFI1SLgAtJiqSrONtDIMMOpsnwbF5OzrbNgP6Y?key=kKsOISObNWoPp0VzTRWAiQ" alt="" width="563"><figcaption></figcaption></figure></div>
 
 When we click Send, the app will prompt us to sign the message. The TACo API requires a specific signature (i.e. not SIWE) to encrypt data, so that later, TACo nodes are able to validate that (1) we are authorized to encrypt, using that particular group of nodes, and (2) we specified the conditions for decryption.\
 \
-Once we have provided this signature, the message is encrypted locally and we're presented with a ciphertext:&#x20;
+Once we have provided this signature, the message is encrypted locally and we're presented with a ciphertext:
 
 <div align="left"><figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe8gwQzPkMtVw1Gefjn4If41uNdZuzsa3aRoyrgAHyGE_40YsfkNC2Y-cHs91dpaxsaVPJl5DLZyc7f8hIsjYhj3RmdeNdZXm3i4gJFMI0RGmgMQuDkhKGXuuQQbIEewVY0c_y_74lIWh63Yjy_GYhkxgtG?key=kKsOISObNWoPp0VzTRWAiQ" alt="" width="563"><figcaption></figcaption></figure></div>
 
-We now switch to the _data consumer_’s perspective by disconnecting and reconnecting with a new account in Metamask. This mimics the majority of use cases in which a data consumer will make this request from a new device or identity.&#x20;
+We now switch to the _data consumer_’s perspective by disconnecting and reconnecting with a new account in Metamask. This mimics the majority of use cases in which a data consumer will make this request from a new device or identity.
 
 Having established a session with a new account, we will need to authenticate ourselves. When we hit the Decrypt button, it prompts us to sign in with Ceramic. Note that this signature is set to expire after 2 hours, during which time we can decrypt as many messages as we like, as the signature will remain cached.
 
-Our authenticated identity – a unique EVM wallet address that we have proven we control – must now satisfy the prespecified conditions. In this example, the qualifying conditions are the wallet holding any amount of MATIC in a Polygon Amoy wallet greater than zero. &#x20;
+Our authenticated identity – a unique EVM wallet address that we have proven we control – must now satisfy the prespecified conditions. In this example, the qualifying conditions are the wallet holding any amount of MATIC in a Polygon Amoy wallet greater than zero.
 
 {% hint style="info" %}
 Note that in this demo, the end-user is not choosing the conditions for data access via the browser UX. However, developers can modify these default access conditions, or enable the user to specify access conditions directly. This functionality is explored in later sections.
 {% endhint %}
 
-We’ll first attempt to decrypt whilst failing to fulfill the conditions. In this instance, this account contains zero MATIC:&#x20;
+We’ll first attempt to decrypt whilst failing to fulfill the conditions. In this instance, this account contains zero MATIC:
 
 <div align="left"><figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfhwhzb9Ffw9K0j6QL__QVP8J14nc8DUJXcxLwqwQK2gnyi5FO0FZwueBP9KHF-s2BZICz2XiPNACxTMt93mWfGfu9gYZHPc2plQyScvevmgjjEi5ov5g5Nd_ttC9OJT3MK_8iXmpkKDwpmryPpnw0FTps?key=kKsOISObNWoPp0VzTRWAiQ" alt="" width="375"><figcaption></figcaption></figure></div>
 
-As expected, we are denied access to the plaintext:&#x20;
+As expected, we are denied access to the plaintext:
 
 <div align="left"><figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeHuX6s6050xVxorFAHDWfygZJyIyaneOxu5Zy1i_O4vGts3N2fSnC39Im5p1h8jPCQYY-1e_ENU_FhZtyWH8ITDOeEXpby7qRZTzfLTB_VqfQMKwSfJokgH3MVmFnrqRAxxc8zxQGZIe-wtZGIVLhXpKM?key=kKsOISObNWoPp0VzTRWAiQ" alt="" width="563"><figcaption></figcaption></figure></div>
 
@@ -106,7 +106,7 @@ This time, when we hit the Decrypt button and ping the TACo API, the assigned gr
 To clear the session data and restart the demo, click the _Reset_ button in the navigation bar.
 
 {% hint style="warning" %}
-Note that this tutorial utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](../taco-integration/get-started-with-tac.md) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](../trust-assumptions/README.md).
+Note that this tutorial utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](../taco-integration/get-started-with-tac.md) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](../trust-assumptions/).
 {% endhint %}
 
 ***
@@ -117,10 +117,10 @@ Having illustrated the basic concepts via the example application, we’ll now l
 
 ### 1. Specifying conditions & authentication
 
-There are two distinct ways in which a _data consumer_ must prove their right to access the private data. The _data producer_ can customize both of these, and combine them in any way they see fit.&#x20;
+There are two distinct ways in which a _data consumer_ must prove their right to access the private data. The _data producer_ can customize both of these, and combine them in any way they see fit.
 
 1. _Data consumers_ must **authenticate** themselves – i.e. prove their identity. In this tutorial, we chose an EVM-based identity. More concretely, we require TACo nodes to process the claim that the requestor has already authenticated themselves within the app they are using, and they did so via Sign In With Ethereum (SIWE).
-2. _Data consumers_ must satisfy a set of **conditions** – i.e. some public web state that TACo nodes can either validate or invalidate. In the demo above, we simply required requestors to hold testnet MATIC. Here, we’re going to build on this by adding a time-based condition, and then combine them into a ConditionSet.&#x20;
+2. _Data consumers_ must satisfy a set of **conditions** – i.e. some public web state that TACo nodes can either validate or invalidate. In the demo above, we simply required requestors to hold testnet MATIC. Here, we’re going to build on this by adding a time-based condition, and then combine them into a ConditionSet.
 
 We’ll begin by specifying the authentication method and the first condition. This is the same configuration as the demo above and can be viewed in the repository [here](https://github.com/nucypher/taco-composedb/blob/main/src/fragments/chatinputbox.tsx#L26-L34). The method\
 is an RPC function that checks the balance of the data consumer based on the identity they provide, which in this case will be authenticated via a EIP4361 (SIWE) message already utilized by the application. The chain ID refers to Polygon Amoy.
@@ -131,7 +131,7 @@ import { conditions } from "@nucypher/taco";
 const rpcCondition = new conditions.base.rpc.RpcCondition({
     chain: 80002,
     method: 'eth_getBalance',
-    parameters: [':userAddressExternalEIP4361'],
+    parameters: [':userAddress'],
     returnValueTest: {
         comparator: '>',
         value: 0,
@@ -139,7 +139,7 @@ const rpcCondition = new conditions.base.rpc.RpcCondition({
 });
 ```
 
-Next, we’ll logically combine this condition with a second  condition via a `CompoundCondition`using the `AND` operator, which means both conditions must be satisfied for data access. The second condition allows access only until the end of 2024, via a standard block timestamp.&#x20;
+Next, we’ll logically combine this condition with a second condition via a `CompoundCondition`using the `AND` operator, which means both conditions must be satisfied for data access. The second condition allows access only until the end of 2024, via a standard block timestamp.
 
 <pre class="language-typescript"><code class="lang-typescript">const timeBox = new conditions.base.time.TimeCondition({
     chain: 11155111,
@@ -148,18 +148,18 @@ Next, we’ll logically combine this condition with a second  condition via a `C
         value: 1735689599,
     },
 });
-<strong>
-</strong><strong>const twoConditions = new conditions.compound.CompoundCondition({
+
+<strong>const twoConditions = new conditions.compound.CompoundCondition({
 </strong>    operator: 'and',
     operands: [rpcCondition, timeBox],
 });
 </code></pre>
 
-Read more about condition types [here](../conditions/README.md).
+Read more about condition types [here](../conditions/).
 
 ### 2. Encrypting & saving the data
 
-Then, we put it all together. We specify the aforementioned testnet `domain` and `ritualId`, and also utilize a standard web3 provider/signer. The output of this function is known as a `messageKit` – a payload containing both the encrypted data and embedded metadata necessary for a qualifying _data consumer_ to access the message.&#x20;
+Then, we put it all together. We specify the aforementioned testnet `domain` and `ritualId`, and also utilize a standard web3 provider/signer. The output of this function is known as a `messageKit` – a payload containing both the encrypted data and embedded metadata necessary for a qualifying _data consumer_ to access the message.
 
 ```typescript
 import { initialize, encrypt, conditions, domains, toHexString } from '@nucypher/taco';
@@ -183,16 +183,16 @@ const messageKit = await encrypt(
 const encryptedMessageHex = toHexString(messageKit.toBytes());
 ```
 
-### 3. Querying & decrypting the data&#x20;
+### 3. Querying & decrypting the data
 
-We're now going to enable _data consumers_ to access the underlying data, if and only if the two conditions we specified are satisfied. Data consumers interact with the TACo API via the `decrypt` function, including the following arguments:&#x20;
+We're now going to enable _data consumers_ to access the underlying data, if and only if the two conditions we specified are satisfied. Data consumers interact with the TACo API via the `decrypt` function, including the following arguments:
 
 * `Provider` – Web3 provider to connect to Polygon.
 * `Domain` – which TACo network (`MAINNET`, `TESTNET`, `DEVNET`).
 * `encryptedMessage`/`ThresholdMessageKit` – this contains the encrypted plaintext and the access conditions, supplied to the _data consumer_ via a side channel.
 * `conditionContext` – this enables on-the-fly, programmatic population of [context variable](../authentication/conditioncontext-and-context-variables.md) values used within conditions, the most important being data consumer authentication. Developers can predicate certain authentication methods on certain conditions. For example:
   * If conditions are based around EVM state, authenticate via SIWE.
-  * (In future versions) If conditions are based around social account ownership, authenticate via OAuth.&#x20;
+  * (In future versions) If conditions are based around social account ownership, authenticate via OAuth.
 
 ```typescript
 import {conditions, decrypt, Domain, encrypt, ThresholdMessageKit} from '@nucypher/taco';
@@ -226,7 +226,7 @@ const {messageStr, signature} = await getCeramicSiweInfo(currentAddress);
 // create corresponding user authentication provider
 const singleSignOnEIP4361AuthProvider = await SingleSignOnEIP4361AuthProvider.fromExistingSiweInfo(messageStr, signature);
 const conditionContext = conditions.context.ConditionContext.fromMessageKit(thresholdMessageKit);
-conditionContext.addAuthProvider(USER_ADDRESS_PARAM_EXTERNAL_EIP4361, singleSignOnEIP4361AuthProvider);
+conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, singleSignOnEIP4361AuthProvider);
 
 // decrypt the data
 decryptedMessageBytes = await decryptWithTACo(
@@ -238,7 +238,7 @@ decryptedMessageBytes = await decryptWithTACo(
 
 ***
 
-## Using ComposeDB & TACo in production&#x20;
+## Using ComposeDB & TACo in production
 
 * For Ceramic, connect to Mainnet (`domains.MAINNET`).
 * For TACo, a funded Mainnet `ritualID` is required – this connects the encrypt/decrypt API to a cohort of independently operated nodes, and corresponds to a DKG public key generated by independent parties. A dedicated `ritualID` for Ceramic + TACo projects will be sponsored soon. Watch for updates here or in the Discord[ #taco](https://discord.com/channels/866378471868727316/870383642751430666) channel.

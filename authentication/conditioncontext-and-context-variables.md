@@ -25,7 +25,7 @@ Whenever the `:userAddress` context variable is present in a decryption conditio
 To negate the need for repeated wallet signatures for every decryption request by the same _data consumer_ the corresponding proof that is generated is cached until an expiry is triggered, after which the _data consumer_ will be prompted again.&#x20;
 {% endhint %}
 
-* `SingleSignOnEIP4361AuthProvider` : Designed for applications that have already integrated Sign-in With Ethereum (SIWE), this provider leverages the existing login signature and message. It enables users to authenticate once with the application and seamlessly reuse that authentication with TACo, eliminating the need to sign multiple messages during decryption..
+* `SingleSignOnEIP4361AuthProvider` : Designed for applications that have already integrated Sign-in With Ethereum (SIWE), this provider leverages the existing login signature and message. It enables users to authenticate once with the application and seamlessly reuse that authentication with TACo, eliminating the need to sign multiple messages during decryption.
 
 {% hint style="warning" %}
 TACo requires that Sign-In With Ethereum (SIWE) messages be issued within the last 2 hours based on the "Issued At" timestamp. For single sign-on usage, the application should refresh the user's cached SIWE login accordingly.

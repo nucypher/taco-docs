@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="taco-protocol-usecase" name="TACo Protocol Use Case">
-        <mxGraphModel dx="730" dy="831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#E6E6E6" math="0" shadow="0">
+        <mxGraphModel dx="1495" dy="823" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#E6E6E6" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -25,7 +25,7 @@
                 <mxCell id="33" value="Distributed Key Generation (DKG)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
                     <mxGeometry x="330" y="140" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="Define Network params &amp;amp; Manage Cohort" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
+                <mxCell id="34" value="Setup and Manage Cohort" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
                     <mxGeometry x="253.75" y="70" width="162.5" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot; class=&quot;p1&quot;&gt;Define Encryption Eligibility&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;align=center;" parent="1" vertex="1">
@@ -145,6 +145,16 @@
                         <mxPoint x="320" y="670" as="sourcePoint"/>
                         <mxPoint x="408" y="660" as="targetPoint"/>
                         <mxPoint x="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="Select Ritual params&lt;br&gt;(nodes count, fees...)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="70" width="151" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="&amp;lt;include&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;strokeColor=#003300;fontColor=#003300;fillColor=#6d8764;labelBackgroundColor=none;labelBorderColor=none;" parent="1" source="34" target="69" edge="1">
+                    <mxGeometry x="-0.0847" y="10" width="160" relative="1" as="geometry">
+                        <mxPoint x="416.2474746830585" y="106.21320343559637" as="sourcePoint"/>
+                        <mxPoint x="456.75" y="140" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
             </root>

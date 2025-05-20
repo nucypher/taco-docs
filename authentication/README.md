@@ -6,7 +6,7 @@ In the case of a wallet address, the _data consumer_ must sign a message with th
 
 `AuthProvider` is an abstraction provided by `@nucypher/taco-auth` that plays a critical role in generating the necessary proof for authenticating information about the _data consumer_. This proof is then validated as a part of condition evaluation during the decryption process. Instead of directly providing the necessary information (e.g., wallet address), which could be falsified, the _data consumer_ uses an `AuthProvider` to generate the requisite proof.&#x20;
 
-At the moment,  [Sign-In With Ethereum (SIWE)](https://docs.login.xyz/general-information/siwe-overview/eip-4361) is supported, with more authentication protocols expected to be added in the future.
+At the moment,  [Sign-In With Ethereum (SIWE)](https://docs.login.xyz/general-information/siwe-overview/eip-4361)  and [Standard Signature Validation Method for Contracts (EIP-1271)](https://eips.ethereum.org/EIPS/eip-1271) are supported for proof of wallet ownership with more authentication protocols expected to be added in the future.
 
 For more information on specific authentication providers and how they can be utilized alongside access conditions, see [Condition Context](conditioncontext-and-context-variables.md).
 

@@ -20,16 +20,24 @@ If you find yourself in this situation, please reach out for assistance by openi
 
 This command can be used to restore private keys on an existing node.
 
+{% hint style="info" %}
+If using Docker commands, start by pulling the latest recovery image:
+
+```bash
+docker pull nucypher/nucypher:recovery
+```
+{% endhint %}
+
 {% tabs %}
 {% tab title="CLI" %}
 ```bash
-$ nucypher ursula recover
+nucypher ursula recover
 ```
 {% endtab %}
 
 {% tab title="Docker" %}
 ```bash
-$ docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula recover
+docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula recover
 ```
 {% endtab %}
 {% endtabs %}
@@ -41,13 +49,13 @@ This command can be used to completely relocate a node to a new host from scratc
 {% tabs %}
 {% tab title="CLI" %}
 ```bash
-$ nucypher ursula init ... --with-mnemonic
+nucypher ursula init ... --with-mnemonic
 ```
 {% endtab %}
 
 {% tab title="Docker" %}
 ```bash
-$ docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula init ... --with-mnemonic
+docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula init ... --with-mnemonic
 ```
 {% endtab %}
 {% endtabs %}
@@ -59,13 +67,13 @@ This command is useful if you have a mnemonic but are unsure which public keys i
 {% tabs %}
 {% tab title="CLI" %}
 ```bash
-$ nucypher ursula public-keys --from-mnemonic
+nucypher ursula public-keys --from-mnemonic
 ```
 {% endtab %}
 
 {% tab title="Docker" %}
 ```bash
-$ docker run -it nucypher/nucypher:recovery nucypher ursula public-keys --from-mnemonic
+docker run -it nucypher/nucypher:recovery nucypher ursula public-keys --from-mnemonic
 ```
 {% endtab %}
 {% endtabs %}
@@ -78,16 +86,18 @@ Below is documentation for node auditing commands that can be used to ensure cor
 
 {% tabs %}
 {% tab title="CLI" %}
-```
-$ nucypher ursula audit
-$ nucypher ursula audit --config-file <config path>
-$ nucypher ursula audit --keystore-filepath <keystore path>
+```bash
+nucypher ursula audit
+
+nucypher ursula audit --config-file <config path>
+
+nucypher ursula audit --keystore-filepath <keystore path>
 ```
 {% endtab %}
 
 {% tab title="Docker" %}
 ```bash
-$ docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula audit
+docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula audit
 ```
 {% endtab %}
 {% endtabs %}
@@ -99,13 +109,13 @@ This command can be used to view the mnemonic for existing private keys.  This a
 {% tabs %}
 {% tab title="CLI" %}
 ```bash
-$ nucypher ursula audit ... --view-mnemonic
+nucypher ursula audit ... --view-mnemonic
 ```
 {% endtab %}
 
 {% tab title="Docker" %}
 ```bash
-$ docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula audit --view-mnemonic
+docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.ethereum/:/root/.ethereum:ro nucypher/nucypher:recovery nucypher ursula audit --view-mnemonic
 ```
 {% endtab %}
 {% endtabs %}

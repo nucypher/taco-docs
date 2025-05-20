@@ -8,72 +8,32 @@ Context variables can be recognized by the `:` prefix. They act as placeholders 
 
 Context variables are broken up into two groups:
 
-*   _**Reserved context variables**_**:** these have special functionality within `taco`.\
-    \
-    For now, there are only two such reserved context variables:
+*   _**Reserved context variables**_**:** these have special functionality within `taco`:
 
     * [`:userAddress`](conditioncontext-and-context-variables.md#useraddress)
-    * [`:userAddressExternalEIP4361`](conditioncontext-and-context-variables.md#useraddressexternaleip4361)
 
-    which require the use of [Authentication Providers](./) to provide verifiable proof of values specified by the _data consumer_. Applications should be cognizant of which reserved context variable they use based on their needs.
+    which requires the use of [Authentication Providers](./) to provide verifiable proof of wallet address ownership specified by the _data consumer_. Applications should be cognizant of which reserved context variable they use based on their needs.
 * _**Custom context variables**_**:**  these are application-specific, simple key-value pairs where the _data consumer_ can directly specify the values without any verification.
 
 ### `:userAddress`
 
-Whenever the `:userAddress` context variable is present in a decryption condition, the _data consumer_ must use the `EIP4361AuthProvider`. This authentication provider will prompt the user to sign a  `EIP-4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the _data consumer's_ wallet address at decryption time. This signature is provided to nodes to prove wallet address ownership when evaluating the decryption condition.
+Whenever the `:userAddress` context variable is present in a decryption condition, the _data consumer_ must use one of the following authentication providers for proof of wallet ownership:
 
-```typescript
-import { conditions } from '@nucypher/taco';
-import { EIP4361AuthProvider, USER_ADDRESS_PARAM_DEFAULT } from '@nucypher/taco-auth';
-
-const conditionContext = conditions.context.ConditionContext.fromMessageKit(messageKit);
-  
-const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-  
-const authProvider = new EIP4361AuthProvider(
-  web3Provider,
-  web3Provider.getSigner(),
-);
-
-// set auth provider for ":userAddress"
-conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
-```
+* `EIP4361AuthProvider`: Prompts the user to sign an EIP-4361 ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to authenticate the data consumer's wallet address at the time of decryption.
 
 {% hint style="info" %}
-To negate the need for repeated wallet signatures for every decryption request by the same _data consumer_, the corresponding proof that is generated is cached until an expiry is triggered, after which the _data consumer_ will be prompted again.&#x20;
+To negate the need for repeated wallet signatures for every decryption request by the same _data consumer_ the corresponding proof that is generated is cached until an expiry is triggered, after which the _data consumer_ will be prompted again.&#x20;
 {% endhint %}
 
-### `:userAddressExternalEIP4361`
-
-The `:userAddressExternalEIP4361` context variable in conditions requires the use of the `SingleSignOnEIP4361AuthProvider` for decryption.&#x20;
-
-The `SingleSignOnEIP4361AuthProvider` integrates _data consumer_ wallet authentication into a broader Sign-in With Ethereum (SIWE) identity management system already used by an application, allowing users to authenticate once with the application and re-use that authentication with TACo.
-
-Therefore, the existing application-specific SIWE sign-in message and signature can be reused with TACo and provide a seamless user experience during TACo decryption without the need to sign multiple messages.
-
-```typescript
-import { conditions } from '@nucypher/taco';
-import { 
-  SingleSignOnEIP4361AuthProvider,
-  USER_ADDRESS_PARAM_EXTERNAL_EIP4361,
-} from '@nucypher/taco-auth';
-
-const conditionContext = conditions.context.ConditionContext.fromMessageKit(messageKit);
-  
-const {messageStr, signature} = ...;  // existing SIWE information from application  
-
-const authProvider = SingleSignOnEIP4361AuthProvider.fromExistingSiweInfo(
-  messageStr,
-  signature,
-);
-
-// set auth provider for ":userAddressExternalEIP4361"
-conditionContext.addAuthProvider(USER_ADDRESS_PARAM_EXTERNAL_EIP4361, authProvider);
-```
+* `SingleSignOnEIP4361AuthProvider` : Designed for applications that have already integrated Sign-in With Ethereum (SIWE), this provider leverages the existing login signature and message. It enables users to authenticate once with the application and seamlessly reuse that authentication with TACo, eliminating the need to sign multiple messages during decryption.
 
 {% hint style="warning" %}
 TACo requires that Sign-In With Ethereum (SIWE) messages be issued within the last 2 hours based on the "Issued At" timestamp. For single sign-on usage, the application should refresh the user's cached SIWE login accordingly.
 {% endhint %}
+
+* `EIP1271AuthProvider`: Intended for scenarios where the user account is a smart contract wallet that implements [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271).
+
+This signature produced by the authentication providers are provided to nodes to prove wallet address ownership when evaluating the decryption condition.
 
 ## Illustrative Example
 
@@ -111,7 +71,7 @@ In this example, we can see two different context variables
 * `:userAddress` - A reserved context variable
 * `:selectedBalance` - A custom context variable
 
-To replace the `:userAddress` context variable with an actual wallet address during decryption, TACo needs to be provided with an `AuthProvider` for the user to sign an `EIP4361` ([Sign-in With Ethereum](https://docs.login.xyz/general-information/siwe-overview/eip-4361)) message to confirm wallet ownership at the decryption time.
+To replace the `:userAddress` context variable with an actual wallet address during decryption, TACo needs to be provided with an `AuthProvider` to confirm wallet ownership at the decryption time.
 
 Additionally, the `:selectedBalance` custom context variable has to be provided to the `decrypt` function by the _data consumer_.
 
@@ -119,7 +79,7 @@ Both context variables need to be provided to a `ConditionContext` which is then
 
 ```typescript
 import { decrypt, conditions } from '@nucypher/taco';
-import { EIP4361AuthProvider, USER_ADDRESS_PARAM_DEFAULT } from '@nucypher/taco-auth';
+import { SingleSignOnEIP4361AuthProvider, USER_ADDRESS_PARAM_DEFAULT } from '@nucypher/taco-auth';
 
 const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -127,9 +87,10 @@ const conditionContext =
   conditions.context.ConditionContext.fromMessageKit(messageKit);
   
 // satisfy ":userAddress"
-const authProvider = new EIP4361AuthProvider(
-  web3Provider,
-  web3Provider.getSigner(),
+const {messageStr, signature} = ...;  // existing SIWE information from application  
+const authProvider = SingleSignOnEIP4361AuthProvider.fromExistingSiweInfo(
+  messageStr,
+  signature,
 );
 conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 
@@ -188,10 +149,7 @@ if (
   conditionContext.requestedContextParameters.has(USER_ADDRESS_PARAM_DEFAULT)
 ) {
   // add authentication for ":userAddress" in condition
-  const authProvider = new EIP4361AuthProvider(
-    provider,
-    provider.getSigner()
-  );
+  const authProvider = ...;
   conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 }
 if (

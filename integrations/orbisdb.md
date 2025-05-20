@@ -91,7 +91,7 @@ import { conditions } from "@nucypher/taco";
 const condition = new conditions.base.rpc.RpcCondition({
   chain: 80002,
   method: "eth_getBalance",
-  parameters: [":userAddressExternalEIP4361"],
+  parameters: [":userAddress"],
   returnValueTest: {
     comparator: ">",
     value: 0,
@@ -163,7 +163,7 @@ import { SiweMessage } from "@didtools/cacao";
 import { DIDSession } from "did-session";
 import {
   SingleSignOnEIP4361AuthProvider,
-  USER_ADDRESS_PARAM_EXTERNAL_EIP4361,
+  USER_ADDRESS_PARAM_DEFAULT,
 } from "@nucypher/taco-auth";
 import { ethers } from "ethers";
 
@@ -196,7 +196,7 @@ async function decryptWithTACo(
   const conditionContext =
     conditions.context.ConditionContext.fromMessageKit(tmk);
   conditionContext.addAuthProvider(
-    USER_ADDRESS_PARAM_EXTERNAL_EIP4361,
+    USER_ADDRESS_PARAM_DEFAULT,
     authProvider,
   );
 
@@ -231,7 +231,7 @@ const createPost = async (): Promise<void> => {
     const condition = new conditions.base.rpc.RpcCondition({
       chain: 80002,
       method: "eth_getBalance",
-      parameters: [":userAddressExternalEIP4361"],
+      parameters: [":userAddress"],
       returnValueTest: {
         comparator: ">",
         value: 0,

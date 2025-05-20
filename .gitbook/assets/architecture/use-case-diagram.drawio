@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="taco-protocol-usecase" name="TACo Protocol Use Case">
-        <mxGraphModel dx="1495" dy="823" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#E6E6E6" math="0" shadow="0">
+        <mxGraphModel dx="626" dy="415" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#E6E6E6" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -28,8 +28,8 @@
                 <mxCell id="34" value="Setup and Manage Cohort" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
                     <mxGeometry x="253.75" y="70" width="162.5" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot; class=&quot;p1&quot;&gt;Define Encryption Eligibility&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="265" y="220" width="140" height="60" as="geometry"/>
+                <mxCell id="35" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot; class=&quot;p1&quot;&gt;Define Encryption Eligibility&lt;br&gt;(specify the allowlist)&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="265" y="210" width="175" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="Encrypt Data" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#003300;fillColor=#CCFFCC;fontColor=#003300;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
                     <mxGeometry x="280" y="330" width="140" height="60" as="geometry"/>

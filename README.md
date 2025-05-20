@@ -12,7 +12,7 @@ TACo (**T**hreshold **A**ccess **Co**ntrol) lets you share encrypted data secure
 
 ### **Get Started Now**
 
-* [**Quickstart Guide →**](getting-started/quickstart-testnet.md)\
+* [**Quickstart Guide →**](quickstart-testnet.md)\
   Your first encrypted data share - up and running in minutes.
 * [**Join the Community on Discord →**](http://discord.gg/buildwithtaco)\
   Connect with developers, node operators, and the TACo team.

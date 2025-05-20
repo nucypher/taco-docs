@@ -3,7 +3,7 @@
 ## Getting Started
 
 * [Introduction to TACo](README.md)
-* [Quickstart (Testnet)](getting-started/quickstart-testnet.md)
+* [Quickstart (Testnet)](quickstart-testnet.md)
 
 ## For Developers
 

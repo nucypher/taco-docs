@@ -23,13 +23,13 @@ Install `taco` , `taco-auth`, and `ethers` with your favorite package manager:
 
 To run the code examples below, you will need the `ritualId` encryption parameter. **In production**, your wallet address (encryptor) will also have to be allow-listed for this specific ritual. Please reach out to us [here](https://discord.com/channels/866378471868727316/870383642751430666) to receive a `ritualId` and allow-list access.\
 \
-Additionally, we have [publicly available testnet rituals](../for-developers/taco-integration/get-started-with-tac.md#testnet-configuration) for use when developing your apps.
+Additionally, we have [publicly available testnet rituals](for-developers/taco-integration/get-started-with-tac.md#testnet-configuration) for use when developing your apps.
 
 ### 3. Define decryption condition and encrypt data
 
-With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.
+With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.&#x20;
 
-In this example, we will use our [`tapir` testnet](../get-started-with-tac.md#testnet-configuration), where you can freely use `ritualId = 6`; also, make sure your web3 provider is connected to Polygon Amoy.
+In this example, we will use our [`tapir` testnet](get-started-with-tac.md#testnet-configuration), where you can freely use `ritualId = 6`; A read-only connection to Polygon Amoy is required due to DKG Coordination contracts being stored there. The `signerProvider` is required to [authenticate](for-developers/references/authentication/) the Encryptor.
 
 <pre class="language-typescript"><code class="lang-typescript">import { initialize, encrypt, conditions, domains } from '@nucypher/taco';
 import { ethers } from "ethers";
@@ -44,19 +44,20 @@ const ownsNFT = new conditions.predefined.erc721.ERC721Ownership({
   chain: 11155111,  // sepolia
 });
 
-const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+const signerProvider = new ethers.providers.Web3Provider(window.ethereum);
+const polygonProvider = new ethers.providers.JsonRpcProvider("https://polygon-amoy.drpc.org");
 
 const message = "my secret message";
 const ritualId = 6
 
 // encrypt data
 const messageKit = await encrypt(
-<strong>  web3Provider,
+<strong>  polygonProvider,
 </strong><strong>  domains.TESTNET,
 </strong>  message,
   ownsNFT,
   ritualId,
-  web3Provider.getSigner() 
+  signerProvider.getSigner() 
 );
 </code></pre>
 
@@ -96,7 +97,7 @@ Since `ownsNFT` condition refers to an NFT owned by the _data consumer_, `decryp
 
 ### Next steps
 
-Learn more about using TACo in a sandboxed environment in the [Testnets](../for-developers/taco-integration/get-started-with-tac.md) section.
+Learn more about using TACo in a sandboxed environment in the [Testnets](for-developers/taco-integration/get-started-with-tac.md) section.
 
 ### Example applications
 

@@ -1,56 +1,71 @@
 # How TACo works
 
-## Sharing flow overview
+## Network Setup and Management
 
-Apps that have integrated the TACo SDK automatically interact with the [taco-web](https://github.com/nucypher/taco-web) encrypt/decrypt API. This connects end-users directly to TACo's network of distributed nodes – with no intermediaries.&#x20;
-
-In a typical flow, private data is encrypted client-side by a _data producer._ This data payload will remain encrypted until it reaches the device of a qualifying _data consumer_. From a privacy point of view, this is equivalent to the end-to-end encryption guarantees in a messaging app like Signal. However, TACo is general-purpose and can protect data flows in all types of applications, rather than being optimized for point-to-point textual communication.&#x20;
-
-Whether or not a _data consumer_ qualifies to decrypt and view a given data payload depends on whether they fulfill certain access conditions. These conditions are specified in advance by the producer or owner of that data, or programmed into the application logic on their behalf. For example, a journalist-facing app might predicate access to submitted evidence based on the proven location of the witness (out of harm's way). \
-\
-To access the data, a given _data consumer_ will have to (1) authenticate themselves and (2) present proof they fulfill the pre-specified conditions. Both are evaluated by a group of TACo nodes, each of which individually validates the data consumer's request by comparing it to retrieved web/web3 state. For example, if perishable health data should not be shared after a certain date, TACo nodes will simply read the UNIX epoch via Ethereum's `block.timestamp` value.&#x20;
-
-If a sufficient number (a 'threshold') of nodes confirm that the requesting _data consumer_ qualifies to see the data, they will send their device some key fragments. These fragments can be put together by the requestor client-side, which produces a decrypting key. This decrypting key can then be used to decrypt the original private data – or more often, a sym key which provides a lightweight conduit to the underlying payload.
-
-## Data sharing flow
-
-### 1. Distributed Key Generation&#x20;
+### Distributed Key Generation (DKG)
 
 <figure><img src="../.gitbook/assets/taco_dkg (2).png" alt=""><figcaption><p>Distributed Key Generation</p></figcaption></figure>
 
-We start from the _adopting developer_'s perspective – i.e. developers of an application that has integrated TACo. Stage 1 – Distributed Key Generation (DKG) – will assign the adopting developer the role of `cohortAuthority`. This grants the developer control over the group of nodes which enforce access control within their app, but no power to decrypt private data shared by their users.  `cohortAuthority` power is easily transferred to a multisig or DAO. &#x20;
+We start from the _adopting developer_'s perspective – i.e. developers of an application that has integrated TACo. The Distributed Key Generation (DKG) process assigns the adopting developer the role of `cohortAuthority`. This grants the developer control over the group of nodes which enforce access control within their app, but no power to decrypt private data shared by their users. `cohortAuthority` power is easily transferred to a multisig or DAO.
 
-Firstly, the `cohortAuthority` samples a group – or cohort – of nodes from the network. Typically a list of nodes to populate a cohort is generated using a replicable random seed, to prove later that the nodes were not hand-picked.&#x20;
+The `cohortAuthority` samples a group – or cohort – of nodes from the network. Typically a list of nodes to populate a cohort is generated using a replicable random seed, to prove later that the nodes were not hand-picked.
 
-The minimum cohort size is 30, and can be as large as 100.&#x20;
+The minimum cohort size is 30, and can be as large as 100.
 
-Sampled nodes will now conduct a DKG initialization ritual, which involves generating transcripts, aggregating transcripts locally, and cross-verifying the aggregates. If any node submits an incorrect entry, the DKG ritual fails and must start over. That implies that a minimum of one honest party is required at this stage to ensure the secret material is not spoofed.&#x20;
+Sampled nodes conduct a one-time DKG initialization ritual at network setup, which involves generating transcripts, aggregating those transcripts locally, and cross-verifying the aggregates. If any node submits an incorrect entry, the DKG ritual fails and must start over, requiring at least one honest party to ensure the secret material is not spoofed.
 
-DKG initializations generate private and public material. The public material is used to generate a persistent public key. The cohort holds onto their fragment of private material, which they will later provision to qualifying data consumers.&#x20;
+DKG initializations generate private and public material. The public material is used to generate a unified persistent public key. The cohort holds onto their fragment of private material, which they will later provision to qualifying data consumers.
 
-### **2. Encryption**&#x20;
+The unified public key will be used by data producers to encrypt data, while the private fragments of the private key will later be used by each node to provide each node's decryption share to the data consumer.
+
+### Cohort Management
+
+The TACo protocol includes mechanisms for managing node participation over time:
+
+- Node participation is secured through economic staking in the Threshold Network
+- Cohorts can rotate members according to predefined rules set by the `cohortAuthority`
+- The rotation rules can be tailored to balance security, availability, and decentralization needs
+- As applications evolve, cohort composition may change to meet new requirements
+
+## Data sharing flow
+
+### Sharing flow overview
+
+Apps that have integrated the TACo SDK automatically interact with the [taco-web](https://github.com/nucypher/taco-web) encrypt/decrypt API. This connects end-users directly to TACo's network of distributed nodes – with no intermediaries.
+
+In a typical flow, private data is encrypted client-side by a _data producer._ This data payload will remain encrypted until it reaches the device of a qualifying _data consumer_. From a privacy point of view, this is equivalent to the end-to-end encryption guarantees in a messaging app like Signal. However, TACo is general-purpose and can protect data flows in all types of applications, rather than being optimized for point-to-point textual communication.
+
+Whether or not a _data consumer_ qualifies to decrypt and view a given data payload depends on whether they fulfill certain access conditions. These conditions are specified in advance by the producer or owner of that data, or programmed into the application logic on their behalf. For example, a journalist-facing app might predicate access to submitted evidence based on the proven location of the witness (out of harm's way). \
+\
+To access the data, a given _data consumer_ will have to (1) authenticate themselves and (2) present proof they fulfill the pre-specified conditions. Both are evaluated by a group of TACo nodes, each of which individually validates the data consumer's request by comparing it to retrieved web/web3 state. For example, if perishable health data should not be shared after a certain date, TACo nodes will simply read the UNIX epoch via Ethereum's `block.timestamp` value.
+
+If a sufficient number (a 'threshold') of nodes confirm that the requesting _data consumer_ qualifies to see the data, they will send their device some key fragments. These fragments can be put together by the requestor client-side, which produces a decrypting key. This decrypting key can then be used to decrypt the original private data – or more often, a sym key which provides a lightweight conduit to the underlying payload.
+
+### **Encryption while specifying decryption-conditions**
 
 <figure><img src="../.gitbook/assets/taco_encryption.png" alt=""><figcaption><p>Encryption with Conditions</p></figcaption></figure>
 
-Switching to the _data producer_'s perspective – we want to encrypt and share some data. We first specify the conditions for accessing the data.
+From the _data producer_'s perspective, they want to encrypt and then share data. The data will be encrypted using the public key generated by the DKG. And along with the data, the producer specifies the conditions for accessing the data.
 
-For example, imagine the data producer is a creator on a decentralized Twitch, and wishes to create a paywall for a special livestream. They will only allow a viewer to decrypt the stream if they (a) hold a minimum number of a special purpose NFT, (b) they need to haves shared a previous stream-unlocking NFT with a friend, and (c) the stream will be non-decryptable by anyone after 24h. \
+For example, imagine the data producer is a creator on a decentralized Twitch, and wishes to create a paywall for a special livestream. They will only allow a viewer to decrypt the stream if they (a) hold a minimum number of a special purpose NFT, (b) they need to have shared a previous stream-unlocking NFT with a friend, and (c) the stream will be non-decryptable by anyone after 24h. \
 \
-All these conditions are composed into a `conditionSet`and embedded with the ciphertext, which is then delivered to recipients via a transport layer and/or uploaded to a storage layer.&#x20;
+All these conditions are composed into a `conditionSet` and embedded with the ciphertext (the encrypted content).
 
-### 3. Decryption&#x20;
+The distribution of the ciphertext to recipients via a transport system and/or upload to a storage system falls outside of TACo's scope.
+
+### **Condition-based Decryption**
 
 <figure><img src="../.gitbook/assets/cbd_decryption.png" alt=""><figcaption><p>Condition Fulfillment Decryption</p></figcaption></figure>
 
-Finally, switching to the _data consumer_'s perspective – their first step is to by retrieving the encrypted payload from storage or a transport layer.
+From the _data consumer_'s perspective, their first step is getting the encrypted payload from a storage or a transport system. However, this step is outside of TACo's scope.
 
-Next, the data consumer presents the payload to the cohort, along with whatever authentication message or proof is required to prove their identity. For example, the message can be as simple as a Sign In With Ethereum 'pass through', where the app has already authenticated the user.   \
+Next, the data consumer presents the payload to the cohort, along with whatever authentication message or proof is required to prove their identity. For example, the message can be as simple as a Sign In With Ethereum 'pass through', where the app has already authenticated the user. \
 \
-Then, each individual node verifies that the conditions are fulfilled by the data consumer – in our decentralized Twitch streamer example, this would involve retrieving on-chain state to check transaction history, NFT ownership, and blocktime. \
+Then, each individual node independently verifies that the conditions are fulfilled by the data consumer – in our decentralized Twitch streamer example, this would involve retrieving on-chain state to check transaction history, NFT ownership, and blocktime. \
 \
-If the threshold of nodes (e.e. 26-of-50) validates that the conditions for access are satisfied, then the private material – decryption fragments – are sent back to the data consumer. These are assembled  locally and used to decrypt the payload.&#x20;
+For each node that validates, if the conditions are met, a decryption fragment is provided to the consumer. Once a threshold of nodes (e.g., 26 of 50) has provided their fragments, the consumer can locally combine these fragments to decrypt the payload.
 
-Normally, the payload is a sym key that then decrypts the underlying data, via a KEM/DEM mechanism.  
+Normally, the payload is a symmetric key that then decrypts the underlying data, via a KEM/DEM mechanism.
 
 ## Key concepts
 
@@ -60,25 +75,25 @@ Under the hood, TACo involves splitting a joint secret – a decryption key – 
 
 ### **Conditionality**
 
-Conditions are 'attached' on a per-ciphertext basis. In other words, each and every payload, message or bit can be access-restricted by a unique set of specified conditions. A range of access condition types can be defined by the _adopting developer_ and/or _data producer_:&#x20;
+Conditions are 'attached' on a per-ciphertext basis. In other words, each and every payload, message or bit can be access-restricted by a unique set of specified conditions. A range of access condition types can be defined by the _adopting developer_ and/or _data producer_:
 
-* EVM-based\
-  &#xNAN;_&#x65;.g. Does the requester own a given NFT?_
-* RPC-driven\
-  &#xNAN;_&#x65;.g. Does the requester have at least X amount of a given token in their wallet?_
-* Time-based\
-  &#xNAN;_&#x65;.g. Has a predefined period elapsed, after which requests will be ignored?_
+- EVM-based\
+  _e.g. Does the requester own a given NFT?_
+- RPC-driven\
+  _e.g. Does the requester have at least X amount of a given token in their wallet?_
+- Time-based\
+  _e.g. Has a predefined period elapsed, after which requests will be ignored?_
 
-Conditions are composable and can be combined in any logical sequence or decision tree. For more on condition logic, check out the [Access Control](../conditions/) section.&#x20;
+Conditions are composable and can be combined in any logical sequence or decision tree. For more on condition logic, check out the [Access Control](../conditions/) section.
 
 ### **Network parameterization**
 
-In future versions, adopting developers (`cohortAuthority`) will have the option to tweak certain network-level parameters, which affect the collusion-resistance, redundancy, latency and costs of using TACo. These parameters mostly pertain to each cohort of nodes tasked with key material management and condition verification:&#x20;
+In future versions, adopting developers (`cohortAuthority`) will have the option to tweak certain network-level parameters, which affect the collusion-resistance, redundancy, latency and costs of using TACo. These parameters mostly pertain to each cohort of nodes tasked with key material management and condition verification:
 
-* The number of decrypting shares _n_\
-  i.e. the size of the cohort&#x20;
-* The frequency and/or business logic for replacing members of the cohort
-* The 'hand-chosen' node address that will always feature in the cohort
-* The sampling mechanism for selecting cohort members
+- The number of decrypting shares _n_\
+  i.e. the size of the cohort
+- The frequency and/or business logic for replacing members of the cohort
+- The 'hand-chosen' node address that will always feature in the cohort
+- The sampling mechanism for selecting cohort members
 
 This optionality can also be surfaced for end-users – for example, in the form of 'packages' that combine network-level parameters. End-users might choose between a few discrete options, based on their trust, risk and cost preferences.

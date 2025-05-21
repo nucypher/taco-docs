@@ -39,7 +39,7 @@ Whether or not a _data consumer_ qualifies to decrypt and view a given data payl
 \
 To access the data, a given _data consumer_ will have to (1) authenticate themselves and (2) present proof they fulfill the pre-specified conditions. Both are evaluated by a group of TACo nodes, each of which individually validates the data consumer's request by comparing it to retrieved web/web3 state. For example, if perishable health data should not be shared after a certain date, TACo nodes will simply read the UNIX epoch via Ethereum's `block.timestamp` value.
 
-If a sufficient number (a 'threshold') of nodes confirm that the requesting _data consumer_ qualifies to see the data, they will send their device some key fragments. These fragments can be put together by the requestor client-side, which produces a decrypting key. This decrypting key can then be used to decrypt the original private data – or more often, a sym key which provides a lightweight conduit to the underlying payload.
+If a sufficient number (a 'threshold') of nodes confirm that the requesting _data consumer_ qualifies to see the data, each will send a decryption fragment to the consumer. These fragments can be combined by the consumer on their client-side to produce the private data. This private data could be the actual content or, more commonly, a symmetric key that provides a lightweight method to access an underlying payload.
 
 ### **Encryption while specifying decryption-conditions**
 

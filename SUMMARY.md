@@ -3,6 +3,7 @@
 ## Getting Started
 
 * [Introduction to TACo](README.md)
+* [How TACo Works](getting-started/key-concepts.md)
 * [Quickstart (Testnet)](quickstart-testnet.md)
 
 ## For Developers
@@ -47,7 +48,6 @@
 ## For Product Leads
 
 * [Value Propositions](for-product-leads/value-propositions.md)
-* [How TACo Works](for-product-leads/key-concepts.md)
 * [Capabilities & Extensions](for-product-leads/capabilities-and-extensions.md)
 * [Use cases](for-product-leads/use-cases/README.md)
   * [Seed phrase recovery & transfer](for-product-leads/use-cases/seed-phrase-recovery-and-transfer.md)

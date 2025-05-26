@@ -4,6 +4,10 @@
 A version of this tutorial is also hosted in Ceramic's [documentation](https://developers.ceramic.network/docs/composedb/examples/taco-access-control).
 {% endhint %}
 
+{% hint style="warning" %}
+The Ceramic protocol network is currently offline, with no estimated time for restoration. As a result, this TACo-ComposeDB demo is currently non-functional.
+{% endhint %}
+
 This guide explains how to integrate TACo with [ComposeDB](https://developers.ceramic.network/docs/introduction/composedb-overview), a[ ](https://ceramic.network/)GraphQL-based data service from [Ceramic](https://ceramic.network/). TACo and Ceramic are mutually complementary components of the Web3 stack, both offering developers ‘Web 2.0’ functionality without compromising on decentralization.
 
 On completion of this tutorial, it will be possible to:

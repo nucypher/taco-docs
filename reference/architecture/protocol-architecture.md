@@ -6,194 +6,166 @@ TACo (Threshold Access Control) is a decentralized protocol that enables end-to-
 
 ## Architectural Overview
 
-TACo's architecture consists of three primary layers that work together to provide secure, decentralized access control:
+TACo's architecture consists of interconnected layers and components that work together to provide secure, decentralized access control:
 
-1. **Applications Layer** - Web and mobile applications that integrate with TACo
-2. **Application Integration Layer** - SDK and interfaces for developers to implement TACo functionality
-3. **Protocol Layer** - Core services and infrastructure for network operations
-4. **Cryptographic Layer** - Fundamental cryptographic operations enabling secure data access control
+- **Application Integration Layer** - SDK and interfaces for developers to implement TACo functionality
+- **Protocol Layer** - Core services and infrastructure for network operations
+- **Porter Service** - Protocol abstraction and gateway between applications and the node network
+- **Web3 Integration** - multiple components interacts with blockchain networks and other decentralized infrastructure
 
-These layers are not strictly hierarchical but rather interconnected systems that collaborate to achieve the protocol's objectives.
+These layers are not strictly hierarchical but rather interconnected systems that collaborate to achieve the protocol's objectives. Cryptographic operations are embedded throughout these layers to provide the security backbone of the protocol.
 
-## Core Functional Components
+## Architectural Component Structure
 
-### Cryptographic Layer
+### Protocol Operations Flow
 
-The cryptographic layer forms the security backbone of the entire protocol, enabling truly decentralized data control through four sequential operations:
+TACo's security model is built on a sequence of cryptographic operations distributed across the protocol components:
 
-#### 1. Distributed Key Generation (DKG)
+0. **Distributed Key Generation (DKG)** - One-time setup process that generates public encryption keys and distributes private fragments across nodes
 
-**One-time setup operation:**
+1. **Client-side Encryption** - Data producers encrypt content locally using the public key and specify access conditions
 
-- A cohort of 30-100 nodes participates in a DKG ritual during network initialization
-- Generates both public material (for encryption) and private key fragments (for later decryption)
-- Each node holds only its own fragment, with no single entity having complete key access
-- DKG happens only once at network setup, not periodically
+2. **Condition Verification & Fragment Generation** - Nodes independently verify conditions and provide decryption fragments when conditions are met
 
-#### 2. Encryption
+3. **Client-side Decryption** - Data consumers combine a threshold of fragments to decrypt content locally
 
-**Client-side operation by data providers:**
+This end-to-end encrypted approach ensures no single entity can access the data without meeting the specified conditions. The distribution of cryptographic operations across different actors provides security without centralized trust points.
 
-- Encryption is performed locally by data owners using the public key
-- Access conditions are cryptographically bound to the encrypted data
-- No server involvement is required for the encryption process
+For a detailed explanation of the end-to-end data sharing flow, including diagrams and examples, see [How TACo Works](../../getting-started/key-concepts.md).
 
-#### 3. Decryption Fragment Generation
+### Layer Components
 
-**Node-side condition verification:**
+TACo's architecture is composed of several layers, each with specific components that provide key functionality:
 
-- Nodes independently verify that access conditions have been met
-- When conditions are fulfilled, nodes generate partial decryption fragments
-- Fragments are securely transmitted to authorized requestors
+#### Application Integration Layer
 
-#### 4. Decryption
+This layer bridges applications with the TACo protocol through developer-friendly interfaces:
 
-**Client-side operation using collected fragments:**
+- **Client SDK (taco-web)**: Primary toolkit for developers to integrate TACo functionality
 
-- Data consumers collect threshold number of fragments (e.g., 26 of 50)
-- Local reconstruction combines fragments to recover the original data
-- The decryption process is entirely client-side, maintaining end-to-end security
+  - Provides encrypt/decrypt APIs and cross-platform support
+  - Streamlines implementation of complex cryptographic operations
+  - Handles encryption and decryption operations on the client-side
 
-### Protocol Layer
+- **Authentication Component**: Verifies identity through Web3 and OAuth methods
 
-The protocol layer manages the ongoing operation of the TACo network through several interconnected components:
+  - Manages Web3 signatures, SIWE messages, and/or OAuth flows
+  - Handles identity verification before processing decryption requests
+  - Provides secure authentication flow management
+
+- **Access Control Framework**: Enables programmable access policies
+
+  - Supports per-ciphertext access conditions
+  - Implements various condition types:
+    - **TimeCondition**: Time-based access using blockchain timestamps
+    - **RpcCondition**: Using RPC calls to Ethereum API
+    - **ContractCondition**: On-chain state and contract function calls
+    - **JsonApiCondition**: External API data sources
+    - **CompoundCondition**: Logical combinations (AND/OR/NOT)
+    - **Additional Conditions**: Extensible for custom verification logic
+
+- **Decryption Context Parameters Collection**: Manages parameters for decryption requests
+  - Collects necessary context parameters
+  - Secures transmission alongside ciphertext
+  - Validates parameter integrity
 
 #### Porter Service
 
-**Protocol abstraction and gateway:**
+Acts as a protocol abstraction and gateway layer:
 
 - Provides an interface between applications and the TACo node network
 - Simplifies protocol integration for developers
 - Can be self-hosted or used as a public service (similar to Infura for Ethereum)
 
-#### TACo Nodes Operations
+#### Protocol Layer
 
-**Core infrastructure management:**
+The protocol layer manages the ongoing operation of the TACo network:
 
-- **Registration & Staking**: Economic security layer for node participation
-- **DKG Rituals Participation**: Nodes participate in key generation triggered by Cohort Admin
-- **Verification & Operations**: Condition validation and partial decryption services
+- **TACo Node Client**: Manages core infrastructure operations
 
-#### Governance & Economics
+  - **Registration & Staking**: Economic security layer for node participation
+  - **DKG Participation**: One-time key generation process triggered by Cohort Admin
+  - **Condition Verification**: Independent validation of access conditions
+  - **Fragment Generation**: Creation of decryption shares when conditions are fulfilled
 
-**Network coordination and incentives:**
+- **Staking & Governance**: Coordinates network security
 
-- **Protocol Governance**: Parameter management through the Coordinator Contract
-- **Fee Collection**: Payment processing and distribution mechanisms
-- **Staking & Slashing**: Economic incentives to ensure node compliance and availability
-- **Cohort Authority Management**: Authority transfer and control mechanisms
+  - **Protocol Governance**: Parameter management for the protocol
+  - **Staking & Slashing**: Economic incentives to ensure node compliance
+  - **Node Monitoring**: System health verification
+  - **Economic Security**: On-chain management via smart contracts
 
-#### Ritual Management System
+- **Protocol Coordination**: Manages network orchestration
 
-**DKG administrative framework:**
+  - **Ritual Coordination**: Orchestrates node participation in DKG processes
+  - **RitualID Management**: Tracks unique identifiers for specific DKG rituals
+  - **Protocol Management**: Handles protocol-level activities with smart contract support
 
-- **RitualID Management**: Unique identifiers for specific DKG rituals
-- **Ritual Coordination**: Coordinating node participation in DKG processes
-- **Key Management**: Tracking public keys and threshold parameters
-- **Nodes Monitoring**: Health checks using dummy DKG rituals
+- **Economic Framework**: Handles payments and incentives
 
-#### Blockchain Integration
+  - **Fee Collection & Distribution**: Processing payments to node operators
+  - **Subscription Management**: User payment models and access tiers
+  - **Payment Infrastructure**: Financial transactions supported by on-chain mechanisms
 
-**On-chain components:**
+#### Web3 Integration
 
-- **Coordinator Contract**: Manages protocol coordination
-- **Staking Contract**: Handles node staking and security deposits
-- **Fee Management**: Processes payment and revenue distribution
+Connects TACo to blockchain networks and decentralized infrastructure:
 
-### Application Integration Layer
+- **Blockchain Verification**: Uses on-chain data for condition validation
+- **Blockchain Interactions**: Leverages blockchain infrastructure for governance and staking
+- **Decentralized Identity**: Incorporates Web3 signatures and SIWE messages
 
-This layer bridges applications with the TACo protocol through developer-friendly interfaces:
+### End-User Applications
 
-#### Client SDK (taco-web)
+TACo can integrate with various application types through the Application Integration Layer.
 
-**Application integration library:**
+## System Actors & Interaction Model
 
-- Primary toolkit for developers to integrate TACo functionality
-- Provides encrypt/decrypt APIs and cross-platform support
-- Streamlines implementation of complex cryptographic operations
+The TACo protocol architecture defines four primary actors who interact with the system in distinct ways:
 
-#### Authentication
-
-**Web3 signature processing:**
-
-- Requesting, collecting, and validating Web3 signatures
-- Identity verification before processing decryption requests
-- Secure authentication flow management
-
-#### Access Control Framework
-
-**Define decryption conditions:**
-
-- Enables programmable access policies on a per-ciphertext basis
-- Extensive condition types for flexible policy definition:
-  - **TimeCondition**: Time-based access using blockchain timestamps
-  - **RpcCondition**: Using RPC calls to Ethereum API
-  - **ContractCondition**: On-chain state and contract function calls
-  - **JsonApiCondition**: External API data sources
-  - **CompoundCondition**: Logical combinations (AND/OR/NOT)
-  - **Additional Conditions**: Extensible for custom verification logic
-
-### Applications Layer
-
-**End-user implementations:**
-
-- **Web Apps**: Browser-based applications leveraging TACo
-- **Mobile Apps**: Native or hybrid mobile applications
-
-## Actors & Use Cases
-
-The TACo ecosystem involves four primary actors interacting with the protocol in distinct ways:
-
-### Key Participants
+### Core System Actors
 
 - **Adopting Developer (Cohort Authority)**: Application developers who adopt TACo, configure network parameters, and manage node cohorts
 - **Data Producer**: Entities that encrypt data using TACo and define access conditions
 - **Data Consumer**: Users who request and decrypt data when they meet the specified conditions
 - **Node Operator**: Infrastructure providers who participate in DKG and provide decryption services
 
-### Core Use Cases
+### Protocol Interaction Patterns (UML Use Cases)
 
-#### Distributed Key Generation (DKG)
+TACo involves several key interaction patterns that define how actors engage with the protocol:
 
-- **Primary Actor**: Adopting Developer
-- **Supporting Actor**: Node Operator
-- **Description**: Initial setup process where a cohort generates public encryption keys and distributes private fragments
-- **Important Note**: DKG happens only once at network setup, not periodically
+- **Distributed Key Generation (DKG)** - One-time setup process for generating encryption keys
+- **Cohort Management** - Activities for managing node participation and parameters
+- **Data Encryption with Conditional Access** - Process for securing data with programmable access rules
+- **Conditional Data Decryption** - Workflow for accessing encrypted data when conditions are met
 
-#### Cohort Management
-
-- **Primary Actor**: Adopting Developer
-- **Description**: Activities related to managing node cohorts, including economic staking and parameter configuration
-
-#### Data Encryption with Conditional Access
-
-- **Primary Actor**: Data Producer
-- **Description**: Process of encrypting data locally using the public key and specifying precise access conditions
-
-#### Conditional Data Decryption
-
-- **Primary Actor**: Data Consumer
-- **Supporting Actor**: Node Operator
-- **Description**: Process involving condition verification, fragment provision, and client-side decryption
-
-For detailed descriptions of these use cases and actor interactions, see the [UML Use Case Diagram](./uml-usecase-diagram.md).
+For detailed descriptions of these interaction patterns, including primary actors, supporting actors, and full interaction flows, see the [UML Use Case Diagram](./uml-usecase-diagram.md) document.
 
 ## System Interconnections
 
 ### Layer Interactions
 
-The TACo protocol's effectiveness comes from the coordinated interactions between its layers:
+The TACo protocol's effectiveness comes from the coordinated interactions between its components:
 
-- **Applications → SDK**: End-user applications interact with the protocol through the Client SDK
-- **SDK → Porter → Nodes**: The SDK communicates with nodes either directly or through Porter gateway services
-- **Nodes ↔ Blockchain**: Node operations are coordinated and verified through on-chain contracts
-- **Cryptographic ↔ Node Operations**: Nodes participate in DKG and later provide decryption fragments
+- **Web Applications → SDK**: End-user applications interact with the protocol through the Client SDK
+- **SDK → Porter → Node Client**: The SDK communicates with nodes through Porter gateway services
+- **TACo System ↔ Web3**: The protocol integrates with blockchain networks for verification and coordination
+- **Node Client Operations**: Nodes participate in DKG and later provide decryption shares when conditions are met
 
 ### Data Flow Directions
 
-- **Top-down** protocol flow: From applications through integration layer to protocol services
-- **Top-down** cryptographic flow: From DKG through encryption, fragment generation, to decryption
+- **Application Integration Flow**: Web3 & Web2 applications connect to the TACo ecosystem through the Application Integration Layer (using the Client-SDK: taco-web)
+- **Layer Communication**: Components in the Application Integration Layer communicate with the Protocol Layer through Porter Service that abstracts and simplifies communication.
+- **Protocol Operations Flow**:
+  - DKG initialization (one-time setup by cohort authority)
+  - Local encryption by data producers
+  - Independent condition verification by nodes
+  - Fragment provision to qualifying data consumers
+  - Client-side decryption with threshold of fragments
 
 This interconnected architecture ensures that the TACo protocol maintains security and privacy without requiring trust in any central authority, while providing developers with flexible tools for implementing sophisticated access control systems.
 
-For a detailed explanation of information and operational flows, refer to the [Protocol Flow](./protocol-flow.md) document.
+**Learn More:**
+
+- For a detailed technical explanation of protocol operations, see the [Protocol Flow](./protocol-flow.md) document
+- For an end-to-end overview of how data moves through the TACo ecosystem, see [How TACo Works](../../getting-started/key-concepts.md)

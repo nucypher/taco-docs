@@ -15,6 +15,7 @@
 * [Ecosystem Integrations](for-developers/integrations/README.md)
   * [OrbisDB](for-developers/integrations/orbisdb.md)
   * [Waku](for-developers/integrations/waku.md)
+  * [Waku + Codex](for-developers/integrations/waku-+-codex.md)
   * [Irys](for-developers/integrations/irys.md)
   * [ComposeDB](for-developers/integrations/composedb.md)
   * [Turbo](for-developers/integrations/turbo.md)

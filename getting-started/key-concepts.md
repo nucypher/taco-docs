@@ -26,7 +26,7 @@ If a sufficient number (a 'threshold') of nodes confirm that the requesting _dat
 
 We start from the _adopting developer_'s perspective – i.e. the developers of an application that has integrated TACo. \
 \
-The first stage – a Distributed Key Generation initializaiton ritual – assigns the adopting developer the role of `cohortAuthority`. This grants the developer control over the group of nodes which enforce access control within their app, but no power to decrypt private data shared by their users.  Note that `cohortAuthority` power is easily transferred to a multisig or DAO. &#x20;
+The first stage – a Distributed Key Generation initialization ritual – assigns the adopting developer the role of `cohortAuthority`. This grants the developer control over the group of nodes which enforce access control within their app, but no power to decrypt private data shared by their users.  Note that `cohortAuthority` power is easily transferred to a multisig or DAO. &#x20;
 
 Firstly, the `cohortAuthority` samples a cohort of nodes from the network. Typically the list of nodes to populate a cohort is generated using a replicable random seed, to prove later that the nodes were not hand-picked. The minimum cohort size is 30, and can be as large as 100.&#x20;
 

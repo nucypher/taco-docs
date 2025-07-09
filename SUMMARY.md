@@ -83,4 +83,3 @@
   * [TACo Node Recovery](for-node-operators/operations/taco-node-recovery.md)
   * [Stake Authorization](for-node-operators/operations/stake-authorization.md)
 * [Duties, Compensation & Penalties](for-node-operators/duties-compensation-and-penalties.md)
-* [Run a Porter Instance](for-node-operators/run-a-porter-instance.md)

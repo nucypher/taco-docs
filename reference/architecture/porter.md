@@ -8,13 +8,13 @@ Its goal is to simplify and abstract the complexities surrounding the TACo proto
 
 <figure><img src="../../.gitbook/assets/porter_diagram (2).png" alt=""><figcaption></figcaption></figure>
 
-Any publicly available Porter can be used to interface with the Threshold Network, or some application developers opt to [run their own](../../for-node-operators/run-a-porter-instance.md).
+Any publicly available Porter instance can be used to interface with the TACo nodes, or some application developers opt to [run their own](https://github.com/nucypher/nucypher-porter).
 
 ## Public Porter Instances
 
-Public Porter instances are operated by centralized entities and have different security properties than user-operated instances. If you're interested in running your own Porter, see  [#running-a-porter-instance](porter.md#running-a-porter-instance "mention")
+Public Porter instances are operated by centralized entities and have different security properties than user-operated instances.
 
-To use the default Porter URIs in `taco`, run:
+To use the default Porter URIs in `taco`:
 
 ```typescript
 import { domains, getPorterUri } from '@nucypher/taco';

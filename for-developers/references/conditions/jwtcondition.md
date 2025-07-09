@@ -1,16 +1,17 @@
-# JWTCondition
+# JWT Conditions
 
 The `JWTCondition` validates [JSON Web Tokens (JWTs)](https://datatracker.ietf.org/doc/html/rfc7519) against a specified public key. It supports standard JWT claims like expiration time and "not before" time. This condition type enables integration with existing Web2 authentication and authorization services.
 
 The JWT standard's flexibility allows for various use cases, including:
-- DRM frameworks and platforms
-- Content distribution
-- Identity management
-- Access-controlled agentic workflows
+
+* DRM frameworks and platforms
+* Content distribution
+* Identity management
+* Access-controlled agentic workflows
 
 ## Centralization Considerations
 
-In Web2 environments, JWT issuers are typically trusted central authorities. The presence of _centralized issuance_ of JWTs does not impact the _decentralized verification_ of those JWTs by the TACo network, but it does have trust implications for the system as a whole. 
+In Web2 environments, JWT issuers are typically trusted central authorities. The presence of _centralized issuance_ of JWTs does not impact the _decentralized verification_ of those JWTs by the TACo network, but it does have trust implications for the system as a whole.\
 Conversely, in Web3 settings, TACo is fully compatible with decentralized JWT issuers – for example, those that leverage threshold digital signatures like threshold ECDSA. From a verification perspective, TACo remains agnostic to the token issuing environment or entity.
 
 ## Properties

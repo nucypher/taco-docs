@@ -229,7 +229,7 @@ const result = await decrypt(
 
 ## Using Waku + Codex + TACo in production
 
-_Waku_ is progressing towards a production-ready network, it is currently operating in a testnet-like environment.
+Waku is currently used to enable private communication in applications such as RAILGUN and Status. Research and development continue with their decentralized DoS protection protocol being trialed on testnet.
 
 _Codex_ is currently operating a public, non-incentivized testnet that is open to developers and contributors.
 

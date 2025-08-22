@@ -35,7 +35,7 @@ TACo supports three domains for different use cases:
       <td>TESTNET</td>
       <td>❌ No</td>
       <td>Amoy (80002)</td>
-      <td><strong>Ritual 6</strong>: 🟢 Open with no encryptor restrictions - Cohort 4-of-6</td>
+      <td><strong>Ritual 6</strong>: 🟢 Open with no encryptor restrictions - Cohort 3-of-5</td>
     </tr>
     <tr>
       <td>mainnet</td>
@@ -123,7 +123,7 @@ const decryptedMessage = await decrypt(
 **Connectivity:**
 
 - RPC URL: Use an RPC provider that is connected to Polygon Amoy (80002).
-- Monitoring Portal: [tapir status](https://tapir-2.nucypher.network:9151/status)
+- Monitoring Portal: [tapir status](https://tapir-3.nucypher.network:9151/status)
 
 **Rituals:**
 
@@ -166,7 +166,7 @@ const decryptedMessage = await decrypt(
 **Connectivity:**
 
 - RPC URL: Use an RPC provider that is connected to Polygon (137).
-- Monitoring Portal: Contact TACo team for production monitoring Portal
+- Monitoring Portal: Contact TACo team for production monitoring portal
 
 **Rituals:**
 

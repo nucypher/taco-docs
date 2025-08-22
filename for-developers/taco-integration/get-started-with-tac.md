@@ -1,4 +1,4 @@
-# TACo Domains
+# Get Started with TACo Domains
 
 {% hint style="warning" %}
 Testnets exist to help developers familiarize themselves with the taco-web API, and prototype an integration before deploying on TACo Mainnet. \
@@ -12,11 +12,40 @@ Hence, the trust assumptions are strictly worse than the Mainnet version, partic
 
 TACo supports three domains for different use cases:
 
-| Description                             | TACo Domain | Network Type | Production | Chain ID | Available Rituals                                                                                                                                                                                                              |
-| --------------------------------------- | ----------- | ------------ | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Bleeding-edge developer network         | lynx        | DEVNET       | ❌ No      | 80002    | **Ritual 27** (Cohort 2-of-3)<br/>🟢 **Open** - No encryptor restrictions<br/>_Any address can encrypt data_                                                                                                                   |
-| Stable testnet for current TACo release | tapir       | TESTNET      | ❌ No      | 80002    | **Ritual 6** (Cohort 4-of-6)<br/>🟢 **Open** - No encryptor restrictions<br/>_Any address can encrypt data_                                                                                                                    |
-| Production network                      | mainnet     | MAINNET      | ✅ Yes     | 137      | **No open rituals freely available**<br/>🔒 **Custom setup required**: Every dapp needs to have a custom ritual setup<br/>_Contact TACo team for ritual creation. You can reach on [Discord](http://discord.gg/buildwithtaco)_ |
+<table>
+  <thead>
+    <tr>
+      <th width="12%">TACo Domain</th>
+      <th width="12%">Network Type</th>
+      <th width="10%">Production</th>
+      <th width="15%">Chain (chain id)</th>
+      <th width="*">Open Rituals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>lynx</td>
+      <td>DEVNET</td>
+      <td>❌ No</td>
+      <td>Amoy (80002)</td>
+      <td><strong>Ritual 27</strong>: 🟢 Open with no encryptor restrictions - Cohort 2-of-3</td>
+    </tr>
+    <tr>
+      <td>tapir</td>
+      <td>TESTNET</td>
+      <td>❌ No</td>
+      <td>Amoy (80002)</td>
+      <td><strong>Ritual 6</strong>: 🟢 Open with no encryptor restrictions - Cohort 4-of-6</td>
+    </tr>
+    <tr>
+      <td>mainnet</td>
+      <td>MAINNET</td>
+      <td>✅ Yes</td>
+      <td>Polygon (137)</td>
+      <td>No open rituals freely available<br/>🔒 <strong>Custom setup required</strong> - <em><a href="http://discord.gg/buildwithtaco">Contact TACo team for ritual setup</a></em></td>
+    </tr>
+  </tbody>
+</table>
 
 {% hint style="info" %}
 **Open ritualID** refers to a DKG cohort & public key with no restrictions on encryptors – i.e. any device or address can use the public key to encrypt data. See the [encryptor allowlist](../references/encryptor-allowlist.md) section to learn more.
@@ -38,14 +67,14 @@ domains.MAINNET; // "mainnet" domain
 
 ## Domain Details
 
-### DEVNET Domain (lynx)
+### DEVNET Domain: `lynx`
 
 **Bleeding-edge developer network**
 
 - **Network Type:** DEVNET
 - **Production:** ❌ No
 - **Chain:** Polygon Amoy (80002) - Your provider needs to be connected to this chain.
-- **L1 Chain:** Sepolia (11155111) - For you, this is just a metadata field.
+- **L1 Chain:** Sepolia (11155111) - For you, this is just a metadata info.
 - **Status:** Testnet (Development) - May have breaking changes
 
 **Connectivity:**
@@ -81,14 +110,14 @@ const decryptedMessage = await decrypt(
 );
 ```
 
-### TESTNET Domain (tapir)
+### TESTNET Domain: `tapir`
 
 **Stable testnet for current TACo release** _(Recommended for development)_
 
 - **Network Type:** TESTNET
 - **Production:** ❌ No
 - **Chain:** Polygon Amoy (80002) - Your provider needs to be connected to this chain.
-- **L1 Chain:** Sepolia (11155111) - For you, this is just a metadata field.
+- **L1 Chain:** Sepolia (11155111) - For you, this is just a metadata info.
 - **Status:** Testnet (Stable) - Recommended for development and testing
 
 **Connectivity:**
@@ -124,14 +153,14 @@ const decryptedMessage = await decrypt(
 );
 ```
 
-### MAINNET Domain (mainnet)
+### MAINNET Domain: `mainnet`
 
 **Production network**
 
 - **Network Type:** MAINNET
 - **Production:** ✅ Yes
 - **Chain:** Polygon (137) - Your provider needs to be connected to this chain.
-- **L1 Chain:** Ethereum (1) - For you, this is just a metadata field.
+- **L1 Chain:** Ethereum (1) - For you, this is just a metadata info.
 - **Status:** Production - Requires custom ritual setup and payment
 
 **Connectivity:**
@@ -168,7 +197,7 @@ const decryptedMessage = await decrypt(
 ```
 
 {% hint style="warning" %}
-Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the trust assumptions [section](../../for-product-leads/trust-assumptions/).
+Both `lynx (DEVNET)` and `tapir (TESTNET)` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the trust assumptions [section](../../for-product-leads/trust-assumptions/).
 {% endhint %}
 
 ## Contracts

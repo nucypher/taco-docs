@@ -9,7 +9,7 @@
 ## For Developers
 
 * [Integrate TACo Into Apps](for-developers/taco-integration/README.md)
-  * [Testnets](for-developers/taco-integration/get-started-with-tac.md)
+  * [Get Started with TACo Domains](for-developers/taco-integration/get-started-with-tac.md)
   * [Mainnet Access](for-developers/taco-integration/mainnet-taco-beta-program.md)
   * [Mainnet Deployment](for-developers/taco-integration/deploying-to-mainnet.md)
 * [Ecosystem Integrations](for-developers/integrations/README.md)

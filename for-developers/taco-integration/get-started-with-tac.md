@@ -127,7 +127,7 @@ const decryptedMessage = await decrypt(
 
 **Rituals:**
 
-- **Ritual 6:** 🟢 Open | Cohort: 4-of-6 | No encryptor restrictions
+- **Ritual 6:** 🟢 Open | Cohort: 3-of-5 | No encryptor restrictions
 
 **Usage Example:**
 

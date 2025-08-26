@@ -1,48 +1,45 @@
 # Use Cases
 
-### Community Tipping Bots
+### Community Bot-Assisted Transactions&#x20;
 
-Community platforms use TACo's signing product to enable secure tipping transactions in messaging applications:
+Community platforms (e.g. a Discord server) leverage TACo, account abstraction, and specialized bots for secure member-to-member transactions .&#x20;
 
-* **Challenge**: Bot needs to sign transactions but shouldn't have unrestricted access to funds
-* **Solution**: Conditional signing that only allows transactions meeting specific criteria (amount limits, recipient validation, rate limiting)
-* **Benefits**: Users can tip each other through a bot without trusting it with full wallet access
-
-### Trading Agents and DeFi Automation
-
-Automated trading systems leverage conditional signing for secure trade execution:
-
-* **Challenge**: Trading bots need to execute trades but require safeguards against exploits
-* **Solution**: Conditions that validate trade parameters (slippage limits, approved tokens, maximum position sizes)
-* **Example**: A trading agent can only sign transactions that:
-  * Trade on approved DEXs
-  * Stay within position size limits
-  * Meet minimum return thresholds
-  * Execute during specific time windows
+* **Challenge**: User wants to tip another user without setting up their own wallet, nor trusting a Discord bot with unconstrained access to their funds.&#x20;
+* **Solution**: Conditional signing that only allows transactions that meet specific criteria – amount limits, recipient validation, rate limiting, etc.&#x20;
+* **Benefits**: Users can tip each other and manage their smart account from within their communication application via bot slash commands, with guardrails preventing errant or malicious transactions.&#x20;
 
 ### DAO Treasury Management
 
-Decentralized organizations use conditional signing for treasury operations:
+Decentralized organizations use TACo to automate and safeguard Treasury/DAO operations and transactions.
 
-* **Challenge**: Need multi-sig functionality with programmable conditions
-* **Solution**: Conditional signing with conditions based on governance votes or proposal states
-* **Benefits**: Automated execution of approved proposals without manual coordination
+* **Challenge**: DAO requires multisig functionality with programmable and governance-driven execution conditions, without requiring manual approvals at each vote or payroll event. &#x20;
+* **Solution**: Conditional signing with execution conditions based on election/governance/proposal/council outcomes and higher-level 'constitutional' guardrails.
+* **Benefits**: Automated and trust-minimized execution of approved transactions without manual coordination, signatory availability risk, or human error.&#x20;
+
+### Trading Agents and DeFi Automation
+
+Automated trading systems leverage TACo for safe and constrained trade execution.
+
+* **Challenge**: Trading bots need to execute trades but require safeguards against exploits, hallucinations, and illicit behavior.&#x20;
+* **Solution**: Conditions that validate trade parameters – slippage limits, approved tokens, maximum position sizes, etc.&#x20;
+* **Example**: A trading agent can only execute transactions that have been signed to confirm the proposed trade:&#x20;
+  * Is via approved DEXs.
+  * Is within position size limits.
+  * Meets minimum return thresholds.
+  * Executes during specific time windows.
 
 ### Gaming and NFT Platforms
 
-Gaming platforms use conditional signing for in-game transactions:
+Gaming platforms use TACo for in-game transactions.
 
-* **Challenge**: Players need transaction signing without exposing main wallets
-* **Solution**: Game-specific conditions that limit signing to valid game actions
-* **Example**: Sign only transactions that:
-  * Transfer game assets between players
-  * Stay within daily transaction limits
-  * Target verified game contracts
+* **Challenge**: Players need transaction signing without exposing their primary wallets.
+* **Solution**: Game-specific conditions that limit signing to valid game actions.
+* **Example**: A gaming application can only execute transactions that have been signed to confirm the proposed action falls into one of these categories:
+  * Transfer of game assets between validated players.
+  * Remains within daily transaction limits.
+  * Target/utilizes verified game contracts.
 
-### Cross-Chain Bridge Operations
 
-Bridges use multisig signing for secure cross-chain transfers:
 
-* **Challenge**: Need decentralized validation of bridge operations
-* **Solution**: Multiple validators collectively sign bridge transactions
-* **Benefits**: No single validator can compromise bridge security
+
+

@@ -30,9 +30,9 @@ Alternatively, integrators can implement their own verification logic:
 
 ### **Conditionality**
 
-Signing conditions are at the heart of TACo Action Control's utility. They can be used as safety mechanisms/guardrails, to program oracle logic, or to facilitate automation workflows.&#x20;
-
-There
+Signing conditions are at the heart of TACo Action Control's utility. They can be used as safety mechanisms/guardrails, to program oracle logic, or to facilitate automation workflows. \
+\
+Conditions are categorized as follows:&#x20;
 
 * [Signing Object Conditions](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md) \
   &#xNAN;_&#x45;xample:_ only sign the UserOperation if the transaction sum is < 0.1 ETH.&#x20;

@@ -1,14 +1,14 @@
 # Signing Object Conditions
 
 {% hint style="warning" %}
-TACo Threshold Signing functionality is currently in alpha and available only on the `DEVNET` environment.
+TACo Action Control functionality is currently in Alpha and only available in the `DEVNET` environment.
 {% endhint %}
 
-TACo supports validating specific fields within signing request objects before allowing a threshold signature. Two condition types are currently supported:
+Signing Object Conditions are a powerful way to validate 'internal' attributes of a transaction, request or attestation. For example, TACo Action Control nodes can only sign a UserOperation object if the proposed transaction involves whitelisted contract addresses. In general, TACo nodes are able to validate specific fields within signing request objects before collectively generating a threshold signature. Currently, two condition types are supported:
 
 ## `SigningObjectAttributeCondition`
 
-Validates a **simple attribute** on the signing object (e.g., a top-level field in the request object).
+Validatation of a **simple attribute**, such as a top-level field in the request object.
 
 It is composed of the following properties:
 
@@ -33,7 +33,7 @@ const gasLimitRestriction = new conditions.base.signing.SigningObjectAttributeCo
 
 ## `SigningObjectAbiAttributeCondition`
 
-Allows validation of ABI-encoded call data submitted for threshold signing (eg. `UserOperation` 's `callData`) using human readable ABI signatures. This is useful when the object to sign represents a function call (e.g. a smart contract interaction) and you want to enforce constraints on the function being called and its arguments.
+Validation of ABI-encoded call data submitted for threshold signing (eg. a `UserOperation` 's `callData`) using human readable ABI signatures. This is useful when the object to sign represents a function call (e.g. a smart contract interaction) and one wishes to enforce constraints on the function being called and its arguments.
 
 It is composed of the following properties:
 
@@ -66,9 +66,11 @@ Specifies how to validate an individual parameter within the ABI-encoded call.
 
 ### **Example**
 
-Only allow signing of a `UserOperation` for ERC-4337 if the `callData` field is trying to send an ERC-20 transfer of token at address `0x818E59818647700913Cf83f691dcC1b50Ac4864E` and an amount < `10000000000000000000` wei.&#x20;
+In this example, the authority wishes to constrain the threshold signing (and therefore execution) of a `UserOperation` for ERC-4337, such that TACo nodes will only produce signatures _if_ the UserOps `callData` field is attempting to:\
+(1) send an ERC-20 transfer of token at address `0x818E59818647700913Cf83f691dcC1b50Ac4864E` .\
+(2) send an amount < `10000000000000000000` WEI.&#x20;
 
-_Assume that the initial execution call data of the_ `UserOperation` _for the smart contract wallet uses_ `execute(address,uint256,bytes)`.
+Note: assume that the initial execution call data of the `UserOperation` for the smart contract wallet uses `execute(address,uint256,bytes)`.
 
 ```typescript
 import { conditions } from '@nucypher/taco';
@@ -109,7 +111,7 @@ const callDataRestriction = new conditions.base.signing.SigningObjectAbiAttribut
 });
 ```
 
-## Development References
+## Implementation References
 
 * Client-side:
   * [https://github.com/nucypher/taco-web/pull/670](https://github.com/nucypher/taco-web/pull/670)

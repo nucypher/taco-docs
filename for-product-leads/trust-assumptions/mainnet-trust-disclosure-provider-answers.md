@@ -9,7 +9,7 @@ This page serves as a proactive disclosure of the **TACo** application from a tr
 _Genesis_\
 Threshold nodes are primarily distinguishable by the staker's Ethereum address. As of February 2024, are [**43**](https://dune.com/embeds/3037106/5053569)[**9**](https://dune.com/embeds/3037106/5053569) distinct addresses that have activated a stake since the network's inception (in January 2022).
 
-TACo _cohorts_ – a group of nodes which provide the access control service to a single application or external project – have a minimum and default size of 30 members (each a node/server operated by a stakers). To reliably sample and generate distinct cohorts, TACo requires a total staker population least 60.\
+TACo _cohorts_ – a group of nodes which provide the cryptographic service to a single application or external project – have a minimum and default size of 30 members (each a node/server operated by a stakers). To reliably sample and generate distinct cohorts, TACo requires a total staker population least 60.\
 \
 As of February 2024, there are **95** nodes who have authorized stake to the TACo app and have spun up responsive and functioning TACo nodes.
 
@@ -35,10 +35,10 @@ Stakers are recruited through the Threshold community, which primarily lives on 
 \
 Stakers are mobilized to install the first or latest versions of the node client through announcements in the Threshold Discord server, and can check their node is active and running using the [Threshold Dashboard](https://dashboard.threshold.network/overview/network).
 
-TACo software automates much of the coordination burden for stakers. The node-facing client connects to the network, joins cohorts, runs a DKG initialization (and refresh) rituals, holds decryption fragments, receives requests for decryption, checks condition fulfillment, and provisions decryption material – all without any intervention from the staker. However, they (and the public) are privy to all the [code](https://github.com/nucypher/nucypher) that performs these automations, and can check their client code for any unexpected behavior.
+TACo software automates much of the coordination burden for stakers. The node-facing client connects to the network, joins cohorts, holds decryption fragments, hold signing keys, receives requests for decryption/signing, checks condition fulfillment, and provisions decryption material / signatures – all without any intervention from the staker. However, they (and the public) are privy to all the [code](https://github.com/nucypher/nucypher) that performs these automations, and can check their client code for any unexpected behavior.
 
 _Future Versions_\
-In later versions, TACo will charge an _action-based_ fee. As with the _availability-based_ fee, it will likely be converted into T before distribution, and further the incentive to follow the protocol and provide a reliable/secure service. More detail on this fee model can be found on the [Fees](../mainnet-fees.md) page.
+In later versions, TACo will charge an _action-based_ fee. As with the _availability-based_ fee, it will likely be converted into T before distribution, and further the incentive to follow the protocol and provide a reliable/secure service. More detail on this fee model can be found on the [Fees](../../mainnet-fees.md) page.
 
 ### E**ntities with disproportionate power**
 
@@ -49,13 +49,13 @@ Threshold's DAO is a token-holder DAO, meaning that anyone who holds the T token
 
 There are DAO attacks of various sophistication, but the general rule is that token-holder interests are aligned by a shared interest and exposure to the value of the T token. Given that all votes occur transparently, it's very hard to surreptitiously profit from a DAO attack that has to be orchestrated in public.
 
-With respect to TACo, there is no direct way for the DAO to compromise the end-to-end encryption protecting end-user data payloads. The most obvious attack would be to withhold staker compensation unless a threshold of stakers colluded to decrypt a target payload. However, this is likely to be ineffective, as executing the threat would require a public and drawn-out vote, which would almost certainly tank the value of the withheld funds. This would harm the attacker(s) and considerably blunt the threat.
+With respect to TACo, there is no direct way for the DAO to compromise the end-to-end cryptography protecting end-users. The most obvious attack would be to withhold staker compensation unless a threshold of stakers colluded to decrypt or sign a target payload. However, this is likely to be ineffective, as executing the threat would require a public and drawn-out vote, which would almost certainly tank the value of the withheld funds. This would harm the attacker(s) and considerably blunt the threat.
 
 The more trustful constituent in the DAO is the Threshold Council, a multisig that is comprised of 9 elected individuals, voted in every 6 months. Although they cannot unilaterally make changes to economic parameters, a threshold (6-of-9) can veto proposals, and could theoretically hold the network hostage. This is a slightly more realistic scenario during genesis with respect to fees (as opposed to rewards), because TACo launches without a fee distribution mechanism in place, and the Council could repeatedly block the relevant update.
 
 In terms of the software itself, the Council also has control over several upgradeable application [contracts](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/TACoApplication.sol) (e.g. Polygon child application). Although this power means the Council could push an update that prevent TACo from working, they cannot force adopting developers into downloading a client that unlawfully decrypts user data, and certainly not do so surreptitiously.\
 \
-\&#xNAN;_Future_\
+&#xNAN;_&#x46;uture_\
 The Threshold Council may be expanded, discontinued or have the scope of its powers reduced in order to minimize the attack surface via this weaker, more centralized component of Threshold Governance.
 
 ### I**nfrastructural and software-related centralization**
@@ -66,7 +66,7 @@ _Genesis_\
 The primary conduit to the Threshold network to access TACo services is via [_Porter_](../../reference/architecture/porter.md)_:_
 
 * Porter is an intermediary gateway to the Threshold network. Adopters specify a Porter URI of their choice.
-* Porter cannot decrypt private data, as the data remains end-to-end encrypted through the Porter stage of an access request. However, Porter can theoretically block requests.
+* Porter cannot view decryption/signing requests as the data remains end-to-end encrypted through the Porter stage of the request. However, Porter can theoretically block requests.
 * The NuCypher team runs a permanent Porter instance, but it is entirely [open source](https://github.com/nucypher/nucypher-porter). Threshold encourages TACo's adopting developers to spin up their own Porter, if that improves the trust burden – this depends on the unique trust assumptions of their use case(s).
 
 The default API is a web-oriented API written in Typescript ([taco-ts](https://github.com/nucypher/taco-web)).
@@ -81,7 +81,7 @@ _Future Versions_\
 #### How does the infrastructure provider connect to the Ethereum network (or alternative base layer)?
 
 _Genesis_\
-TACo is built as a multi-chain protocol, but at genesis supports conditions hosted on Ethereum & Polygon Mainnets.For connections to these networks, Threshold stakers are encouraged to run their own corresponding Ethereum and Polygon nodes. However, the majority make use of a convenient Web3 provider such as [Infura](https://www.infura.io/) or [Alchemy](https://www.alchemy.com/).
+TACo is built as a multi-chain protocol, but at genesis supports conditions hosted on Ethereum & Polygon Mainnets. For connections to these networks, Threshold stakers are encouraged to run their own corresponding Ethereum and Polygon nodes. However, the majority make use of a convenient Web3 provider such as [Infura](https://www.infura.io/) or [Alchemy](https://www.alchemy.com/).
 
 The risk of Infura deliberately blocking requests from TACo nodes is very low. However, access gated by ERC-721 tokens (NFTs) is particularly dependent on Web3 providers, and vulnerable to\
 intermediary modification of an Ethereum node's response. Some cohorts will contain a threshold of nodes that use the same provider, meaning that an orchestrated modified response would be accepted by the cohort.

@@ -8,6 +8,7 @@ The foundation of the TACo trust model – and much of threshold cryptography in
 
 1. Collectively generate and manage part of a public key that can be used to encrypt one or more data payloads.&#x20;
 2. Collectively manage a decryption fragment associated with a single data payload and provide the fragment to requesters who fulfill pre-specified conditions.
+3. Collective manage s signing key used for generating signatures for signing requests
 
 All Cohorts are parametrized on formation, including the Cohort _size_ (`n`) and Cohort _threshold_ (`m`). These parameters are the inputs for the following core trust assumptions:&#x20;
 
@@ -29,7 +30,7 @@ Therefore, the mechanisms through which nodes are selected to form Cohorts carry
 
 #### (1) Node replacement
 
-Members of a Cohort of nodes are replaceable, with the main friction being the cost of gas to coordinate a DKG ritual, and to a lesser extent the bandwidth overhead of key discovery. Additionally, replaced TACo nodes do not automatically delete their decryption material, and therefore replacing nodes can theoretically expand the collusion surface. This problem is being addressed through R\&D into 'credible forgetability', and will require node clients to be more stateful. Therefore, early versions of TACo, node replacement will only occur in an emergency and sparingly as possible, as it is still too expensive and risky to be freely executed. \
+Members of a Cohort of nodes are replaceable, with the main friction being the cost of gas to coordinate a cohort formation, and to a lesser extent the overhead of providing verifiable cryptographic components discovery. Additionally, in the case of decryption, replaced TACo nodes do not automatically delete their decryption material, and therefore replacing nodes can theoretically expand the collusion surface. This problem is being addressed through R\&D into 'credible forgetability', and will require node clients to be more stateful. Therefore, early versions of TACo, node replacement will only occur in an emergency and sparingly as possible, as it is still too expensive and risky to be freely executed. \
 \
 In later versions, replacing and re-sampling Cohort members could provide increased collusion-resistance, as an attacker would have less time to discover, contact, and bribe or coerce the requisite threshold of nodes in order to access sensitive material.&#x20;
 

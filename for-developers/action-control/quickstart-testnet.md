@@ -2,7 +2,7 @@
 
 ## Quickstart Guide (Testnet)
 
-The TACo SDK allows you to implement conditional signing for ERC-4337 UserOperations. In just a few minutes, you'll be able to:
+The TACo SDK allows you to implement conditional signing for [ERC-4337](https://www.erc4337.io/) (a.k.a _Account Abstraction_) UserOperations. In just a few minutes, you'll be able to:
 
 * **Define signing conditions** – Specify rules that must be fulfilled before UserOperations can be signed
 * **Request signatures** – Get signatures from the decentralized network when conditions are met

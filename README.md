@@ -4,11 +4,11 @@ description: End-to-end Encrypted. End-to-end Secured. End-to-end Decentralized.
 
 # Introduction to TACo
 
-{% embed url="https://taco.build" %}
-
 TACo (**T**hreshold **A**ccess/**Action** **Co**ntrol) is a decentralized cryptographic infrastructure layer that enforces policies over who can (1) **access** or (2) **act on** sensitive data. TACo's array of independently-controlled nodes collectively validate that pre-specified conditions are satisfied, before providing the decryption material or signature for subsequent access or action respectively. Hence cryptographic operations are secured and executed without relying on centralized servers or trusted intermediaries.\
 \
 TACo empowers the end-user to fully control who accesses their data, who obtains cryptographic signatures, how, and when – all without single points of failure or trust burdens.
+
+{% embed url="https://taco.build" %}
 
 ### **I'm interested in..**
 

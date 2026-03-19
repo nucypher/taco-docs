@@ -12,7 +12,9 @@ This guide walks through a complete encrypt → decrypt flow in Node.js. Unlike 
 A full working example lives in the taco-web repo: [`examples/taco/nodejs`](https://github.com/nucypher/taco-web/tree/main/examples/taco/nodejs)
 {% endhint %}
 
-### 1. Installation
+{% stepper %}
+{% step %}
+## Install dependencies
 
 ```bash
 npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
@@ -21,16 +23,18 @@ npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
 {% hint style="warning" %}
 TACo currently requires **ethers v5**. If you're using ethers v6, you'll need to install v5 alongside it or use the v5 compatibility layer.
 {% endhint %}
+{% endstep %}
 
-### 2. Configuration
+{% step %}
+## Configure provider, domain, and ritual ID
 
 You'll need three things:
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| **RPC URL** | A Polygon Amoy RPC endpoint | This reads DKG coordination contracts — it's **not** your application's chain. Any public Amoy RPC works (e.g. `https://polygon-amoy.drpc.org`). |
+| **RPC URL** | A Polygon Amoy RPC endpoint | This reads DKG coordination contracts — it's **not** your application's chain. Any public Amoy RPC works. |
 | **Ritual ID** | `6` (for TAPIR testnet) | See the [testnets](../get-started-with-tac.md#threshold-decryption) page for other environments. |
-| **Private keys** | Two test wallets | One for the encryptor, one for the consumer. These can be any Ethereum wallets — no testnet funds required. |
+| **Private keys** | Two test wallets | One for the encryptor, one for the consumer. Any Ethereum wallets — no testnet funds required. |
 
 ```typescript
 import { ethers } from 'ethers';
@@ -45,8 +49,10 @@ const provider = new ethers.providers.JsonRpcProvider(
 const domain = domains.TESTNET;  // "tapir"
 const ritualId = 6;
 ```
+{% endstep %}
 
-### 3. Encrypt
+{% step %}
+## Encrypt data
 
 ```typescript
 import { conditions, encrypt, initialize, toBytes } from '@nucypher/taco';
@@ -82,8 +88,10 @@ const encryptedBytes = messageKit.toBytes();
 {% hint style="warning" %}
 **Do not JSON-serialize `ThresholdMessageKit` directly** — it uses a custom binary format. Always use `.toBytes()` for serialization and `ThresholdMessageKit.fromBytes()` for deserialization. If you need to store it in JSON, encode the bytes as base64 or hex first.
 {% endhint %}
+{% endstep %}
 
-### 4. Decrypt
+{% step %}
+## Decrypt data
 
 ```typescript
 import {
@@ -129,17 +137,63 @@ const decryptedBytes = await decrypt(
 const decryptedMessage = fromBytes(decryptedBytes);
 console.log(decryptedMessage); // "my secret message"
 ```
+{% endstep %}
+{% endstepper %}
 
-### Key differences from browser usage
+## Key differences from browser usage
 
-| Concern | Browser | Node.js |
-|---------|---------|---------|
-| **Provider** | `new ethers.providers.Web3Provider(window.ethereum)` | `new ethers.providers.JsonRpcProvider(rpcUrl)` |
-| **Signer** | `provider.getSigner()` (MetaMask popup) | `new ethers.Wallet(privateKey)` |
-| **SIWE auth** | Domain/URI inferred from page | Must pass `{ domain, uri }` explicitly |
-| **Serialization** | Often stays in memory | Use `messageKit.toBytes()` / `ThresholdMessageKit.fromBytes()` |
+{% tabs %}
+{% tab title="Provider" %}
+**Browser:**
+```typescript
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+```
 
-### Next steps
+**Node.js:**
+```typescript
+const provider = new ethers.providers.JsonRpcProvider('https://polygon-amoy.drpc.org');
+```
+{% endtab %}
+
+{% tab title="Signer" %}
+**Browser:**
+```typescript
+const signer = provider.getSigner(); // MetaMask popup
+```
+
+**Node.js:**
+```typescript
+const signer = new ethers.Wallet('<PRIVATE_KEY>');
+```
+{% endtab %}
+
+{% tab title="SIWE Auth" %}
+**Browser:** Domain and URI inferred from page origin.
+```typescript
+const authProvider = new EIP4361AuthProvider(provider, signer);
+```
+
+**Node.js:** Must pass `{ domain, uri }` explicitly.
+```typescript
+const authProvider = new EIP4361AuthProvider(provider, signer, {
+  domain: 'localhost',
+  uri: 'http://localhost:3000',
+});
+```
+{% endtab %}
+
+{% tab title="Serialization" %}
+**Browser:** `messageKit` often stays in memory.
+
+**Node.js:** Use binary serialization for storage or transmission.
+```typescript
+const bytes = messageKit.toBytes();
+const restored = ThresholdMessageKit.fromBytes(bytes);
+```
+{% endtab %}
+{% endtabs %}
+
+## Next steps
 
 * Browse all [condition types](../taco-sdk/references/conditions/) to define more complex access rules
 * See the [full Node.js example](https://github.com/nucypher/taco-web/tree/main/examples/taco/nodejs) in the taco-web repo

@@ -72,12 +72,12 @@ We can create more complex conditions by combining them with `CompoundCondition`
 ```typescript
 import { conditions } from '@nucypher/taco';
 
-const conditions = new conditions.compound.CompoundCondition({
-  operator: 'and'
+const combined = new conditions.compound.CompoundCondition({
+  operator: 'and',
   operands: [
-    NFTOwnership,
+    ownsNFT,
     // Other conditions can be added here
-  ]
+  ],
 });
 ```
 

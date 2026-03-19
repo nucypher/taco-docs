@@ -103,6 +103,27 @@ const messageKit = await encrypt(
 
 The resulting `messageKit` contains the encrypted data and associated conditions.
 
+#### Serializing the messageKit
+
+If you need to store or transmit the encrypted data, use the binary serialization methods:
+
+```typescript
+import { ThresholdMessageKit, toHexString } from '@nucypher/taco';
+
+// Serialize to bytes
+const encryptedBytes = messageKit.toBytes();
+
+// For JSON storage, convert to hex or base64
+const hexString = toHexString(encryptedBytes);
+
+// Later, deserialize
+const restored = ThresholdMessageKit.fromBytes(encryptedBytes);
+```
+
+{% hint style="warning" %}
+**Do not use `JSON.stringify()` on a `ThresholdMessageKit`** — it uses a custom binary format that JSON serialization will corrupt. Always use `.toBytes()` and `ThresholdMessageKit.fromBytes()`.
+{% endhint %}
+
 ### 4. Request decryption
 
 Finally, we will test the conditional access control service by requesting decryption:
@@ -144,7 +165,7 @@ Note that the requester does not need to manually sign the next time they seek a
 This is the complete, end-to-end example of `taco` integration
 
 ```typescript
-import { encrypt, decrypt, conditions, domains, initialize  } from '@nucypher/taco';
+import { encrypt, decrypt, conditions, domains, initialize, toBytes  } from '@nucypher/taco';
 import { EIP4361AuthProvider, USER_ADDRESS_PARAM_DEFAULT } from '@nucypher/taco-auth';
 import { ethers } from "ethers";
 
@@ -163,8 +184,9 @@ const doEncrypt = async (message) => {
       ownsNFT,
       ritualId,
       web3Provider.getSigner()
-  )
-  return messageKit
+  );
+  return messageKit;
+};
 
 // The data recipient runs this part
 const doDecrypt = async (messageKit) => {

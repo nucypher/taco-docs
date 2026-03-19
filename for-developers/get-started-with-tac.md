@@ -28,6 +28,28 @@ We encourage you to use the `TESTNET` domain for developing TACo-based apps, and
 Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setting. Testnet domains have no trust minimization or stability guarantees, which makes them unfit for production or real-world data payloads. Learn more about this in the trust assumptions [section](../for-product-leads/trust-assumptions/).
 {% endhint %}
 
+## Quick reference
+
+Copy-paste these values to get started immediately:
+
+```typescript
+import { domains } from '@nucypher/taco';
+
+// TAPIR (stable testnet) — recommended for development
+const domain = domains.TESTNET;
+const ritualId = 6;  // Open ritual, no encryptor allowlist needed
+
+// Provider must connect to Polygon Amoy (where DKG contracts live)
+// This is NOT your application's chain — it's TACo infrastructure
+const provider = new ethers.providers.JsonRpcProvider(
+  'https://polygon-amoy.drpc.org'  // Any Amoy RPC works
+);
+```
+
+{% hint style="warning" %}
+The `provider` passed to `encrypt()` and `decrypt()` reads DKG coordination contracts on the L2 chain (Polygon Amoy for testnets, Polygon for mainnet). It does **not** determine which chains your conditions can target — conditions can reference any supported EVM chain regardless of which L2 the DKG contracts live on.
+{% endhint %}
+
 ## Testnet configuration
 
 ### Threshold Decryption

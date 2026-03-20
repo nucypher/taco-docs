@@ -37,6 +37,10 @@ For this guide, we'll need a few extra packages:
 yarn add ethers@5.7.2 @metamask/detect-provider
 ```
 
+{% hint style="warning" %}
+TACo currently requires **ethers v5**. The API is not compatible with ethers v6. If your project uses ethers v6, install v5 alongside it.
+{% endhint %}
+
 To use `taco`, we have to call `initialize` method first. This method takes care of initializing the WASM module for `taco` dependencies.
 
 ```typescript

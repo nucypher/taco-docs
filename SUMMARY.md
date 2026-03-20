@@ -12,6 +12,7 @@
 * [Testnets](for-developers/get-started-with-tac.md)
 * [Access Control](for-developers/access-control/README.md)
   * [Quickstart (Testnet)](for-developers/access-control/quickstart-testnet.md)
+  * [Quickstart — Node.js (Testnet)](for-developers/access-control/quickstart-nodejs.md)
   * [Integrate Into Apps](for-developers/access-control/taco-integration/README.md)
     * [Encryptor Allowlist](for-developers/access-control/taco-integration/encryptor-allowlist.md)
   * [Ecosystem Integrations](for-developers/access-control/integrations/README.md)

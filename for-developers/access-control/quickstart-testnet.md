@@ -20,7 +20,7 @@ Install `taco` , `taco-auth`, and `ethers` with your favorite package manager:
 </strong></code></pre>
 
 {% hint style="warning" %}
-TACo currently requires **ethers v5**. The API is not compatible with ethers v6 (`ethers.BrowserProvider`, `ethers.JsonRpcProvider` without the `providers` namespace, etc.). If your project uses ethers v6, install v5 alongside it.
+TACo currently requires **ethers v5**. The API is not compatible with ethers v6 (`ethers.BrowserProvider`, `ethers.JsonRpcProvider` without the `providers` namespace, etc.).
 {% endhint %}
 
 ### 2. Configuration

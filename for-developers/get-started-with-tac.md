@@ -30,7 +30,7 @@ Both `DEVNET` and `TESTNET` domains are unsuitable for use in a production setti
 
 ## Quick reference
 
-Copy-paste these values to get started immediately:
+Copy-paste these values to get started immediately. These examples use **ethers v5** (`npm install ethers@5.7.2`), which TACo currently requires.
 
 {% tabs %}
 {% tab title="TAPIR (recommended)" %}

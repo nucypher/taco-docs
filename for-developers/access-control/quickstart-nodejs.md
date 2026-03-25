@@ -21,7 +21,7 @@ npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
 ```
 
 {% hint style="warning" %}
-TACo currently requires **ethers v5**. If you're using ethers v6, you'll need to install v5 alongside it or use the v5 compatibility layer.
+TACo currently requires **ethers v5**. The API is not compatible with ethers v6. If your project uses ethers v6, you must use `ethers@5.7.2` for TACo integration.
 {% endhint %}
 {% endstep %}
 
@@ -55,13 +55,14 @@ const ritualId = 6;
 ## Encrypt data
 
 ```typescript
-import { conditions, encrypt, initialize, toBytes } from '@nucypher/taco';
+import { conditions, encrypt, initialize } from '@nucypher/taco';
+import { ethers } from 'ethers';
 
 await initialize();
 
 // Any condition works — here's a simple balance check
 const hasBalance = new conditions.base.rpc.RpcCondition({
-  chain: 80002,  // Polygon Amoy (condition evaluation chain, not the DKG chain)
+  chain: 80002,  // Polygon Amoy — the chain where this condition is evaluated (can be any supported chain)
   method: 'eth_getBalance',
   parameters: [':userAddress', 'latest'],
   returnValueTest: {
@@ -98,14 +99,13 @@ import {
   ThresholdMessageKit,
   conditions,
   decrypt,
-  domains,
-  fromBytes,
   initialize,
 } from '@nucypher/taco';
 import {
   EIP4361AuthProvider,
   USER_ADDRESS_PARAM_DEFAULT,
 } from '@nucypher/taco-auth';
+import { ethers } from 'ethers';
 
 await initialize();
 
@@ -134,7 +134,7 @@ const decryptedBytes = await decrypt(
   conditionContext,
 );
 
-const decryptedMessage = fromBytes(decryptedBytes);
+const decryptedMessage = new TextDecoder().decode(decryptedBytes);
 console.log(decryptedMessage); // "my secret message"
 ```
 {% endstep %}

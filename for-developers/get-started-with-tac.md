@@ -66,7 +66,7 @@ const provider = new ethers.providers.JsonRpcProvider(
 {% endtabs %}
 
 {% hint style="warning" %}
-The `provider` passed to `encrypt()` and `decrypt()` reads DKG coordination contracts on the L2 chain (Polygon Amoy for testnets, Polygon for mainnet). It does **not** determine which chains your conditions can target — conditions can reference any supported EVM chain regardless of which L2 the DKG contracts live on.
+The `provider` configured above reads DKG coordination contracts on the L2 chain (Polygon Amoy for testnets, Polygon for mainnet). It is required by `encrypt()` and can also be used with `decrypt()`. In browser contexts, `decrypt()` typically uses a `Web3Provider` connected to the user's wallet instead. Neither provider determines which chains your conditions can target — conditions can reference any supported EVM chain.
 {% endhint %}
 
 ## Testnet configuration

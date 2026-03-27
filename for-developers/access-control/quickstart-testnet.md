@@ -19,6 +19,10 @@ Install `taco` , `taco-auth`, and `ethers` with your favorite package manager:
 <pre class="language-bash"><code class="lang-bash"><strong>$ npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
 </strong></code></pre>
 
+{% hint style="warning" %}
+TACo currently requires **ethers v5**. The API is not compatible with ethers v6 (`ethers.BrowserProvider`, `ethers.JsonRpcProvider` without the `providers` namespace, etc.).
+{% endhint %}
+
 ### 2. Configuration
 
 To run the code examples below, you will need the `ritualId` encryption parameter. **In production**, your wallet address (encryptor) will also have to be allow-listed for this specific ritual. Please reach out to us [here](https://discord.com/channels/411401661714792449/1344417143659171991) to receive a `ritualId` and allow-list access.\
@@ -29,7 +33,13 @@ Additionally, we have [publicly available testnet rituals](../get-started-with-t
 
 With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.&#x20;
 
-In this example, we will use our [`tapir` testnet](../get-started-with-tac.md#threshold-decryption), where you can freely use `ritualId = 6`; A read-only connection to Polygon Amoy is required due to DKG Coordination contracts being stored there. The `signerProvider` is required to [authenticate](../taco-sdk/references/authentication/) the Encryptor.
+In this example, we will use our [`tapir` testnet](../get-started-with-tac.md#threshold-decryption), where you can freely use `ritualId = 6`.
+
+{% hint style="info" %}
+The `polygonProvider` below connects to **Polygon Amoy** — this is where TACo's DKG coordination contracts live. It is **not** your application's chain provider. Your conditions can still target any supported EVM chain (Ethereum, Sepolia, etc.) regardless of this provider.
+{% endhint %}
+
+The `signerProvider` is required to [authenticate](../taco-sdk/references/authentication/) the Encryptor.
 
 <pre class="language-typescript"><code class="lang-typescript">import { initialize, encrypt, conditions, domains } from '@nucypher/taco';
 import { ethers } from "ethers";

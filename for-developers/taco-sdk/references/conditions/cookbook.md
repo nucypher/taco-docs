@@ -46,12 +46,15 @@ Decryption is allowed only after the latest block on Polygon has a timestamp gre
 
 ```json
 {
-  "conditionType": "time",
-  "chain": 137,
-  "method": "blocktime",
-  "returnValueTest": {
-    "comparator": ">",
-    "value": 1735689600
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "time",
+    "chain": 137,
+    "method": "blocktime",
+    "returnValueTest": {
+      "comparator": ">",
+      "value": 1735689600
+    }
   }
 }
 ```
@@ -62,13 +65,16 @@ Allow if the requester holds at least 0.1 ETH on Ethereum mainnet.
 
 ```json
 {
-  "conditionType": "rpc",
-  "chain": 1,
-  "method": "eth_getBalance",
-  "parameters": [":userAddress", "latest"],
-  "returnValueTest": {
-    "comparator": ">=",
-    "value": 100000000000000000
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "rpc",
+    "chain": 1,
+    "method": "eth_getBalance",
+    "parameters": [":userAddress", "latest"],
+    "returnValueTest": {
+      "comparator": ">=",
+      "value": 100000000000000000
+    }
   }
 }
 ```
@@ -81,15 +87,18 @@ Require at least 1000 USDC (6 decimals) on Base.
 
 ```json
 {
-  "conditionType": "contract",
-  "chain": 8453,
-  "contractAddress": "0xUSDC_ADDRESS_ON_BASE",
-  "standardContractType": "ERC20",
-  "method": "balanceOf",
-  "parameters": [":userAddress"],
-  "returnValueTest": {
-    "comparator": ">=",
-    "value": 1000000000
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "contract",
+    "chain": 8453,
+    "contractAddress": "0xUSDC_ADDRESS_ON_BASE",
+    "standardContractType": "ERC20",
+    "method": "balanceOf",
+    "parameters": [":userAddress"],
+    "returnValueTest": {
+      "comparator": ">=",
+      "value": 1000000000
+    }
   }
 }
 ```
@@ -102,15 +111,18 @@ Hold at least one NFT from the specified collection on Polygon.
 
 ```json
 {
-  "conditionType": "contract",
-  "chain": 137,
-  "contractAddress": "0xNFT_COLLECTION_ADDRESS",
-  "standardContractType": "ERC721",
-  "method": "balanceOf",
-  "parameters": [":userAddress"],
-  "returnValueTest": {
-    "comparator": ">",
-    "value": 0
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "contract",
+    "chain": 137,
+    "contractAddress": "0xNFT_COLLECTION_ADDRESS",
+    "standardContractType": "ERC721",
+    "method": "balanceOf",
+    "parameters": [":userAddress"],
+    "returnValueTest": {
+      "comparator": ">",
+      "value": 0
+    }
   }
 }
 ```
@@ -121,25 +133,28 @@ Call any `view` or `pure` function on any contract by supplying a `functionAbi`.
 
 ```json
 {
-  "conditionType": "contract",
-  "chain": 1,
-  "contractAddress": "0xDAO_MEMBERSHIP_CONTRACT",
-  "method": "isMember",
-  "parameters": [":userAddress"],
-  "functionAbi": {
-    "name": "isMember",
-    "type": "function",
-    "stateMutability": "view",
-    "inputs": [
-      { "name": "account", "type": "address", "internalType": "address" }
-    ],
-    "outputs": [
-      { "name": "", "type": "bool", "internalType": "bool" }
-    ]
-  },
-  "returnValueTest": {
-    "comparator": "==",
-    "value": true
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "contract",
+    "chain": 1,
+    "contractAddress": "0xDAO_MEMBERSHIP_CONTRACT",
+    "method": "isMember",
+    "parameters": [":userAddress"],
+    "functionAbi": {
+      "name": "isMember",
+      "type": "function",
+      "stateMutability": "view",
+      "inputs": [
+        { "name": "account", "type": "address", "internalType": "address" }
+      ],
+      "outputs": [
+        { "name": "", "type": "bool", "internalType": "bool" }
+      ]
+    },
+    "returnValueTest": {
+      "comparator": "==",
+      "value": true
+    }
   }
 }
 ```
@@ -150,25 +165,28 @@ A contract exposes `mapping(address => uint8) public tier;`. Allow only users in
 
 ```json
 {
-  "conditionType": "contract",
-  "chain": 8453,
-  "contractAddress": "0xTIER_REGISTRY",
-  "method": "tier",
-  "parameters": [":userAddress"],
-  "functionAbi": {
-    "name": "tier",
-    "type": "function",
-    "stateMutability": "view",
-    "inputs": [
-      { "name": "", "type": "address", "internalType": "address" }
-    ],
-    "outputs": [
-      { "name": "", "type": "uint8", "internalType": "uint8" }
-    ]
-  },
-  "returnValueTest": {
-    "comparator": ">=",
-    "value": 2
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "contract",
+    "chain": 8453,
+    "contractAddress": "0xTIER_REGISTRY",
+    "method": "tier",
+    "parameters": [":userAddress"],
+    "functionAbi": {
+      "name": "tier",
+      "type": "function",
+      "stateMutability": "view",
+      "inputs": [
+        { "name": "", "type": "address", "internalType": "address" }
+      ],
+      "outputs": [
+        { "name": "", "type": "uint8", "internalType": "uint8" }
+      ]
+    },
+    "returnValueTest": {
+      "comparator": ">=",
+      "value": 2
+    }
   }
 }
 ```
@@ -179,17 +197,20 @@ Allow if today's temperature in London is below 10°C.
 
 ```json
 {
-  "conditionType": "json-api",
-  "endpoint": "https://api.open-meteo.com/v1/forecast",
-  "parameters": {
-    "latitude": 51.5072,
-    "longitude": -0.1276,
-    "current": "temperature_2m"
-  },
-  "query": "$.current.temperature_2m",
-  "returnValueTest": {
-    "comparator": "<",
-    "value": 10
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "json-api",
+    "endpoint": "https://api.open-meteo.com/v1/forecast",
+    "parameters": {
+      "latitude": 51.5072,
+      "longitude": -0.1276,
+      "current": "temperature_2m"
+    },
+    "query": "$.current.temperature_2m",
+    "returnValueTest": {
+      "comparator": "<",
+      "value": 10
+    }
   }
 }
 ```
@@ -200,14 +221,17 @@ The decrypter supplies an API token at decryption time via `:apiToken`.
 
 ```json
 {
-  "conditionType": "json-api",
-  "endpoint": "https://api.example.com/v1/subscription",
-  "query": "$.status",
-  "authorizationToken": ":apiToken",
-  "authorizationType": "Bearer",
-  "returnValueTest": {
-    "comparator": "==",
-    "value": "active"
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "json-api",
+    "endpoint": "https://api.example.com/v1/subscription",
+    "query": "$.status",
+    "authorizationToken": ":apiToken",
+    "authorizationType": "Bearer",
+    "returnValueTest": {
+      "comparator": "==",
+      "value": "active"
+    }
   }
 }
 ```
@@ -220,14 +244,17 @@ Call any JSON-RPC service. Here we hit a Solana RPC and require a non-zero SOL b
 
 ```json
 {
-  "conditionType": "json-rpc",
-  "endpoint": "https://api.mainnet-beta.solana.com",
-  "method": "getBalance",
-  "params": [":solanaAddress"],
-  "query": "$.value",
-  "returnValueTest": {
-    "comparator": ">",
-    "value": 0
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "json-rpc",
+    "endpoint": "https://api.mainnet-beta.solana.com",
+    "method": "getBalance",
+    "params": [":solanaAddress"],
+    "query": "$.value",
+    "returnValueTest": {
+      "comparator": ">",
+      "value": 0
+    }
   }
 }
 ```
@@ -238,12 +265,15 @@ Unlike `JsonApiCondition` (which fetches), `JsonCondition` evaluates JSON that t
 
 ```json
 {
-  "conditionType": "json",
-  "data": ":attestation",
-  "query": "$.claims.kyc_level",
-  "returnValueTest": {
-    "comparator": ">=",
-    "value": 2
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "json",
+    "data": ":attestation",
+    "query": "$.claims.kyc_level",
+    "returnValueTest": {
+      "comparator": ">=",
+      "value": 2
+    }
   }
 }
 ```
@@ -254,9 +284,12 @@ Validate a JWT signed by your IDP. The token is supplied at decryption time via 
 
 ```json
 {
-  "conditionType": "jwt",
-  "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhki...\\n-----END PUBLIC KEY-----",
-  "expectedIssuer": "https://auth.example.com/"
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "jwt",
+    "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhki...\\n-----END PUBLIC KEY-----",
+    "expectedIssuer": "https://auth.example.com/"
+  }
 }
 ```
 
@@ -264,15 +297,18 @@ Validate a JWT signed by your IDP. The token is supplied at decryption time via 
 
 ## 12. `EcdsaCondition` — verify an Ed25519 signature
 
-Verify that a message was signed by a known public key. This is the same pattern Collab.Land uses to prove a Discord interaction is genuine.
+Verify that a message was signed by a known public key. This is the same pattern the Discord tipping bot uses to prove a Discord interaction is genuine.
 
 ```json
 {
-  "conditionType": "ecdsa",
-  "message": ":timestamp:discordPayload",
-  "signature": ":signature",
-  "verifyingKey": "ED25519_PUBLIC_KEY_HEX",
-  "curve": "Ed25519"
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "ecdsa",
+    "message": ":timestamp:discordPayload",
+    "signature": ":signature",
+    "verifyingKey": "ED25519_PUBLIC_KEY_HEX",
+    "curve": "Ed25519"
+  }
 }
 ```
 
@@ -284,12 +320,15 @@ Used in TACo Action Control. Validate that an attribute on the object being sign
 
 ```json
 {
-  "conditionType": "signing-attribute",
-  "signingObjectContextVar": ":signingConditionObject",
-  "attributeName": "sender",
-  "returnValueTest": {
-    "comparator": "==",
-    "value": "0xEXPECTED_SMART_ACCOUNT_ADDRESS"
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "signing-attribute",
+    "signingObjectContextVar": ":signingConditionObject",
+    "attributeName": "sender",
+    "returnValueTest": {
+      "comparator": "==",
+      "value": "0xEXPECTED_SMART_ACCOUNT_ADDRESS"
+    }
   }
 }
 ```
@@ -300,27 +339,30 @@ Decode an attribute (typically `call_data`) using ABI definitions and assert con
 
 ```json
 {
-  "conditionType": "signing-abi-attribute",
-  "signingObjectContextVar": ":signingConditionObject",
-  "attributeName": "call_data",
-  "abiValidation": {
-    "allowedAbiCalls": {
-      "transfer(address,uint256)": [
-        {
-          "parameterIndex": 0,
-          "returnValueTest": {
-            "comparator": "==",
-            "value": "0xALLOWED_RECIPIENT"
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "signing-abi-attribute",
+    "signingObjectContextVar": ":signingConditionObject",
+    "attributeName": "call_data",
+    "abiValidation": {
+      "allowedAbiCalls": {
+        "transfer(address,uint256)": [
+          {
+            "parameterIndex": 0,
+            "returnValueTest": {
+              "comparator": "==",
+              "value": "0xALLOWED_RECIPIENT"
+            }
+          },
+          {
+            "parameterIndex": 1,
+            "returnValueTest": {
+              "comparator": "<=",
+              "value": 1000000
+            }
           }
-        },
-        {
-          "parameterIndex": 1,
-          "returnValueTest": {
-            "comparator": "<=",
-            "value": 1000000
-          }
-        }
-      ]
+        ]
+      }
     }
   }
 }
@@ -334,11 +376,14 @@ Apply a return-value test directly to a context variable. Most often used inside
 
 ```json
 {
-  "conditionType": "context-variable",
-  "contextVariable": ":kycLevel",
-  "returnValueTest": {
-    "comparator": ">=",
-    "value": 2
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "context-variable",
+    "contextVariable": ":kycLevel",
+    "returnValueTest": {
+      "comparator": ">=",
+      "value": 2
+    }
   }
 }
 ```
@@ -349,25 +394,28 @@ Combine up to 5 sub-conditions. Maximum nesting depth is 2.
 
 ```json
 {
-  "conditionType": "compound",
-  "operator": "and",
-  "operands": [
-    {
-      "conditionType": "time",
-      "chain": 1,
-      "method": "blocktime",
-      "returnValueTest": { "comparator": ">", "value": 1735689600 }
-    },
-    {
-      "conditionType": "contract",
-      "chain": 1,
-      "contractAddress": "0xNFT",
-      "standardContractType": "ERC721",
-      "method": "balanceOf",
-      "parameters": [":userAddress"],
-      "returnValueTest": { "comparator": ">", "value": 0 }
-    }
-  ]
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "compound",
+    "operator": "and",
+    "operands": [
+      {
+        "conditionType": "time",
+        "chain": 1,
+        "method": "blocktime",
+        "returnValueTest": { "comparator": ">", "value": 1735689600 }
+      },
+      {
+        "conditionType": "contract",
+        "chain": 1,
+        "contractAddress": "0xNFT",
+        "standardContractType": "ERC721",
+        "method": "balanceOf",
+        "parameters": [":userAddress"],
+        "returnValueTest": { "comparator": ">", "value": 0 }
+      }
+    ]
+  }
 }
 ```
 
@@ -379,35 +427,38 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
 
 ```json
 {
-  "conditionType": "sequential",
-  "conditionVariables": [
-    {
-      "varName": "rawBalance",
-      "condition": {
-        "conditionType": "contract",
-        "chain": 8453,
-        "contractAddress": "0xUSDC",
-        "standardContractType": "ERC20",
-        "method": "balanceOf",
-        "parameters": [":userAddress"],
-        "returnValueTest": { "comparator": ">=", "value": 0 }
-      }
-    },
-    {
-      "varName": "checkMinimum",
-      "condition": {
-        "conditionType": "context-variable",
-        "contextVariable": ":rawBalance",
-        "returnValueTest": {
-          "operations": [
-            { "operation": "/=", "value": 1000000 }
-          ],
-          "comparator": ">=",
-          "value": 100
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "sequential",
+    "conditionVariables": [
+      {
+        "varName": "rawBalance",
+        "condition": {
+          "conditionType": "contract",
+          "chain": 8453,
+          "contractAddress": "0xUSDC",
+          "standardContractType": "ERC20",
+          "method": "balanceOf",
+          "parameters": [":userAddress"],
+          "returnValueTest": { "comparator": ">=", "value": 0 }
+        }
+      },
+      {
+        "varName": "checkMinimum",
+        "condition": {
+          "conditionType": "context-variable",
+          "contextVariable": ":rawBalance",
+          "returnValueTest": {
+            "operations": [
+              { "operation": "/=", "value": 1000000 }
+            ],
+            "comparator": ">=",
+            "value": 100
+          }
         }
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
@@ -415,23 +466,26 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
 
 ```json
 {
-  "conditionType": "if-then-else",
-  "ifCondition": {
-    "conditionType": "contract",
-    "chain": 1,
-    "contractAddress": "0xVIP_PASS",
-    "standardContractType": "ERC721",
-    "method": "balanceOf",
-    "parameters": [":userAddress"],
-    "returnValueTest": { "comparator": ">", "value": 0 }
-  },
-  "thenCondition": true,
-  "elseCondition": {
-    "conditionType": "rpc",
-    "chain": 1,
-    "method": "eth_getBalance",
-    "parameters": [":userAddress", "latest"],
-    "returnValueTest": { "comparator": ">=", "value": 1000000000000000000 }
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "if-then-else",
+    "ifCondition": {
+      "conditionType": "contract",
+      "chain": 1,
+      "contractAddress": "0xVIP_PASS",
+      "standardContractType": "ERC721",
+      "method": "balanceOf",
+      "parameters": [":userAddress"],
+      "returnValueTest": { "comparator": ">", "value": 0 }
+    },
+    "thenCondition": true,
+    "elseCondition": {
+      "conditionType": "rpc",
+      "chain": 1,
+      "method": "eth_getBalance",
+      "parameters": [":userAddress", "latest"],
+      "returnValueTest": { "comparator": ">=", "value": 1000000000000000000 }
+    }
   }
 }
 ```
@@ -444,33 +498,36 @@ Hold the NFT **or** be on a hard-coded allowlist.
 
 ```json
 {
-  "conditionType": "compound",
-  "operator": "or",
-  "operands": [
-    {
-      "conditionType": "contract",
-      "chain": 1,
-      "contractAddress": "0xNFT",
-      "standardContractType": "ERC721",
-      "method": "balanceOf",
-      "parameters": [":userAddress"],
-      "returnValueTest": { "comparator": ">", "value": 0 }
-    },
-    {
-      "conditionType": "rpc",
-      "chain": 1,
-      "method": "eth_getBalance",
-      "parameters": [":userAddress", "latest"],
-      "returnValueTest": {
-        "comparator": "in",
-        "value": [
-          "0xALLOWED_ADDRESS_1",
-          "0xALLOWED_ADDRESS_2",
-          "0xALLOWED_ADDRESS_3"
-        ]
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "compound",
+    "operator": "or",
+    "operands": [
+      {
+        "conditionType": "contract",
+        "chain": 1,
+        "contractAddress": "0xNFT",
+        "standardContractType": "ERC721",
+        "method": "balanceOf",
+        "parameters": [":userAddress"],
+        "returnValueTest": { "comparator": ">", "value": 0 }
+      },
+      {
+        "conditionType": "rpc",
+        "chain": 1,
+        "method": "eth_getBalance",
+        "parameters": [":userAddress", "latest"],
+        "returnValueTest": {
+          "comparator": "in",
+          "value": [
+            "0xALLOWED_ADDRESS_1",
+            "0xALLOWED_ADDRESS_2",
+            "0xALLOWED_ADDRESS_3"
+          ]
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
@@ -480,37 +537,40 @@ Allow decryption between two timestamps **and** require an active subscription o
 
 ```json
 {
-  "conditionType": "compound",
-  "operator": "and",
-  "operands": [
-    {
-      "conditionType": "time",
-      "chain": 8453,
-      "method": "blocktime",
-      "returnValueTest": { "comparator": ">=", "value": 1735689600 }
-    },
-    {
-      "conditionType": "time",
-      "chain": 8453,
-      "method": "blocktime",
-      "returnValueTest": { "comparator": "<", "value": 1767225600 }
-    },
-    {
-      "conditionType": "contract",
-      "chain": 8453,
-      "contractAddress": "0xSUBSCRIPTION_REGISTRY",
-      "method": "expiresAt",
-      "parameters": [":userAddress"],
-      "functionAbi": {
-        "name": "expiresAt",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [{ "name": "user", "type": "address", "internalType": "address" }],
-        "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }]
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "compound",
+    "operator": "and",
+    "operands": [
+      {
+        "conditionType": "time",
+        "chain": 8453,
+        "method": "blocktime",
+        "returnValueTest": { "comparator": ">=", "value": 1735689600 }
       },
-      "returnValueTest": { "comparator": ">", "value": 1735689600 }
-    }
-  ]
+      {
+        "conditionType": "time",
+        "chain": 8453,
+        "method": "blocktime",
+        "returnValueTest": { "comparator": "<", "value": 1767225600 }
+      },
+      {
+        "conditionType": "contract",
+        "chain": 8453,
+        "contractAddress": "0xSUBSCRIPTION_REGISTRY",
+        "method": "expiresAt",
+        "parameters": [":userAddress"],
+        "functionAbi": {
+          "name": "expiresAt",
+          "type": "function",
+          "stateMutability": "view",
+          "inputs": [{ "name": "user", "type": "address", "internalType": "address" }],
+          "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }]
+        },
+        "returnValueTest": { "comparator": ">", "value": 1735689600 }
+      }
+    ]
+  }
 }
 ```
 
@@ -520,23 +580,26 @@ If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders
 
 ```json
 {
-  "conditionType": "if-then-else",
-  "ifCondition": {
-    "conditionType": "json-api",
-    "endpoint": "https://api.open-meteo.com/v1/forecast",
-    "parameters": { "latitude": 51.5, "longitude": -0.12, "current": "rain" },
-    "query": "$.current.rain",
-    "returnValueTest": { "comparator": ">", "value": 0 }
-  },
-  "thenCondition": true,
-  "elseCondition": {
-    "conditionType": "contract",
-    "chain": 1,
-    "contractAddress": "0xUMBRELLA_NFT",
-    "standardContractType": "ERC721",
-    "method": "balanceOf",
-    "parameters": [":userAddress"],
-    "returnValueTest": { "comparator": ">", "value": 0 }
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "if-then-else",
+    "ifCondition": {
+      "conditionType": "json-api",
+      "endpoint": "https://api.open-meteo.com/v1/forecast",
+      "parameters": { "latitude": 51.5, "longitude": -0.12, "current": "rain" },
+      "query": "$.current.rain",
+      "returnValueTest": { "comparator": ">", "value": 0 }
+    },
+    "thenCondition": true,
+    "elseCondition": {
+      "conditionType": "contract",
+      "chain": 1,
+      "contractAddress": "0xUMBRELLA_NFT",
+      "standardContractType": "ERC721",
+      "method": "balanceOf",
+      "parameters": [":userAddress"],
+      "returnValueTest": { "comparator": ">", "value": 0 }
+    }
   }
 }
 ```
@@ -547,30 +610,33 @@ A `SequentialCondition` that fetches a wei balance, divides it down to whole ETH
 
 ```json
 {
-  "conditionType": "sequential",
-  "conditionVariables": [
-    {
-      "varName": "weiBalance",
-      "condition": {
-        "conditionType": "rpc",
-        "chain": 1,
-        "method": "eth_getBalance",
-        "parameters": [":userAddress", "latest"],
-        "returnValueTest": { "comparator": ">=", "value": 0 }
+  "version": "1.0.0",
+  "condition": {
+    "conditionType": "sequential",
+    "conditionVariables": [
+      {
+        "varName": "weiBalance",
+        "condition": {
+          "conditionType": "rpc",
+          "chain": 1,
+          "method": "eth_getBalance",
+          "parameters": [":userAddress", "latest"],
+          "returnValueTest": { "comparator": ">=", "value": 0 }
+        },
+        "operations": [
+          { "operation": "weiToEth" }
+        ]
       },
-      "operations": [
-        { "operation": "weiToEth" }
-      ]
-    },
-    {
-      "varName": "checkWholeEth",
-      "condition": {
-        "conditionType": "context-variable",
-        "contextVariable": ":weiBalance",
-        "returnValueTest": { "comparator": ">=", "value": 5 }
+      {
+        "varName": "checkWholeEth",
+        "condition": {
+          "conditionType": "context-variable",
+          "contextVariable": ":weiBalance",
+          "returnValueTest": { "comparator": ">=", "value": 5 }
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 

@@ -5,6 +5,8 @@ A working JSON example for every condition type the TACo SDK supports, plus seve
 All addresses below are **placeholders**. Substitute your own. All chain IDs are real (Ethereum=`1`, Polygon=`137`, Base=`8453`, Arbitrum=`42161`).
 
 > Pair this page with the [schema reference](https://github.com/nucypher/taco-web/blob/signing-epic/packages/taco/schema-docs/condition-schemas.md) and the [validator script](validating-conditions.md). Together they are everything an LLM needs to author conditions for you.
+>
+> **Editor tip:** add `"$schema": "https://raw.githubusercontent.com/nucypher/taco-web/signing-epic/packages/taco/schema-docs/condition-schema.json"` to the top of any `conditions.json` and your editor will validate every example below in-place. See [Building Conditions with an LLM → JSON Schema integration](building-with-llms.md#json-schema-integration).
 
 ## Table of contents
 

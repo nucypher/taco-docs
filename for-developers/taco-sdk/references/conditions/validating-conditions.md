@@ -1,8 +1,15 @@
 # Validating Conditions
 
-Before you ship a condition — or before you ask the network to evaluate one — validate it locally against the TACo SDK schema. Client-side validation catches the overwhelming majority of mistakes (typos, wrong field names, missing required properties, illegal nesting depth, comparator typos) without ever touching a node.
+Before you ship a condition — or before you ask the network to evaluate one — validate it locally. Client-side validation catches the overwhelming majority of mistakes (typos, wrong field names, missing required properties, illegal nesting depth, comparator typos) without ever touching a node.
 
-This page gives you a 40-line script you can drop into any project.
+You have two options. Pick whichever fits your stack — they overlap heavily.
+
+| Approach | When to use |
+| :--- | :--- |
+| **JSON Schema validator** (any language) | You want zero TACo dependencies, you are validating in CI, or you want inline editor validation via `$schema`. See [Building Conditions with an LLM → JSON Schema integration](building-with-llms.md#json-schema-integration). |
+| **`validate-conditions.ts`** (this page) | You are already in TypeScript, or you need the SDK's runtime semantics (e.g. nesting-depth checks that JSON Schema cannot express). |
+
+This page gives you a 40-line TypeScript script you can drop into any project.
 
 ## The script
 

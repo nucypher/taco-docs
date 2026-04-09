@@ -36,7 +36,7 @@ All addresses below are **placeholders**. Substitute your own. All chain IDs are
 21. [Pattern: weather-based discount with fallback](#21-pattern-weather-based-discount-with-fallback)
 22. [Pattern: balance fetched, normalised, then asserted](#22-pattern-balance-fetched-normalised-then-asserted)
 
-For the most complex realistic example, see the [Discord tipping bot deep-dive](discord-tipping-bot-deep-dive.md).
+For a worked end-to-end example that combines many features at once, see the [Discord tipping bot deep-dive](discord-tipping-bot-deep-dive.md).
 
 ---
 

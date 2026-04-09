@@ -1,6 +1,6 @@
 # Deep Dive: A Discord Tipping Bot Condition
 
-This is one of the most intricate real-world conditions an integrator has built on TACo. Read it once and you have seen every major feature: nested compound logic, sequential variables, on-chain CREATE2 derivation, JSONPath extraction, snowflake arithmetic, ECDSA verification, and nested ABI calldata validation. Paste the whole page into an LLM's context when you want it to author conditions of comparable complexity.
+TACo conditions are arbitrarily expressive — there is no upper bound on what you can compose. This page works through one real-world example that happens to exercise many features at once: nested compound logic, sequential variables, on-chain CREATE2 derivation, JSONPath extraction, snowflake arithmetic, ECDSA verification, and nested ABI calldata validation. Paste the whole page into an LLM's context when you want it to author conditions in this style.
 
 The condition guards a TACo Action Control flow built by an integrator: a Discord user types `/tip 0.50 0xfriend` in a Discord server running a tipping bot, and a smart account derived deterministically from their Discord ID sends 0.50 USDC on Base — but **only** if every clause below is satisfied. The TACo network performs threshold signing on the resulting `UserOperation` exactly when the condition evaluates true.
 
@@ -329,7 +329,7 @@ Same trick — pull the `address` argument out of the slash-command payload, bin
 }
 ```
 
-This is the most intricate ABI validation TACo supports today. Walking it:
+Walking it:
 
 - The `UserOperation`'s `call_data` must decode as `execute((address,uint256,bytes))` — the standard ERC-4337 single-call entry point. It takes one tuple parameter.
 - `parameterIndex: 0, subIndices: [0]` — the first field of the tuple (the `address` target) must equal the USDC contract on Base. **No other token can be transferred.**

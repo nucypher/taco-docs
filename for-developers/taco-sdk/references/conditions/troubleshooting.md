@@ -30,11 +30,11 @@ The schema reference marks required fields with `(*)`. Common surprises:
 
 ### `Array must contain at most 5 element(s)` on a CompoundCondition
 
-`CompoundCondition.operands` is capped at 5. To express more, embed a `SequentialCondition` (or another `CompoundCondition`, but only one level deep — see next).
+`CompoundCondition.operands` is capped at 5. To express more, embed a `SequentialCondition` (or nest another MultiCondition, within the shared depth limit — see next).
 
-### `Compound condition nesting depth exceeded`
+### `MultiCondition nesting depth exceeded`
 
-A `CompoundCondition` can contain a sub-`CompoundCondition`, but **that sub-compound cannot itself contain a compound**. Maximum nesting is 2 levels. To go deeper, replace the inner compound with a `SequentialCondition`.
+Nesting is limited to **4 levels**, counted across **all** MultiConditions collectively: `CompoundCondition`, `IfThenElseCondition`, and `SequentialCondition`. A compound → if-then-else → sequential chain is three levels, even though no single type is nested within itself. If you hit the limit, flatten the policy — often a `SequentialCondition` with early-exit logic replaces several nested compounds.
 
 ### `String must match pattern /^:[a-zA-Z_][a-zA-Z0-9_]*$/`
 
@@ -85,4 +85,4 @@ You wrote `:varname` but the bound `varName` was `varName` (no leading colon, ca
 1. Run [`validate-conditions.ts`](validating-conditions.md) and read the full error in `validation-error.txt`.
 2. Compare against the closest example in the [cookbook](cookbook.md).
 3. Paste the error + your condition + the [schema reference URL](https://github.com/nucypher/taco-web/blob/signing-epic/packages/taco/schema-docs/condition-schemas.md) into an LLM. See [Building Conditions with an LLM](building-with-llms.md).
-4. Test end-to-end on the [TACo Playground](https://playground.taco.build/).
+4. Test end-to-end against a local testnet (see [Quickstart](../../../access-control/quickstart-testnet.md)) or your own integration.

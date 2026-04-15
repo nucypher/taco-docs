@@ -23,7 +23,10 @@ Paste these four things into your LLM of choice (Claude, ChatGPT, Cursor, etc.) 
 You are helping me author a TACo condition in JSON.
 
 Reference material (please read before writing any condition):
-- Schema (source of truth): https://github.com/nucypher/taco-web/blob/signing-epic/packages/taco/schema-docs/condition-schemas.md
+- Schema (JSON Schema, machine-readable source of truth):
+  https://raw.githubusercontent.com/nucypher/taco-web/signing-epic/packages/taco/schema-docs/condition-schema.json
+- Schema (prose version, same source):
+  https://github.com/nucypher/taco-web/blob/signing-epic/packages/taco/schema-docs/condition-schemas.md
 - Cookbook of examples: https://docs.taco.build/for-developers/taco-sdk/references/conditions/cookbook
 - Annotated complex example: https://docs.taco.build/for-developers/taco-sdk/references/conditions/discord-tipping-bot-deep-dive
 
@@ -31,7 +34,9 @@ Rules:
 - Output a single JSON object (no prose around it) when I ask for a condition.
 - Every field must exist in the schema. Do not invent fields.
 - Context variables start with ":" and match /^:[a-zA-Z_][a-zA-Z0-9_]*$/.
-- CompoundCondition: max 5 operands, max 2 levels of nesting.
+- CompoundCondition: max 5 operands.
+- MultiConditions (CompoundCondition, IfThenElseCondition, SequentialCondition)
+  share a combined nesting depth limit of 4.
 - SequentialCondition: 2–20 variables.
 - After each condition you produce, I will run validate-conditions.ts and
   paste the output back. Fix any validation errors and try again.
@@ -45,7 +50,7 @@ What I want the condition to enforce:
 1. LLM produces a condition.
 2. Save it as `conditions.json`.
 3. Run `npx tsx validate-conditions.ts` ([source](validating-conditions.md)).
-4. If invalid, paste the error back to the LLM. If valid, test it end-to-end with the [TACo Playground](https://playground.taco.build/) or your app.
+4. If invalid, paste the error back to the LLM. If valid, test it end-to-end against a local testnet (see [Quickstart](../../../access-control/quickstart-testnet.md)) or your app.
 
 This loop usually converges in 1–3 rounds even for complex conditions.
 

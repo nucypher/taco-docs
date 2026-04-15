@@ -15,15 +15,44 @@ If you forget the leading `:`, the SDK will treat your value as a literal string
 
 ## Built-in context variables
 
-These are automatically populated by the SDK or by the network. You do **not** need to set them yourself.
+The SDK recognises a small set of reserved or default context-variable names. Their behaviour differs — read the table carefully before assuming a value is "automatic".
 
-| Variable | Set by | Available in | Description |
+| Variable | Kind | Available in | Description |
 | :--- | :--- | :--- | :--- |
-| `:userAddress` | Decrypter's wallet | All conditions | The Ethereum address of the requester. Replaced after the requester signs an authentication message. |
-| `:message` | Decrypter | `EcdsaCondition` | The message that was signed. Default for `EcdsaCondition.message`. |
-| `:signature` | Decrypter | `EcdsaCondition` | The signature being verified. Default for `EcdsaCondition.signature`. |
-| `:jwtToken` | Decrypter | `JwtCondition` | The JWT being validated. Default for `JwtCondition.jwtToken`. |
-| `:signingConditionObject` | Signing flow | `SigningObjectAttributeCondition`, `SigningObjectAbiAttributeCondition` | The full object (e.g. UserOperation) being submitted for threshold signing. |
+| `:signingConditionObject` | **Auto-populated** (the only one) | `SigningObjectAttributeCondition`, `SigningObjectAbiAttributeCondition` | The full object (e.g. UserOperation) being submitted for threshold signing. You do not need to add this to the condition context — the signing flow injects it. |
+| `:userAddress` | **Reserved** | All conditions | The Ethereum address of the requester. Its value can only be provided by an `AuthProvider` at request time — it is never set by user code directly. |
+| `:message` | **Default name** | `EcdsaCondition` | Default for `EcdsaCondition.message`. Not automatically populated — the decrypter must supply a value at request time. |
+| `:signature` | **Default name** | `EcdsaCondition` | Default for `EcdsaCondition.signature`. Not automatically populated — the decrypter must supply a value at request time. |
+| `:jwtToken` | **Default name** | `JwtCondition` | Default for `JwtCondition.jwtToken`. Not automatically populated — the decrypter must supply a value at request time. |
+
+### Auto-populated vs. reserved vs. default
+
+- **Auto-populated** means the SDK / signing flow injects the value for you. Only `:signingConditionObject` is in this category.
+- **Reserved** means the name is fixed and the value can only come from a specific source (for `:userAddress`, that source is an `AuthProvider`).
+- **Default name** means the condition *defaults* to that variable name, but you can override it. For example, if a single compound condition contains two `JwtCondition`s that must validate two different tokens, give each its own variable:
+
+```json
+{
+  "conditionType": "compound",
+  "operator": "and",
+  "operands": [
+    {
+      "conditionType": "jwt",
+      "jwtToken": ":idpToken",
+      "publicKey": "…",
+      "expectedIssuer": "https://idp.example.com/"
+    },
+    {
+      "conditionType": "jwt",
+      "jwtToken": ":partnerToken",
+      "publicKey": "…",
+      "expectedIssuer": "https://partner.example.com/"
+    }
+  ]
+}
+```
+
+The same applies to `EcdsaCondition.message` and `EcdsaCondition.signature` when verifying multiple signatures in one condition.
 
 ## Custom context variables
 

@@ -23,9 +23,9 @@ All addresses below are **placeholders**. Substitute your own. All chain IDs are
 9. [JsonRpcCondition — arbitrary JSON-RPC call](#9-jsonrpccondition--arbitrary-json-rpc)
 10. [JsonCondition — querying a passed-in payload](#10-jsoncondition--querying-a-context-payload)
 11. [JwtCondition — verify a signed JWT](#11-jwtcondition--verify-a-jwt)
-12. [EcdsaCondition — verify a signature](#12-ecdsacondition--verify-an-ed25519-signature)
-13. [SigningObjectAttributeCondition — UserOperation field check](#13-signingobjectattributecondition--useroperation-field-check)
-14. [SigningObjectAbiAttributeCondition — UserOperation calldata check](#14-signingobjectabiattributecondition--validate-calldata)
+12. [EcdsaCondition — verify an ECDSA signature](#12-ecdsacondition--verify-an-ecdsa-signature)
+13. [SigningObjectAttributeCondition — UserOperation field check](#13-signingobjectattributecondition--useroperation-field-check) (TACo Action Control only)
+14. [SigningObjectAbiAttributeCondition — UserOperation calldata check](#14-signingobjectabiattributecondition--validate-calldata) (TACo Action Control only)
 15. [ContextVariableCondition — assert a custom variable](#15-contextvariablecondition--assert-a-custom-variable)
 
 **Logical / composed conditions**
@@ -242,7 +242,7 @@ The decrypter supplies an API token at decryption time via `:apiToken`.
 
 ## 9. `JsonRpcCondition` — arbitrary JSON-RPC
 
-Call any JSON-RPC service. Here we hit a Solana RPC and require a non-zero SOL balance.
+Call any JSON-RPC service. Here we hit a Solana RPC and require a non-zero SOL balance for a specific, hard-coded Solana account. Hard-coding the account address keeps the access policy fixed at encryption time, which is safer than letting the requester name an arbitrary account via a context variable.
 
 ```json
 {
@@ -251,7 +251,7 @@ Call any JSON-RPC service. Here we hit a Solana RPC and require a non-zero SOL b
     "conditionType": "json-rpc",
     "endpoint": "https://api.mainnet-beta.solana.com",
     "method": "getBalance",
-    "params": [":solanaAddress"],
+    "params": ["DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"],
     "query": "$.value",
     "returnValueTest": {
       "comparator": ">",
@@ -260,6 +260,8 @@ Call any JSON-RPC service. Here we hit a Solana RPC and require a non-zero SOL b
   }
 }
 ```
+
+If your access policy genuinely depends on the *requester's* Solana account, you would need to receive that value through an authenticated channel (e.g. a JWT claim validated by a sibling `JwtCondition`) rather than simply letting the requester supply it as a context variable.
 
 ## 10. `JsonCondition` — querying a context payload
 
@@ -297,7 +299,9 @@ Validate a JWT signed by your IDP. The token is supplied at decryption time via 
 
 `expectedIssuer` is optional but recommended.
 
-## 12. `EcdsaCondition` — verify an Ed25519 signature
+`:jwtToken` is the default context-variable name. You can use any name you like by setting `"jwtToken": ":myCustomToken"` — this is useful when a single condition references more than one JWT (e.g. two sibling `JwtCondition`s validating different issuers), since each needs to receive its own value.
+
+## 12. `EcdsaCondition` — verify an ECDSA signature
 
 Verify that a message was signed by a known public key. This is the same pattern the Discord tipping bot uses to prove a Discord interaction is genuine.
 
@@ -313,6 +317,10 @@ Verify that a message was signed by a known public key. This is the same pattern
   }
 }
 ```
+
+The `"message"` value here is a **concatenation of two context variables**, `:timestamp` and `:discordPayload`. At decryption time the SDK substitutes each `:name` token in sequence, so the string `":timestamp:discordPayload"` becomes `<timestamp_value><payload_value>` — which is what the signer signed.
+
+`:message` and `:signature` are the default context-variable names; like `:jwtToken`, they can be renamed (`"message": ":myMessage"`, `"signature": ":mySig"`) — useful when a single condition verifies multiple distinct signatures.
 
 Supported curves: `SECP256k1`, `NIST256p`, `NIST384p`, `NIST521p`, `Ed25519`, `BRAINPOOLP256r1`.
 
@@ -337,7 +345,7 @@ Used in TACo Action Control. Validate that an attribute on the object being sign
 
 ## 14. `SigningObjectAbiAttributeCondition` — validate calldata
 
-Decode an attribute (typically `call_data`) using ABI definitions and assert constraints on the decoded parameters. Here: only allow `transfer(recipient, amount)` to a specific address.
+Used in TACo Action Control. Decode an attribute (typically `call_data`) using ABI definitions and assert constraints on the decoded parameters. Here: only allow `transfer(recipient, amount)` to a specific address.
 
 ```json
 {
@@ -392,7 +400,7 @@ Apply a return-value test directly to a context variable. Most often used inside
 
 ## 16. `CompoundCondition` — AND, OR, NOT
 
-Combine up to 5 sub-conditions. Maximum nesting depth is 2.
+Combine up to 5 sub-conditions. Maximum nesting depth is 4. The nesting limit is counted across **all** MultiConditions — `CompoundCondition`, `IfThenElseCondition`, and `SequentialCondition` — not just compounds. A compound that contains an if-then-else that contains a sequential counts as three levels.
 
 ```json
 {
@@ -466,6 +474,8 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
 
 ## 18. `IfThenElseCondition` — branching
 
+`ifCondition` and `thenCondition` must both be full conditions — they cannot be booleans. Only `elseCondition` accepts a boolean shortcut (`true` means "admit", `false` means "deny"). If you want the "then" branch to pass unconditionally, use a `ContextVariableCondition` against a variable known to be true, or simply re-use the `ifCondition` verbatim.
+
 ```json
 {
   "version": "1.0.0",
@@ -480,7 +490,15 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
       "parameters": [":userAddress"],
       "returnValueTest": { "comparator": ">", "value": 0 }
     },
-    "thenCondition": true,
+    "thenCondition": {
+      "conditionType": "contract",
+      "chain": 1,
+      "contractAddress": "0xVIP_PASS",
+      "standardContractType": "ERC721",
+      "method": "balanceOf",
+      "parameters": [":userAddress"],
+      "returnValueTest": { "comparator": ">", "value": 0 }
+    },
     "elseCondition": {
       "conditionType": "rpc",
       "chain": 1,
@@ -492,11 +510,11 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
 }
 ```
 
-VIP NFT holders are admitted unconditionally; everyone else needs ≥1 ETH.
+VIP NFT holders are admitted on the VIP check; everyone else needs ≥1 ETH.
 
 ## 19. Pattern: NFT-or-allowlist gate
 
-Hold the NFT **or** be on a hard-coded allowlist.
+Hold the NFT **or** be on a hard-coded allowlist. The allowlist branch uses a `ContextVariableCondition` to check that `:userAddress` is one of the allowed values — no RPC call is needed for a pure allowlist check.
 
 ```json
 {
@@ -515,10 +533,8 @@ Hold the NFT **or** be on a hard-coded allowlist.
         "returnValueTest": { "comparator": ">", "value": 0 }
       },
       {
-        "conditionType": "rpc",
-        "chain": 1,
-        "method": "eth_getBalance",
-        "parameters": [":userAddress", "latest"],
+        "conditionType": "context-variable",
+        "contextVariable": ":userAddress",
         "returnValueTest": {
           "comparator": "in",
           "value": [
@@ -578,7 +594,7 @@ Allow decryption between two timestamps **and** require an active subscription o
 
 ## 21. Pattern: weather-based discount with fallback
 
-If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders.
+If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders. `thenCondition` must be a real condition, so we re-use the rain check as a tautological pass (it already evaluated to true in the `ifCondition` branch).
 
 ```json
 {
@@ -592,7 +608,13 @@ If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders
       "query": "$.current.rain",
       "returnValueTest": { "comparator": ">", "value": 0 }
     },
-    "thenCondition": true,
+    "thenCondition": {
+      "conditionType": "json-api",
+      "endpoint": "https://api.open-meteo.com/v1/forecast",
+      "parameters": { "latitude": 51.5, "longitude": -0.12, "current": "rain" },
+      "query": "$.current.rain",
+      "returnValueTest": { "comparator": ">", "value": 0 }
+    },
     "elseCondition": {
       "conditionType": "contract",
       "chain": 1,

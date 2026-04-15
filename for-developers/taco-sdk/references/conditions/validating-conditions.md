@@ -117,7 +117,7 @@ The full Zod error (with stack) is written to `validation-error.txt` so you can 
 - Unknown / misspelled `conditionType` values
 - Missing required fields (`returnValueTest`, `chain`, `parameters`, …)
 - Wrong literal values (`"AND"` instead of `"and"`, `"=="` written as `"="`)
-- Compound condition nesting deeper than two levels
+- MultiCondition nesting deeper than the allowed limit (4 levels total across `CompoundCondition`, `IfThenElseCondition`, and `SequentialCondition`)
 - Compound condition with more than 5 operands
 - Sequential condition with fewer than 2 or more than 20 variables
 - Context variable names that violate the `/^:[a-zA-Z_][a-zA-Z0-9_]*$/` pattern
@@ -132,8 +132,8 @@ Client-side validation only checks shape. It cannot tell you:
 - Whether the JSON API endpoint will return data in the shape your JSONPath expects
 - Whether the user will satisfy the condition at decryption time
 
-For end-to-end testing, use the [TACo Playground](https://playground.taco.build/) or a local testnet (see [Quickstart](../../../access-control/quickstart-testnet.md)).
+For end-to-end testing, run the condition against a local testnet (see [Quickstart](../../../access-control/quickstart-testnet.md)) or your own integration.
 
 ## Source
 
-A reference copy of this script lives in [`discord-taco-web/scripts/validate-conditions.ts`](https://github.com/nucypher/discord-taco-web/blob/main/scripts/validate-conditions.ts) and is used by the Discord tipping bot integration in CI.
+A reference copy of this script lives in [`theref/discord-taco-web/scripts/validate-conditions.ts`](https://github.com/theref/discord-taco-web/blob/main/scripts/validate-conditions.ts) and is used by the Discord tipping bot integration in CI. Once the script is promoted into `nucypher/taco-web` this link will be updated to point there.

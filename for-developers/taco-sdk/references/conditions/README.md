@@ -2,6 +2,17 @@
 
 This section focuses on `Condition` types, composition and usage.
 
+{% hint style="success" %}
+**Authoring conditions with an LLM?** Start with [Building Conditions with an LLM](building-with-llms.md). The four key references are:
+
+- The [Cookbook](cookbook.md) — JSON examples for every condition type.
+- The [Discord tipping bot deep-dive](discord-tipping-bot-deep-dive.md) — a fully annotated complex condition.
+- The [Schema reference](https://github.com/nucypher/taco-web/blob/signing-epic/packages/taco/schema-docs/condition-schemas.md) — auto-generated source of truth (markdown). A [JSON Schema version](https://raw.githubusercontent.com/nucypher/taco-web/signing-epic/packages/taco/schema-docs/condition-schema.json) is available for editors and structured-output LLMs.
+- The [Validator script](validating-conditions.md) — catch shape errors locally before hitting the network.
+
+When something breaks, see [Troubleshooting](troubleshooting.md) and the [Context Variables cheatsheet](context-variables.md).
+{% endhint %}
+
 ## Base Conditions
 
 Base conditions define specific criteria, and each includes a `returnValueTest` to compare the actual execution result with the expected value. These include:

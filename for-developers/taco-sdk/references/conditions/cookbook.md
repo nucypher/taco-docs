@@ -35,7 +35,7 @@ All addresses below are **placeholders**. Substitute your own. All chain IDs are
 18. [IfThenElseCondition — branch on a condition](#18-ifthenelsecondition--branching)
 19. [Pattern: NFT-or-allowlist gate](#19-pattern-nft-or-allowlist-gate)
 20. [Pattern: time-windowed paid access](#20-pattern-time-windowed-paid-access)
-21. [Pattern: weather-based discount with fallback](#21-pattern-weather-based-discount-with-fallback)
+21. [Pattern: storm-condition open access](#21-pattern-storm-condition-open-access)
 22. [Pattern: balance fetched, normalised, then asserted](#22-pattern-balance-fetched-normalised-then-asserted)
 
 For a worked end-to-end example that combines many features at once, see the [Discord tipping bot deep-dive](discord-tipping-bot-deep-dive.md).
@@ -474,7 +474,14 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
 
 ## 18. `IfThenElseCondition` — branching
 
-`ifCondition` and `thenCondition` must both be full conditions — they cannot be booleans. Only `elseCondition` accepts a boolean shortcut (`true` means "admit", `false` means "deny"). If you want the "then" branch to pass unconditionally, use a `ContextVariableCondition` against a variable known to be true, or simply re-use the `ifCondition` verbatim.
+`ifCondition` and `thenCondition` must both be full conditions. Only `elseCondition` accepts a boolean shortcut (`true` means "admit", `false` means "deny").
+
+Before reaching for `IfThenElseCondition`, check whether the rule is really a `CompoundCondition`:
+
+- `if A then true else B` is `OR(A, B)`
+- `if A then false else B` is `AND(NOT(A), B)`
+
+`IfThenElseCondition` earns its keep when `thenCondition` and `elseCondition` are themselves meaningful, distinct checks — i.e. holders of the branch-condition's subject face one requirement, and non-holders face another. The example below applies different rules to VIP-pass holders and the general public: holders only need the access window to be open, while everyone else must hold ≥10 USDC.
 
 ```json
 {
@@ -491,26 +498,23 @@ Two to twenty steps, each binding a `varName` that subsequent steps can referenc
       "returnValueTest": { "comparator": ">", "value": 0 }
     },
     "thenCondition": {
-      "conditionType": "contract",
+      "conditionType": "time",
       "chain": 1,
-      "contractAddress": "0xVIP_PASS",
-      "standardContractType": "ERC721",
-      "method": "balanceOf",
-      "parameters": [":userAddress"],
-      "returnValueTest": { "comparator": ">", "value": 0 }
+      "method": "blocktime",
+      "returnValueTest": { "comparator": ">=", "value": 1735689600 }
     },
     "elseCondition": {
-      "conditionType": "rpc",
+      "conditionType": "contract",
       "chain": 1,
-      "method": "eth_getBalance",
-      "parameters": [":userAddress", "latest"],
-      "returnValueTest": { "comparator": ">=", "value": 1000000000000000000 }
+      "contractAddress": "0xUSDC",
+      "standardContractType": "ERC20",
+      "method": "balanceOf",
+      "parameters": [":userAddress"],
+      "returnValueTest": { "comparator": ">=", "value": 10000000 }
     }
   }
 }
 ```
-
-VIP NFT holders are admitted on the VIP check; everyone else needs ≥1 ETH.
 
 ## 19. Pattern: NFT-or-allowlist gate
 
@@ -592,9 +596,9 @@ Allow decryption between two timestamps **and** require an active subscription o
 }
 ```
 
-## 21. Pattern: weather-based discount with fallback
+## 21. Pattern: storm-condition open access
 
-If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders. `thenCondition` must be a real condition, so we re-use the rain check as a tautological pass (it already evaluated to true in the `ifCondition` branch).
+A backup safety plan for an outdoor event. If it is raining at the venue **and** the wind is high enough to be unsafe, anyone can decrypt the umbrella-pickup instructions; otherwise only umbrella-NFT holders can. Each branch is a meaningful check — there is no artificial `thenCondition`.
 
 ```json
 {
@@ -611,9 +615,9 @@ If the weather API returns rain, anyone can decrypt; otherwise, only NFT holders
     "thenCondition": {
       "conditionType": "json-api",
       "endpoint": "https://api.open-meteo.com/v1/forecast",
-      "parameters": { "latitude": 51.5, "longitude": -0.12, "current": "rain" },
-      "query": "$.current.rain",
-      "returnValueTest": { "comparator": ">", "value": 0 }
+      "parameters": { "latitude": 51.5, "longitude": -0.12, "current": "wind_speed_10m" },
+      "query": "$.current.wind_speed_10m",
+      "returnValueTest": { "comparator": ">", "value": 30 }
     },
     "elseCondition": {
       "conditionType": "contract",

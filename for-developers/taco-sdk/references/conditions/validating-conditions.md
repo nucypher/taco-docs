@@ -136,4 +136,4 @@ For end-to-end testing, run the condition against a local testnet (see [Quicksta
 
 ## Source
 
-A reference copy of this script lives in [`theref/discord-taco-web/scripts/validate-conditions.ts`](https://github.com/theref/discord-taco-web/blob/main/scripts/validate-conditions.ts) and is used by the Discord tipping bot integration in CI. Once the script is promoted into `nucypher/taco-web` this link will be updated to point there.
+The canonical copy of this script lives at [`nucypher/taco-web/packages/taco/scripts/validate-conditions.ts`](https://github.com/nucypher/taco-web/blob/main/packages/taco/scripts/validate-conditions.ts).

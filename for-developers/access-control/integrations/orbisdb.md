@@ -1,6 +1,6 @@
 # OrbisDB
 
-This guide walks through how to use [OrbisDB](https://developers.ceramic.network/docs/introduction/orbisdb-overview) and TACo in combination, using the DeForum web application and [repo](https://github.com/nucypher/deforum-taco) as an example. OrbisDB is an easy-to-use SQL interface for querying data stored via the [Ceramic](https://ceramic.network/) network, and alongside TACo, another fundmental building block for the Web3 stack.&#x20;
+This guide walks through how to use [OrbisDB](https://developers.ceramic.network/docs/introduction/orbisdb-overview) and TACo in combination, using the DeForum web application and [repo](https://github.com/nucypher/deforum-taco) as an example. OrbisDB is an easy-to-use SQL interface for querying data stored via the [Ceramic](https://ceramic.network/) network, and alongside TACo, another fundmental building block for the Web3 stack.
 
 {% hint style="info" %}
 DeForum is a decentralized web forum that allows end-users to create token-gated posts, make comments, upload images, and build personal profiles. There are two synced reference repos, one hosted by [nucypher](https://github.com/nucypher/deforum-taco) (TACo) and one by [ceramicstudio](https://github.com/ceramicstudio/deforum-taco) (OrbisDB).
@@ -8,27 +8,27 @@ DeForum is a decentralized web forum that allows end-users to create token-gated
 
 ## OrbisDB overview
 
-Built upon [Ceramic](https://ceramic.network/), OrbisDB is an open-source relational database designed for Web3 applications and beyond. OrbisDB offers a flexible and developer-friendly experience via a (1) web app & SDK for storing and managing datasets, (2) support for SQL and GraphQL queries, and (3) hosted nodes to facilitate DevOps.  The Ceramic network, as with ComposeDB, enables sovereign data ownership, composability and scalability. Decentralization is achieved through a population of node operators numbering in the hundreds, that anyone can permissionlessly join to provide  data services.&#x20;
+Built upon [Ceramic](https://ceramic.network/), OrbisDB is an open-source relational database designed for Web3 applications and beyond. OrbisDB offers a flexible and developer-friendly experience via a (1) web app & SDK for storing and managing datasets, (2) support for SQL and GraphQL queries, and (3) hosted nodes to facilitate DevOps. The Ceramic network, as with ComposeDB, enables sovereign data ownership, composability and scalability. Decentralization is achieved through a population of node operators numbering in the hundreds, that anyone can permissionlessly join to provide data services.
 
 ## Use case ideas
 
-* **DeSci.** Even movements centered around open access necessitate private channels, including draft papers, raw data analysis, peer reviews, funding, and other forms of collaboration. OrbisDB and TACo together offer storage and sharing of scientific work that maximizes the researcher's control and sovereignty. Additionally, the combination enables scientific data marketplaces with no trusted intermediary facilitating monetization.&#x20;
-* **AI datasets.** Leverage OrbisBD's provenance verification tooling and TACo's granular (row-level) conditionality to enable safe collaboration on sensitive training data while simultaneously verifying data integrity and quality.&#x20;
-* **Shared knowledge bases.** Combine Ceramic's verifiable credentials with credential-based secrets management to enforce fine-grained, per-page access to organizational resources. OrbisDB enables migration of non-public external data (e.g. via an API or static CSV) which can then be encrypted via TACo for specific group members (e.g. stakers in a network).&#x20;
+* **DeSci.** Even movements centered around open access necessitate private channels, including draft papers, raw data analysis, peer reviews, funding, and other forms of collaboration. OrbisDB and TACo together offer storage and sharing of scientific work that maximizes the researcher's control and sovereignty. Additionally, the combination enables scientific data marketplaces with no trusted intermediary facilitating monetization.
+* **AI datasets.** Leverage OrbisBD's provenance verification tooling and TACo's granular (row-level) conditionality to enable safe collaboration on sensitive training data while simultaneously verifying data integrity and quality.
+* **Shared knowledge bases.** Combine Ceramic's verifiable credentials with credential-based secrets management to enforce fine-grained, per-page access to organizational resources. OrbisDB enables migration of non-public external data (e.g. via an API or static CSV) which can then be encrypted via TACo for specific group members (e.g. stakers in a network).
 
 ***
 
-## Example application & repo&#x20;
+## Example application & repo
 
-[DeForum](https://github.com/ceramicstudio/deforum-taco) illustrates how TACo and OrbisD can be combined in a browser-based forum app, and also provides a template for virtually any form of token-gated content platform. The demo can run on a public node instance provided by OrbisDB studio for testing, or you can set up your own node in order to save data on the Ceramic network in production. The demo also requires a ThirdWeb account to help with image file upload and storage on IPFS.&#x20;
+[DeForum](https://github.com/ceramicstudio/deforum-taco) illustrates how TACo and OrbisD can be combined in a browser-based forum app, and also provides a template for virtually any form of token-gated content platform. The demo can run on a public node instance provided by OrbisDB studio for testing, or you can set up your own node in order to save data on the Ceramic network in production. The demo also requires a ThirdWeb account to help with image file upload and storage on IPFS.
 
-Skip to Section II below for an in-depth guide to leveraging TACo in the context of the DeForum app.&#x20;
+Skip to Section II below for an in-depth guide to leveraging TACo in the context of the DeForum app.
 
 ***
 
 ## Section I – Integration steps
 
-This section covers how TACo can be used in concert with OrbisDB across domains and use cases. Follow these instructions to integrate TACo into your OrbisDB app.&#x20;
+This section covers how TACo can be used in concert with OrbisDB across domains and use cases. Follow these instructions to integrate TACo into your OrbisDB app.
 
 ### 1. Install required dependencies
 
@@ -57,7 +57,7 @@ Polygon Amoy is the L2 for TACo's testnet [domains](../../get-started-with-tac.m
 
 ### 3. Initialize TACo
 
-Next, intialize TACo by loading WASM modules:&#x20;
+Next, intialize TACo by loading WASM modules:
 
 {% code title="app/context/TACoContext.tsx" %}
 ```typescript
@@ -78,11 +78,11 @@ useEffect(() => {
 ```
 {% endcode %}
 
-&#x20;TACo initialization is required on application startup. For Next.js applications, it is recommended to use a React Context to check if TACo has been initialized before to avoid repeating this process unnecessarily.
+TACo initialization is required on application startup. For Next.js applications, it is recommended to use a React Context to check if TACo has been initialized before to avoid repeating this process unnecessarily.
 
 ### 4. Define access/decryption conditions
 
-Next, define the conditions for accessing private data:&#x20;
+Next, define the conditions for accessing private data:
 
 {% code title="components/sections/newPost-modules.tsx" %}
 ```typescript
@@ -100,17 +100,17 @@ const condition = new conditions.base.rpc.RpcCondition({
 ```
 {% endcode %}
 
-Access conditions are specified at data encryption time. The various types of conditions can be found in the Access Control [section](../../taco-sdk/references/conditions/).&#x20;
+Access conditions are specified at data encryption time. The various types of conditions can be found in the Access Control [section](../../taco-sdk/references/conditions/).
 
-In the code snippet above, we specified that only those data consumer accounts with a positive POL balance on Polygon Amoy (chain ID `80002`) will qualify to decrypt the data. You can hardcode conditions, or create a UI for users to choose their own requirements for data access.&#x20;
+In the code snippet above, we specified that only those data consumer accounts with a positive POL balance on Polygon Amoy (chain ID `80002`) will qualify to decrypt the data. You can hardcode conditions, or create a UI for users to choose their own requirements for data access.
 
 ### 5. (Optional) Add TACo encryption and decryption utilities
 
-It's possible to integrate the `encrypt` and `decrypt` functions into a Next.js application by creating a new React Custom Hook. The two core functions to implement are `encryptWithTACo` and `decryptWithTACo`.&#x20;
+It's possible to integrate the `encrypt` and `decrypt` functions into a Next.js application by creating a new React Custom Hook. The two core functions to implement are `encryptWithTACo` and `decryptWithTACo`.
 
 In this example, these functions ensure that posts are encrypted before being stored in OrbisDB and decrypted after being queried.
 
-First, create **auxiliary functions** – encoding/decoding base64 strings – to be used with the main functions later:&#x20;
+First, create **auxiliary functions** – encoding/decoding base64 strings – to be used with the main functions later:
 
 {% code title="app/hooks/useTaco.ts" %}
 ```typescript
@@ -130,8 +130,8 @@ The `encryptWithTACo()` function encrypts a message and simultaneously sets the 
 
 {% code title="app/hooks/useTaco.ts" %}
 ```typescript
-const domain = "tapir";
-const ritualId = 6;
+const domain = "lynx";
+const ritualId = 27;
 
 async function encryptWithTACo(
   messageToEncrypt: string,
@@ -155,7 +155,7 @@ async function encryptWithTACo(
 
 The `decryptWithTACo()` function takes a base64 string with the encrypted data and decrypts the message if the conditions are met.
 
-A creitcal part of the decryption process is the authentication of the data consumer. In this case, the data consumer (or requestor) proves that they own a given Ethereum address – specifically via the **reuse** of an SIWE authentication. Users have already authenticated themselves on OrbisDB, so this avoids them signing the same message again.&#x20;
+A creitcal part of the decryption process is the authentication of the data consumer. In this case, the data consumer (or requestor) proves that they own a given Ethereum address – specifically via the **reuse** of an SIWE authentication. Users have already authenticated themselves on OrbisDB, so this avoids them signing the same message again.
 
 {% code title="app/hooks/useTaco.ts" %}
 ```typescript
@@ -213,9 +213,9 @@ async function decryptWithTACo(
 
 ***
 
-## Section II – Encrypting & decrypting forum posts via the DeForum web application&#x20;
+## Section II – Encrypting & decrypting forum posts via the DeForum web application
 
-Below, forum post bodies are encrypted so only data consumers that satisfy given conditions can view them as plaintext. The following code snippet also executes query to store the posts on OrbisDB in said encrypted format, so that only authenticated and qualifying consumers can access them.&#x20;
+Below, forum post bodies are encrypted so only data consumers that satisfy given conditions can view them as plaintext. The following code snippet also executes query to store the posts on OrbisDB in said encrypted format, so that only authenticated and qualifying consumers can access them.
 
 {% code title="components/sections/newPost-modules.tsx" %}
 ```typescript
@@ -297,20 +297,15 @@ const getPost = async (stream_id: string): Promise<void> => {
 ```
 {% endcode %}
 
-With a running application, it is possible to check that the encrypted posts are being uploaded to the database with [OrbisDB Studio](https://studio.useorbis.com/):&#x20;
+With a running application, it is possible to check that the encrypted posts are being uploaded to the database with [OrbisDB Studio](https://studio.useorbis.com/):
 
 <figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-## Using ComposeDB & TACo in production&#x20;
+## Using ComposeDB & TACo in production
 
 * For Ceramic, connect to Mainnet (`domains.MAINNET`).
 * For TACo, a funded Mainnet `ritualID` is required – this connects the encrypt/decrypt API to a cohort of independently operated nodes, and corresponds to a DKG public key generated by independent parties. A dedicated `ritualID` for Ceramic + TACo projects will be sponsored soon. Watch for updates here or in the Discord[ #taco](https://discord.com/channels/866378471868727316/870383642751430666) channel.
 
 As noted, the parameters specified in this guide are for testing and hacking only. For real-world use cases where uploaded data should remain private & permanent, the production version of TACo is required.
-
-
-
-
-

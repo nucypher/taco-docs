@@ -20,10 +20,9 @@ npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
 
 To run the code examples below, you will need a `cohortId` signing parameter. For development and testing, we provide publicly available testnet cohorts:
 
-| Network | Domain    | Cohort ID | Chain ID | Description           |
-| ------- | --------- | --------- | -------- | --------------------- |
-| Sepolia | `TESTNET` | 1         | 11155111 | Public testnet cohort |
-| Lynx    | `DEVNET`  | 1         | 11155111 | Development cohort    |
+| Network | Domain   | Cohort ID | Chain ID | Description        |
+| ------- | -------- | --------- | -------- | ------------------ |
+| Lynx    | `DEVNET` | 1         | 11155111 | Development cohort |
 
 For production use, please [contact us](https://docs.taco.build/contact) to have a dedicated cohort configured.
 
@@ -51,7 +50,7 @@ const timeCondition = new conditions.base.time.TimeCondition({
 // Set conditions for your cohort (requires admin privileges)
 await setSigningCohortConditions(
   signerProvider,
-  domains.TESTNET,
+  domains.DEVNET,
   timeCondition,
   cohortId, // your cohort ID
   chainId,
@@ -84,7 +83,7 @@ const userOp: UserOperation = {
 
 const conditionContext = await conditions.context.ConditionContext.forSigningCohort(
   ethProvider,
-  domains.TESTNET,
+  domains.DEVNET,
   1, // cohortId
   11155111 // chainId
 );
@@ -93,7 +92,7 @@ const aaVersion = '0.8.0';
 
 const signResult = await signUserOp(
   ethProvider,
-  domains.TESTNET,
+  domains.DEVNET,
   1, // cohortId
   11155111, // chainId
   userOp,

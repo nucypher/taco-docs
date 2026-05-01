@@ -49,13 +49,13 @@ const ownsNFT = new conditions.predefined.erc721.ERC721Ownership({
   parameters: [3591],
   chain: 11155111,
 });
-const ritualId = 6
+const ritualId = 27
 
 const message = "this will be here forever";
 
 const messageKit = await encrypt(
   web3Provider,
-  domains.TESTNET,
+  domains.DEVNET,
   message,
   ownsNFT,
   ritualId,
@@ -65,7 +65,7 @@ const encryptedMessageHex = toHexString(messageKit.toBytes());
 </code></pre>
 
 {% hint style="warning" %}
-This guide utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [trust assumptions section](../../../for-product-leads/trust-assumptions/).
+This guide utilizes the parameters `ritualId = 27` and `domains.DEVNET`. These refer to an open DKG public key and hacker-facing stable testnet respectively. Although fully functional and up-to-date with Mainnet, this development environment is **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [trust assumptions section](../../../for-product-leads/trust-assumptions/).
 {% endhint %}
 
 ### 3. Connect to Irys & store the data

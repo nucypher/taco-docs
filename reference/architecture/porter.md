@@ -22,8 +22,7 @@ import { domains, getPorterUri } from '@nucypher/taco';
 const porterUri = getPorterUri(domains.MAINNET);  // mainnet
 // OR
 const devPorterUri = getPorterUri(domains.DEVNET);  // lynx testnet
-// OR
-const testnetPorterUri = getPorterUri(domains.TESTNET);  // tapir testnet
+
 ```
 
 Alternatively, you can use your own non-default Porter URIs.

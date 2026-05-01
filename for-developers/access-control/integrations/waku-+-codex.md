@@ -4,8 +4,6 @@ description: Powering secure Waku communications and decentralized Codex storage
 
 # Waku + Codex
 
-
-
 <div><figure><img src="../../../.gitbook/assets/Vertical lockup - White.svg" alt=""><figcaption></figcaption></figure> <figure><img src="../../../.gitbook/assets/Vertical lockup - White (1).svg" alt=""><figcaption></figcaption></figure> <figure><img src="../../../.gitbook/assets/TACo-logo-white.svg" alt=""><figcaption></figcaption></figure></div>
 
 Using _Codex_, _Waku_, and _TACo_ together gives developers a powerful, fully decentralized stack for building secure, censorship-resistant applications. _Waku_ enables real-time, peer-to-peer communication without relying on centralized servers, while _Codex_ provides verifiable, durable storage for any type of content. _TACo_ adds a layer of programmable access control and encryption, allowing developers to define precise conditions for data access.
@@ -65,7 +63,8 @@ import { ethers } from 'ethers';
 
 ### 2. Create and set up a Waku light node
 
-<pre class="language-typescript"><code class="lang-typescript">const lightNode = await createLightNode({
+```typescript
+const lightNode = await createLightNode({
   defaultBootstrap: false,
   networkConfig: {
     clusterId: 42,
@@ -74,14 +73,14 @@ import { ethers } from 'ethers';
 });
 
 await lightNode.start();
-<strong>
-</strong>// Define your application's content topic: /&#x3C;application-name>/&#x3C;version>/&#x3C;content-type>/&#x3C;encoding>
+
+// Define your application's content topic: /<application-name>/<version>/<content-type>/<encoding>
 const CONTENT_TOPIC = `/fileshare/1/room-${roomId}/proto`;
 
 // Create Waku's encoder and decoder
 const encoder = createEncoder({ contentTopic: CONTENT_TOPIC });
 const decoder = createDecoder(CONTENT_TOPIC);
-</code></pre>
+```
 
 {% hint style="info" %}
 Note that _content topics_ are metadata strings embedded into outgoing messages that facilitate protocol-level features like selectively processing incoming messages. These strings can be thought of as 'channels', which determine, among other things, the path of messages through the network. Learn more about content topics [here](https://docs.waku.org/learn/concepts/content-topics/).
@@ -187,7 +186,7 @@ Define access conditions:
 
 Encrypt files:
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>const ritualId = 6 // This is a testnet-specific ritual ID
+<pre class="language-typescript"><code class="lang-typescript"><strong>const ritualId = 27 // This is a testnet-specific ritual ID
 </strong>
 // Read file as ArrayBuffer
 const arrayBuffer = await file.arrayBuffer();

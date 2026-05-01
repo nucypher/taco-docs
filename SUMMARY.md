@@ -9,7 +9,7 @@
 
 ## For Developers
 
-* [Testnets](for-developers/get-started-with-tac.md)
+* [Testnet](for-developers/get-started-with-tac.md)
 * [Access Control](for-developers/access-control/README.md)
   * [Quickstart (Testnet)](for-developers/access-control/quickstart-testnet.md)
   * [Quickstart — Node.js (Testnet)](for-developers/access-control/quickstart-nodejs.md)
@@ -29,6 +29,7 @@
     * [Authentication](for-developers/taco-sdk/references/authentication/README.md)
       * [Condition Context](for-developers/taco-sdk/references/authentication/conditioncontext-and-context-variables.md)
     * [Conditions](for-developers/taco-sdk/references/conditions/README.md)
+      * [Any (Major) EVM Chain Condition Support](for-developers/taco-sdk/references/conditions/any-major-evm-chain-condition-support.md)
       * [Building Conditions with an LLM](for-developers/taco-sdk/references/conditions/building-with-llms.md)
       * [Cookbook](for-developers/taco-sdk/references/conditions/cookbook.md)
       * [Discord Tipping Bot Deep Dive](for-developers/taco-sdk/references/conditions/discord-tipping-bot-deep-dive.md)
@@ -49,8 +50,7 @@
         * [CompoundCondition](for-developers/taco-sdk/references/conditions/logical-conditions/condition-set.md)
         * [IfThenElseCondition](for-developers/taco-sdk/references/conditions/logical-conditions/ifthenelsecondition.md)
         * [SequentialCondition](for-developers/taco-sdk/references/conditions/logical-conditions/sequentialcondition.md)
-  * [WIP / Feature Requests](for-developers/taco-sdk/wip-feature-requests/README.md)
-    * [Any (Major) EVM Chain Condition Support](for-developers/taco-sdk/wip-feature-requests/any-major-evm-chain-condition-support.md)
+  * [WIP / Feature Requests](for-developers/taco-sdk/wip-feature-requests.md)
 
 ***
 

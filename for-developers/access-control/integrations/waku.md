@@ -99,12 +99,12 @@ In this step, set up the plaintext message to be encrypted locally, with the con
 
 ```javascript
 const message = 'Hello, encrypted Waku world!'
-const ritualId = 6  // This is a testnet-specific ritual ID
+const ritualId = 27  // This is a testnet-specific ritual ID
 
 // Encrypt message with TACo
 const messageKit = await encrypt(
   web3Provider,
-  domains.TESTNET,
+  domains.DEVNET,
   message,
   condition,
   ritualId,
@@ -118,7 +118,7 @@ await node.lightPush.send(encoder, {
 ```
 
 {% hint style="warning" %}
-Note that the `ritualID` refers to the group of TACo nodes that will enforce access to the message(s). This example uses `ritualId = 6` and `domains.TESTNET`. These development environments are **not decentralized** and unsuitable for real-world sensitive data.
+Note that the `ritualID` refers to the group of TACo nodes that will enforce access to the message(s). This example uses `ritualId = 27` and `domains.DEVNET`. These development environments are **not decentralized** and unsuitable for real-world sensitive data.
 {% endhint %}
 
 ### 7. Receive and decrypt messages
@@ -141,7 +141,7 @@ await node.filter.subscribe([decoder], async (wakuMessage) => {
     // Decrypt message
     const decryptedMessage = await decrypt(
       web3Provider,
-      domains.TESTNET,
+      domains.DEVNET,
       receivedMessageKit,
       conditionContext
     )
@@ -183,10 +183,10 @@ const condition = new conditions.predefined.erc721.ERC721Ownership({
 // Encrypt and send message
 const encoder = createEncoder({ contentTopic: CONTENT_TOPIC })
 const message = 'Hello, encrypted Waku world!'
-const ritualId = 6 // Replace with your actual ritual ID
+const ritualId = 27 // Replace with your actual ritual ID
 const messageKit = await encrypt(
   web3Provider,
-  domains.TESTNET,
+  domains.DEVNET,
   message,
   condition,
   ritualId,

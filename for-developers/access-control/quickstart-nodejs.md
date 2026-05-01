@@ -14,7 +14,7 @@ A full working example lives in the taco-web repo: [`examples/taco/nodejs`](http
 
 {% stepper %}
 {% step %}
-## Install dependencies
+### Install dependencies
 
 ```bash
 npm install @nucypher/taco @nucypher/taco-auth ethers@5.7.2
@@ -26,15 +26,15 @@ TACo currently requires **ethers v5**. The API is not compatible with ethers v6.
 {% endstep %}
 
 {% step %}
-## Configure provider, domain, and ritual ID
+### Configure provider, domain, and ritual ID
 
 You'll need three things:
 
-| Parameter | Value | Notes |
-|-----------|-------|-------|
-| **RPC URL** | A Polygon Amoy RPC endpoint | This reads DKG coordination contracts — it's **not** your application's chain. Any public Amoy RPC works. |
-| **Ritual ID** | `6` (for TAPIR testnet) | See the [testnets](../get-started-with-tac.md#threshold-decryption) page for other environments. |
-| **Private keys** | Two test wallets | One for the encryptor, one for the consumer. Any Ethereum wallets — no testnet funds required. |
+| Parameter        | Value                       | Notes                                                                                                     |
+| ---------------- | --------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **RPC URL**      | A Polygon Amoy RPC endpoint | This reads DKG coordination contracts — it's **not** your application's chain. Any public Amoy RPC works. |
+| **Ritual ID**    | `27` (for LYNX testnet)     | See the [testnet](../get-started-with-tac.md#threshold-decryption) page for other environments.           |
+| **Private keys** | Two test wallets            | One for the encryptor, one for the consumer. Any Ethereum wallets — no testnet funds required.            |
 
 ```typescript
 import { ethers } from 'ethers';
@@ -46,13 +46,13 @@ const provider = new ethers.providers.JsonRpcProvider(
   'https://polygon-amoy.drpc.org'
 );
 
-const domain = domains.TESTNET;  // "tapir"
-const ritualId = 6;
+const domain = domains.DEVNET;  // "lynx"
+const ritualId = 27;
 ```
 {% endstep %}
 
 {% step %}
-## Encrypt data
+### Encrypt data
 
 ```typescript
 import { conditions, encrypt, initialize } from '@nucypher/taco';
@@ -92,7 +92,7 @@ const encryptedBytes = messageKit.toBytes();
 {% endstep %}
 
 {% step %}
-## Decrypt data
+### Decrypt data
 
 ```typescript
 import {
@@ -145,11 +145,13 @@ console.log(decryptedMessage); // "my secret message"
 {% tabs %}
 {% tab title="Provider" %}
 **Browser:**
+
 ```typescript
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 ```
 
 **Node.js:**
+
 ```typescript
 const provider = new ethers.providers.JsonRpcProvider('https://polygon-amoy.drpc.org');
 ```
@@ -157,11 +159,13 @@ const provider = new ethers.providers.JsonRpcProvider('https://polygon-amoy.drpc
 
 {% tab title="Signer" %}
 **Browser:**
+
 ```typescript
 const signer = provider.getSigner(); // MetaMask popup
 ```
 
 **Node.js:**
+
 ```typescript
 const signer = new ethers.Wallet('<PRIVATE_KEY>');
 ```
@@ -169,11 +173,13 @@ const signer = new ethers.Wallet('<PRIVATE_KEY>');
 
 {% tab title="SIWE Auth" %}
 **Browser:** Domain and URI inferred from page origin.
+
 ```typescript
 const authProvider = new EIP4361AuthProvider(provider, signer);
 ```
 
 **Node.js:** Must pass `{ domain, uri }` explicitly.
+
 ```typescript
 const authProvider = new EIP4361AuthProvider(provider, signer, {
   domain: 'localhost',
@@ -186,6 +192,7 @@ const authProvider = new EIP4361AuthProvider(provider, signer, {
 **Browser:** `messageKit` often stays in memory.
 
 **Node.js:** Use binary serialization for storage or transmission.
+
 ```typescript
 const bytes = messageKit.toBytes();
 const restored = ThresholdMessageKit.fromBytes(bytes);
@@ -197,4 +204,5 @@ const restored = ThresholdMessageKit.fromBytes(bytes);
 
 * Browse all [condition types](../taco-sdk/references/conditions/) to define more complex access rules
 * See the [full Node.js example](https://github.com/nucypher/taco-web/tree/main/examples/taco/nodejs) in the taco-web repo
-* Review [testnets](../get-started-with-tac.md) for ritual IDs and network configuration
+* Review [testnet](../get-started-with-tac.md) for ritual IDs and network configuration
+

@@ -24,7 +24,7 @@ Reward withholding and stake slashing, as a consequence of committing attributab
 
 Stakers operating TACo nodes must ensure that their nodes are up-to-date, available/reachable and correctly configured at all times. Failure to do may result in protocol divergent behavior, attributable failures, and the levying of economic penalties, including reward withholding and slashing of collateral.
 
-<figure><img src="../.gitbook/assets/infraction_collection.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/file.excalidraw (2).svg" alt=""><figcaption></figcaption></figure>
 
 Nodes are 'tested' during Distributed Key Generation (DKG) rituals, wherein the following violations are detectable, attributable and punishable on-chain:
 

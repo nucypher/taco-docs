@@ -31,9 +31,9 @@ Additionally, we have [publicly available testnet rituals](../get-started-with-t
 
 ### 3. Define decryption condition and encrypt data
 
-With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.&#x20;
+With `ritualId` and [a web3 provider from `ethers`](https://docs.ethers.org/v5/api/providers/#providers-getDefaultProvider), we can `taco.encrypt` our data.
 
-In this example, we will use our [`tapir` testnet](../get-started-with-tac.md#threshold-decryption), where you can freely use `ritualId = 6`.
+In this example, we will use our [`lynx` testnet](../get-started-with-tac.md#threshold-decryption), where you can freely use `ritualId = 27`.
 
 {% hint style="info" %}
 The `polygonProvider` below connects to **Polygon Amoy** — this is where TACo's DKG coordination contracts live. It is **not** your application's chain provider. Your conditions can still target any supported EVM chain (Ethereum, Sepolia, etc.) regardless of this provider.
@@ -58,12 +58,12 @@ const signerProvider = new ethers.providers.Web3Provider(window.ethereum);
 const polygonProvider = new ethers.providers.JsonRpcProvider("https://polygon-amoy.drpc.org");
 
 const message = "my secret message";
-const ritualId = 6
+const ritualId = 27
 
 // encrypt data
 const messageKit = await encrypt(
 <strong>  polygonProvider,
-</strong><strong>  domains.TESTNET,
+</strong><strong>  domains.DEVNET,
 </strong>  message,
   ownsNFT,
   ritualId,
@@ -97,7 +97,7 @@ conditionContext.addAuthProvider(USER_ADDRESS_PARAM_DEFAULT, authProvider);
 
 const decryptedMessage = await decrypt(
   web3Provider,
-  domains.TESTNET,
+  domains.DEVNET,
   messageKit,
   conditionContext,
 );
@@ -107,7 +107,7 @@ Since `ownsNFT` condition refers to an NFT owned by the _data consumer_, `decryp
 
 ### Next steps
 
-Learn more about using TACo in a sandboxed environment in the [Testnets](../get-started-with-tac.md) section.
+Learn more about using TACo in a sandboxed environment in the [Testnet](../get-started-with-tac.md) section.
 
 ### Example applications
 

@@ -1,8 +1,8 @@
 # Mainnet Deployment
 
-Following a successful prototyping/testing of the integration using TACo's [Testnet(s)](../for-developers/get-started-with-tac.md), we are ready to switch to TACo Mainnet and deploy our application to production. TACo Mainnet is the fully decentralized version of the TACo API and network.&#x20;
+Following a successful prototyping/testing of the integration using TACo's [Testnet](../for-developers/get-started-with-tac.md), we are ready to switch to TACo Mainnet and deploy our application to production. TACo Mainnet is the fully decentralized version of the TACo API and network.
 
-## Cohort Formation&#x20;
+## Cohort Formation
 
 {% hint style="info" %}
 In order to use TACo in production, developers must request [Mainnet Access](mainnet-taco-beta-program.md).
@@ -20,12 +20,11 @@ There are no substantial changes in the code when one switches from using _testn
 
 // This should be a environment variable
 const rpcProviderUrl = "https://polygon-mainnet.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-<strong>
-</strong><strong>const provider = new ethers.providers.JsonRpcProvider(rpcProviderUrl);
+
+<strong>const provider = new ethers.providers.JsonRpcProvider(rpcProviderUrl);
 </strong><strong>const domain = domains.MAINNET;
 </strong><strong>const id = 0 // Replace by the relevant ID
-</strong><strong>
-</strong><strong>// TACo operations
+</strong>
+<strong>// TACo operations
 </strong><strong>...
 </strong></code></pre>
-

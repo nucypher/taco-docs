@@ -9,11 +9,10 @@ Note that using TACo in production requires a unique DKG initialization ritual, 
 Before we install `taco`, we need to consider which domain we would like to use:
 
 * `MAINNET` (`mainnet` network) - production environment
-* `TESTNET` (`tapir` network) - stable testnet that matches `mainnet`
 * `DEVNET` (`lynx` network) - bleeding-edge testnet used for internal development and future features
 
 {% hint style="info" %}
-`tapir` is the stable network recommended for developers.
+`lynx` is the development testnet.
 {% endhint %}
 
 Once you've picked a network, install `@nucypher/taco` from [npm.js](https://www.npmjs.com/package/@nucypher/taco?activeTab=versions) with the appropriate tag based on the chosen network. To find the appropriate version, refer to the "Tags" column in the "Current Tags" section.
@@ -158,10 +157,10 @@ const decryptedMessage = await decrypt(
 );
 ```
 
-At decryption time, the requester will be asked to verify their address by signing a message from their wallet. If the requester's address controls the minimum number (or greater) of the specified NFT, they are eligible to receive the requisite number of decryption fragments. By assembling these fragments, they can decrypt the encrypted data and view the plaintext.&#x20;
+At decryption time, the requester will be asked to verify their address by signing a message from their wallet. If the requester's address controls the minimum number (or greater) of the specified NFT, they are eligible to receive the requisite number of decryption fragments. By assembling these fragments, they can decrypt the encrypted data and view the plaintext.
 
 {% hint style="info" %}
-Note that the requester does not need to manually sign the next time they seek access to the data, as the `taco` client will cache their signature. Fresh plaintexts encrypted under any conditions involving the same wallet address are automatically accessible to any requester who has signed at least once, provided they still fulfill any requisite conditions, and the cached signature has not expired.&#x20;
+Note that the requester does not need to manually sign the next time they seek access to the data, as the `taco` client will cache their signature. Fresh plaintexts encrypted under any conditions involving the same wallet address are automatically accessible to any requester who has signed at least once, provided they still fulfill any requisite conditions, and the cached signature has not expired.
 {% endhint %}
 
 ### Complete example

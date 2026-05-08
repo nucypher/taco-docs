@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-* [Introduction to TACo](README.md)
+* [TACo | Cryptographic Public Good](README.md)
 * [How TACo Works](getting-started/key-concepts/README.md)
   * [Access Control](getting-started/key-concepts/access-control.md)
   * [Action Control](getting-started/key-concepts/action-control.md)

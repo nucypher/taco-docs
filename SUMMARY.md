@@ -49,20 +49,9 @@
 ## For Product Leads
 
 * [Value Propositions](for-product-leads/value-propositions.md)
-* [Access Control](for-product-leads/access-control/README.md)
-  * [Use cases](for-product-leads/access-control/use-cases/README.md)
-    * [Seed phrase recovery & transfer](for-product-leads/access-control/use-cases/seed-phrase-recovery-and-transfer.md)
-    * [Digital Rights Management for on-chain assets](for-product-leads/access-control/use-cases/digital-rights-management-for-on-chain-assets.md)
-    * [Trustless channels for journalists, archivists & whistleblowers](for-product-leads/access-control/use-cases/trustless-channels-for-journalists-archivists-and-whistleblowers.md)
-    * [Crowdsourcing real-world data with trustless contribution](for-product-leads/access-control/use-cases/crowdsourcing-real-world-data-with-trustless-contribution.md)
-* [Trust Assumptions](for-product-leads/trust-assumptions/README.md)
-  * [Mainnet Trust Disclosure (Provider Answers)](for-product-leads/trust-assumptions/mainnet-trust-disclosure-provider-answers.md)
-  * [Mainnet Trust Model Foundation](for-product-leads/trust-assumptions/mainnet-trust-model-foundation.md)
-  * [Trust levers & parameter packages](for-product-leads/trust-assumptions/trust-levers-and-parameter-packages.md)
-
-***
-
-* [Mainnet Fees](mainnet-fees.md)
+* [Use cases](for-product-leads/use-cases.md)
+* [Trust Model](for-product-leads/mainnet-trust-model-foundation.md)
+* [Fee Model](for-product-leads/mainnet-fees.md)
 
 ## Reference
 

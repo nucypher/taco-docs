@@ -33,7 +33,7 @@ In this example, the _data_ _producer_ is composing a _time-based_ condition for
 We encrypt the message using the `blockHeight` condition, specifying the devnet `domain` and `ritualID`, and a standard web3 provider/signer.
 
 {% hint style="warning" %}
-This guide utilizes the parameters `ritualId = 27` & `domains.DEVNET`. These refer to an open DKG public key and hacker-facing bleeding-edge testnet respectively, which are **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [Trust Assumptions](../../for-product-leads/trust-assumptions/) section.
+This guide utilizes the parameters `ritualId = 27` & `domains.DEVNET`. These refer to an open DKG public key and hacker-facing bleeding-edge testnet respectively, which are **not decentralized** and unsuitable for real-world sensitive data. For more information, see the [Trust Assumptions](/broken/pages/WugTyY8VT0l9LBPeY79b) section.
 {% endhint %}
 
 <pre class="language-typescript"><code class="lang-typescript">import { encrypt, conditions, domains, initialize, toHexString } from '@nucypher/taco';

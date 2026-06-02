@@ -1,4 +1,10 @@
-# Mainnet Fees
+# Fee Model
+
+{% hint style="warning" %}
+Threshold Access Control is not currently supported by an stable cohort of node operators running TACo clients, and hence there is no active fee model or paywall. The network will be relaunched by WEDF in Q3 2026.
+
+Until then, this page serves solely as a open source reference and blueprint for the community.&#x20;
+{% endhint %}
 
 ### `sponsor` & `cohortAdmin` Roles
 
@@ -9,7 +15,7 @@ Adopting developers pay in advance for use of TACo mainnet by transacting with t
 
 The `sponsor` and `cohortAdmin` roles can use the same address or use different addresses. For example, the `cohortAdmin` could be a cold wallet address, while the `sponsor` might simply be a one-off software address. External developers may also prefer to set a DAO, a Multisig, or any kind of smart contract as the `cohortAdmin`, which would reduce the trust burden on their end-users with respect to control over encryptors and the TACo cohort.
 
-Currently, cohort formation is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team. Prospective `sponsor`s should follow the instructions on the [Mainnet Integration](/broken/pages/XpbH0VyXQYA9sdAJWhyQ) page.
+Currently, cohort formation is not permissionless and must be pre-approved in the [`Coordinator`](https://github.com/nucypher/nucypher-contracts/blob/main/contracts/contracts/coordination/Coordinator.sol) contract by the NuCypher team.&#x20;
 
 ### Fee structure
 
@@ -36,21 +42,3 @@ There is no charge, payment gate or limit on:
 * additions/removals of addresses to/from the encryptor allowlist
 * any other communication with the network or API
 
-#### Threshold Signing
-
-{% hint style="warning" %}
-TACo Threshold Signing is currently in alpha and available only on the `DEVNET` environment.
-{% endhint %}
-
-The fee structure is still TBD but may include:
-
-* Cohort rental duration-based fee
-* Tiers for number of chains
-* Add-on for persistent caching of previously valid signatures in spite of cohort rotation
-
-There is not charge for:
-
-* signatures
-* types or combinations of conditions specified
-* throughput/number of requests
-* any other communication iwth the network or API

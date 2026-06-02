@@ -110,7 +110,7 @@ This time, when we hit the Decrypt button and ping the TACo API, the assigned gr
 To clear the session data and restart the demo, click the _Reset_ button in the navigation bar.
 
 {% hint style="warning" %}
-Note that this tutorial utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](../quickstart-testnet/get-started-with-tac.md) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](../../for-product-leads/trust-assumptions/).
+Note that this tutorial utilizes the parameters `ritualId = 6` and `domains.TESTNET`. These refer to an permissionless DKG public key and hacker-facing testnet respectively. Although fully functional and up-to-date with Mainnet, this [development environment](../quickstart-testnet/get-started-with-tac.md) is not decentralized and unsuitable for real-world sensitive data. For more information, see the trust assumptions [section](/broken/pages/WugTyY8VT0l9LBPeY79b).
 {% endhint %}
 
 ***

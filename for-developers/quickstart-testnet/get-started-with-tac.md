@@ -19,7 +19,7 @@ domains.DEVNET  // "lynx" network
 * `DEVNET` domain, or `lynx`, is a bleeding-edge developer network that supports the upcoming `taco` release.
 
 {% hint style="warning" %}
-`DEVNET` is unsuitable for use in a production setting since it does not have any trust minimization or stability guarantees, which makes it unfit for production or real-world data payloads. Learn more about this in the trust assumptions [section](../../for-product-leads/trust-assumptions/).
+`DEVNET` is unsuitable for use in a production setting since it does not have any trust minimization or stability guarantees, which makes it unfit for production or real-world data payloads. Learn more about this in the trust assumptions [section](/broken/pages/WugTyY8VT0l9LBPeY79b).
 {% endhint %}
 
 ## Quick reference

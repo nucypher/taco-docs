@@ -1,7 +1,7 @@
-# Action Control
+# Action Control Product Info
 
 {% hint style="warning" %}
-TACo Threshold Signing is currently in alpha and available only on the `DEVNET` environment.
+Threshold Action Control is not currently supported by active/available infrastructure (e.g. testnets, TACo node clients). This page serves solely as a open source reference and blueprint.&#x20;
 {% endhint %}
 
 TACo Action Control enables decentralized, conditional signing of data using threshold cryptography. It allows applications to request signatures from a distributed network of nodes, where signatures are only generated when predefined conditions are met.

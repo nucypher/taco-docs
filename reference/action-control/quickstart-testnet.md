@@ -1,6 +1,10 @@
-# Quickstart
+# Integration Guide
 
-## Quickstart Guide&#x20;
+{% hint style="warning" %}
+Threshold Action Control is not currently supported by active/available infrastructure (e.g. testnets, TACo node clients). This page serves solely as a open source reference and blueprint.&#x20;
+{% endhint %}
+
+## Guide&#x20;
 
 The TACo SDK allows you to implement conditional signing for [ERC-4337](https://www.erc4337.io/) (a.k.a _Account Abstraction_) UserOperations. In just a few minutes, you'll be able to:
 

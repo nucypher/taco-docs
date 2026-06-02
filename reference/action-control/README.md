@@ -2,10 +2,10 @@
 description: Conditions-based threshold signing
 ---
 
-# Action Control
+# Threshold Action Control
 
 {% hint style="warning" %}
-Threshold Action Control is currently in alpha.
+Threshold Action Control is not currently supported by active/available infrastructure (e.g. testnets, TACo node clients). This page serves solely as a open source reference and blueprint.&#x20;
 {% endhint %}
 
 _Action Control_ enables the generation of user-controlled, automated, multi-party digital signatures leveraging both signing data-specific and existing conditions available in TACo.

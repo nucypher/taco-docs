@@ -74,9 +74,9 @@
 
 ## Reference
 
-* [Action Control](reference/action-control/README.md)
-  * [Quickstart](reference/action-control/quickstart-testnet.md)
-  * [Action Control](reference/action-control/action-control/README.md)
+* [Threshold Action Control](reference/action-control/README.md)
+  * [Integration Guide](reference/action-control/quickstart-testnet.md)
+  * [Action Control Product Info](reference/action-control/action-control/README.md)
     * [Use Cases](reference/action-control/action-control/use-cases.md)
     * [Limitations](reference/action-control/action-control/limitations.md)
 * [Contract Addresses](reference/contract-addresses.md)

@@ -1,9 +1,11 @@
 # Run a TACo Node with Docker
 
 {% hint style="warning" %}
-TACo is currently in the process of transitioning away from the [Threshold Network](https://threshold.network) to a new staking infrastructure. As a result, **no new TACo stakes or node operators will be permitted until this transition is fully completed.**
+The TACo network is currently dormant ahead of a relaunch by WEDF scheduled for Q3 2026. Although  independent operators may choose to continue running TACo nodes at their discretion, there is no coordinated group of providers running TACo software at this time.&#x20;
 
-For the latest updates and announcements regarding this transition, please stay connected via the [TACo Discord server](https://discord.gg/buildwithtaco).
+A stable version of the service will be relaunched in Q3 2026 – centered around a _Privacy Coalition._ If you represent an organization in the domains of privacy advocacy, anti-surveillance, human rights, encryption/whistleblower technology, or pertinent academic research, and would like to be involved, please get in [touch](https://discord.gg/Rh2728Hk).&#x20;
+
+Until then, this page serves as a reference for prospective members of this new node coalition.&#x20;
 {% endhint %}
 
 ## Before you begin
@@ -128,7 +130,7 @@ Follow the in-terminal prompts. You will see a public key for your TACo node and
 ## 5. Launch the Node
 
 {% hint style="danger" %}
-The first time a taco node is launched the public key generated in the previous step is committed on-chain.  After this commitment, loss of the private keys is a protocol offensive that will result in reward withholding and/or stake slashing.
+The first time a taco node is launched the public key generated in the previous step is committed on-chain. After this commitment, loss of the private keys is a protocol offensive that will result in reward withholding and/or stake slashing.
 {% endhint %}
 
 Run the following command to launch the node:

@@ -1,6 +1,12 @@
 # TACo Node Recovery
 
-## Node Operator Security and Recovery Guidelines
+{% hint style="warning" %}
+The TACo network is currently dormant ahead of a relaunch by WEDF scheduled for Q3 2026. Although  independent operators may choose to continue running TACo nodes at their discretion, there is no coordinated group of providers running TACo software at this time.&#x20;
+
+A stable version of the service will be relaunched in Q3 2026 – centered around a _Privacy Coalition._ If you represent an organization in the domains of privacy advocacy, anti-surveillance, human rights, encryption/whistleblower technology, or pertinent academic research, and would like to be involved, please get in [touch](https://discord.gg/Rh2728Hk).&#x20;
+
+Until then, this page serves as a reference for prospective members of this new node coalition.&#x20;
+{% endhint %}
 
 As a node operator, it is critical to maintain the security of your keystores (private keys), passwords, and mnemonic phrases throughout the lifecycle of your node's operation. Ensuring the safekeeping of these elements is essential for continued access and control of your node. In the event of a loss, several built-in recovery tools are available to assist you in restoring normal operations.
 
@@ -104,7 +110,7 @@ docker run -it -v ~/.local/share/nucypher:/root/.local/share/nucypher:rw -v ~/.e
 
 #### **View mnemonic**
 
-This command can be used to view the mnemonic for existing private keys.  This assumes you have the keystore file and it's associated password.
+This command can be used to view the mnemonic for existing private keys. This assumes you have the keystore file and it's associated password.
 
 {% tabs %}
 {% tab title="CLI" %}

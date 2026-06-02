@@ -54,7 +54,7 @@ The `provider` configured above reads DKG coordination contracts on the L2 chain
 <table><thead><tr><th width="111.73046875">Domain</th><th width="104.45703125">Network</th><th width="97.421875">L1</th><th width="149.21875">L2</th><th width="132.953125" data-type="number">Open Ritual ID</th><th>Cohort</th></tr></thead><tbody><tr><td>DEVNET</td><td><a href="https://lynx-3.nucypher.network:9151/status">lynx</a></td><td>Sepolia<br>(11155111)</td><td>Amoy (80002)</td><td>27</td><td>2-of-3</td></tr></tbody></table>
 
 {% hint style="info" %}
-**Open Ritual ID** refers to a DKG cohort & public key with no restrictions on encryptors – i.e. any device or address can use the public key to encrypt data. See the [encryptor allowlist](../taco-integration/encryptor-allowlist.md) section to learn more.
+**Open Ritual ID** refers to a DKG cohort & public key with no restrictions on encryptors – i.e. any device or address can use the public key to encrypt data. See the [encryptor allowlist](encryptor-allowlist.md) section to learn more.
 {% endhint %}
 
 {% hint style="info" %}

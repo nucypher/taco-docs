@@ -1,5 +1,15 @@
 # Duties, Compensation & Penalties
 
+
+
+{% hint style="warning" %}
+The TACo network is currently dormant ahead of a relaunch by WEDF scheduled for Q3 2026. Although  independent operators may choose to continue running TACo nodes at their discretion, there is no coordinated group of providers running TACo software at this time, **nor are there any test DKG rituals.**
+
+A stable version of the service will be relaunched in Q3 2026 – centered around a _Privacy Coalition._ If you represent an organization in the domains of privacy advocacy, anti-surveillance, human rights, encryption/whistleblower technology, or pertinent academic research, and would like to be involved, please get in [touch](https://discord.gg/Rh2728Hk).&#x20;
+
+Until then, this page serves as a reference for prospective members of this new node coalition.&#x20;
+{% endhint %}
+
 ### Node **Operator Duties**
 
 {% hint style="danger" %}
@@ -69,28 +79,7 @@ Critical operations required for encryption & decryption follow a threshold desi
 Adopters of TACo require reassurance that the cohorts of nodes managing their users' data will remain intact for extended durations. Although cohort members can be securely replaced, while maintaining a persistent public key, it is preferable for economic reasons to minimize the number of node replacement rituals – particularly in the genesis era of the service. Hence, TACo service provision ideally involves a commitment to provide service for years, rather than months.
 
 {% hint style="warning" %}
-The _deauthorization del&#x61;_&#x79; is the time one must wait between initiating a withdrawal from TACo service provision and being able to complete that withdrawal.\
-\
-From genesis, the deauthorization delay is set to **6 months** (183 days).
+The _deauthorization del&#x61;_&#x79; is the time one must wait between initiating a withdrawal from TACo service provision and being able to complete that withdrawal. From genesis, the deauthorization delay is set to **6 months** (183 days).
 {% endhint %}
 
 Note that this delay is universal and independent of any other token lock-up or bonus mechanism.
-
-### **Rewards**
-
-TACo node operators earn **3.75%** APY as soon as they authorize to the TACo application. This yield is maintained, irrespective of the fluctuations to the staking rate, by the [Stable Yield](https://forum.threshold.network/t/tip-003-threshold-network-reward-mechanisms-proposal-i-stable-yield-for-non-institutional-staker-welfare/82) mechanism. Hence, unless a staker is subject to a reward withholding penalty due to an attributable violation, they can expect to receive a consistent subsidy.
-
-### **Fees**
-
-The first version of TACo launched with fee-paying adopting developers. The first set of developers paid a **duration-based fee** upfront, giving them access to the TACo API and a corresponding cohort of nodes to manage access to their users' data.\
-\
-Since then, the fee model has been extended to include a **user-based** fee, based on the number of unique data producers (encryptors) an application requires at any given moment. For more detail on the dual fee model, see the latest payment structure and rules [here](https://github.com/nucypher/nucypher-contracts/issues/274#issuecomment-2322388661).
-
-All fees are paid in Polygon **DAI**.
-
-Fees are collected and held by the Coordinator contract, which will be temporarily placed under the control of the Threshold Council. Following a set of competing proposals and votes, the DAO will choose a fee distribution mechanism, which will use the accumulated fees in a way that is most beneficial to the network and participating stakers. Proposals can be made by any TACo staker.\
-\
-Some questions to consider before making or voting on a proposal:
-
-* Should fees be automatically converted to T, which would support the Threshold token price, enable compensation in a single token, and increase protocol-owned liquidity?
-* Should stakers whose node is a member of more cohorts be compensated with commensurate fees, or should fees be distributed based purely on availability. In other words, should stand-by nodes earn the same as nodes in active cohorts?

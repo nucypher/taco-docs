@@ -34,9 +34,9 @@
 * [Integration Guide](for-developers/quickstart-testnet/README.md)
   * [Testnet](for-developers/quickstart-testnet/get-started-with-tac.md)
   * [Quickstart — Node.js (Testnet)](for-developers/quickstart-testnet/quickstart-nodejs.md)
-* [Integrate Into Apps](for-developers/taco-integration/README.md)
-  * [Encryptor Allowlist](for-developers/taco-integration/encryptor-allowlist.md)
-  * [Mainnet Deployment](for-developers/taco-integration/deploying-to-mainnet.md)
+  * [Integrate Into Apps](for-developers/quickstart-testnet/taco-integration.md)
+  * [Encryptor Allowlist](for-developers/quickstart-testnet/encryptor-allowlist.md)
+  * [Mainnet Deployment](for-developers/quickstart-testnet/deploying-to-mainnet.md)
 * [TACo SDK](for-developers/taco-sdk.md)
 * [Ecosystem Integrations](for-developers/integrations/README.md)
   * [OrbisDB](for-developers/integrations/orbisdb.md)
@@ -72,11 +72,8 @@
 
 ## For Node Operators
 
-* [Getting Set Up](for-node-operators/getting-set-up/README.md)
-  * [Minimum System Requirements](for-node-operators/getting-set-up/minimum-system-requirements.md)
-  * [Run a TACo Node with Docker](for-node-operators/getting-set-up/run-a-taco-node-with-docker.md)
-* [Operations](for-node-operators/operations/README.md)
-  * [TACo Node Management](for-node-operators/operations/taco-node-management.md)
-  * [TACo Node Recovery](for-node-operators/operations/taco-node-recovery.md)
-  * [Stake Authorization](for-node-operators/operations/stake-authorization.md)
+* [Minimum System Requirements](for-node-operators/minimum-system-requirements.md)
+* [Run a TACo Node with Docker](for-node-operators/run-a-taco-node-with-docker.md)
+* [TACo Node Management](for-node-operators/taco-node-management.md)
+* [TACo Node Recovery](for-node-operators/taco-node-recovery.md)
 * [Duties, Compensation & Penalties](for-node-operators/duties-compensation-and-penalties.md)

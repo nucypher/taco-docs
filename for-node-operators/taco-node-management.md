@@ -1,6 +1,12 @@
 # TACo Node Management
 
-## Node Management
+{% hint style="warning" %}
+The TACo network is currently dormant ahead of a relaunch by WEDF scheduled for Q3 2026. Although  independent operators may choose to continue running TACo nodes at their discretion, there is no coordinated group of providers running TACo software at this time.&#x20;
+
+A stable version of the service will be relaunched in Q3 2026 – centered around a _Privacy Coalition._ If you represent an organization in the domains of privacy advocacy, anti-surveillance, human rights, encryption/whistleblower technology, or pertinent academic research, and would like to be involved, please get in [touch](https://discord.gg/Rh2728Hk).&#x20;
+
+Until then, this page serves as a reference for prospective members of this new node coalition.&#x20;
+{% endhint %}
 
 ### Automatically Upgrade Node
 

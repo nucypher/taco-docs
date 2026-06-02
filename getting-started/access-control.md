@@ -20,7 +20,7 @@ Under the hood, TACo involves splitting a joint secret – a decryption key – 
 
 ### **Conditionality**
 
-Conditions are 'attached' on a per-ciphertext basis. In other words, each and every payload, message or bit can be access-restricted by a unique set of specified conditions. A range of access control condition types can be defined by the _adopting developer_ and/or _data producer._ For more on condition logic, check out the [conditions](../for-developers/taco-sdk/references/conditions/ "mention") section.
+Conditions are 'attached' on a per-ciphertext basis. In other words, each and every payload, message or bit can be access-restricted by a unique set of specified conditions. A range of access control condition types can be defined by the _adopting developer_ and/or _data producer._ For more on condition logic, check out the [conditions](../for-developers/conditions/ "mention") section.
 
 ## End-to-end data sharing flow
 

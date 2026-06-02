@@ -34,17 +34,17 @@ Signing conditions are at the heart of TACo Action Control's utility. They can b
 \
 Conditions are categorized as follows:
 
-* [Signing Object Conditions](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md)\
+* [Signing Object Conditions](../../for-developers/conditions/signing-object-conditions.md)\
   \&#xNAN;_Example:_ only sign the UserOperation if the transaction sum is < 0.1 ETH.
-* [TimeCondition](../../for-developers/taco-sdk/references/conditions/timecondition.md)\
+* [TimeCondition](../../for-developers/conditions/timecondition.md)\
   \&#xNAN;_Example:_ only sign after a certain timestamp.
-* [RpcCondition](../../for-developers/taco-sdk/references/conditions/rpccondition.md)\
+* [RpcCondition](../../for-developers/conditions/rpccondition.md)\
   \&#xNAN;_Example:_ only sign if the requestor address holds a minimum ETH balance.
-* [ContractCondition](../../for-developers/taco-sdk/references/conditions/contractcondition/)\
+* [ContractCondition](../../for-developers/conditions/contractcondition/)\
   \&#xNAN;_Example:_ only sign if the execution wallet holds a special-purpose NFT.
-* [JSON Endpoint Conditions](../../for-developers/taco-sdk/references/conditions/json-endpoint-conditions/)\
+* [JSON Endpoint Conditions](../../for-developers/conditions/json-endpoint-conditions/)\
   \&#xNAN;_Example:_ only sign – enabling an executable discount on event tickets – if the temperature is below freezing, according to a multiple weather APIs.
-* [JWTCondition](../../for-developers/taco-sdk/references/conditions/jwtcondition.md)\
+* [JWTCondition](../../for-developers/conditions/jwtcondition.md)\
   \&#xNAN;_Example:_ only sign a pre-generated JWT if it is scoped to expire within 1 minute.
 
 Conditions are defined **per chain**. This means that: you can define different signing conditions for different chains (e.g., Ethereum Mainnet vs. Base). However, a single cohort **cannot** have multiple sets of conditions for the **same chain**. This design ensures that policy enforcement remains deterministic and auditable per environment.
@@ -53,7 +53,7 @@ Conditions are defined **per chain**. This means that: you can define different 
 
 At it's simplest, TACo Action Control works as follows:
 
-1. Define top-level signing [conditions](../../for-developers/taco-sdk/references/conditions/) for the cohort of TACo nodes.\
+1. Define top-level signing [conditions](../../for-developers/conditions/) for the cohort of TACo nodes.\
    This could include introspection of the object being signed, wallet ownership, contract call results, Web 2.0 responses. Only a `cohortAuthority` can set top-level conditions.
 2. Clients submit signing requests to the Action Control cohort, including:
    * The identifier for the cohort.

@@ -128,7 +128,7 @@ The signature validation happens automatically when the bundler submits the User
 
 ### Next Steps
 
-* **Advanced Conditions**: See the [Signing Object Conditions Guide](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md) for more complex condition examples
+* **Advanced Conditions**: See the [Signing Object Conditions Guide](../../for-developers/conditions/signing-object-conditions.md) for more complex condition examples
 * **Production Access**: [Contact us](https://docs.taco.build/contact) for a dedicated production cohort
 * **Examples**: Check out [example implementations](https://github.com/nucypher/taco-web/tree/main/examples)
 

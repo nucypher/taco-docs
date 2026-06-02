@@ -3,9 +3,7 @@
 ## Getting Started
 
 * [TACo | Cryptographic Public Good](README.md)
-* [How TACo Works](getting-started/key-concepts/README.md)
-  * [Access Control](getting-started/key-concepts/access-control.md)
-  * [Action Control](getting-started/key-concepts/action-control.md)
+* [How Threshold Access Control Works](getting-started/access-control.md)
 
 ## For Developers
 
@@ -22,8 +20,6 @@
     * [Irys](for-developers/access-control/integrations/irys.md)
     * [ComposeDB](for-developers/access-control/integrations/composedb.md)
     * [Turbo](for-developers/access-control/integrations/turbo.md)
-* [Action Control](for-developers/action-control/README.md)
-  * [Quickstart (Testnet)](for-developers/action-control/quickstart-testnet.md)
 * [TACo SDK](for-developers/taco-sdk/README.md)
   * [Programmable Conditions](for-developers/taco-sdk/references/README.md)
     * [Authentication](for-developers/taco-sdk/references/authentication/README.md)
@@ -67,9 +63,6 @@
     * [Digital Rights Management for on-chain assets](for-product-leads/access-control/use-cases/digital-rights-management-for-on-chain-assets.md)
     * [Trustless channels for journalists, archivists & whistleblowers](for-product-leads/access-control/use-cases/trustless-channels-for-journalists-archivists-and-whistleblowers.md)
     * [Crowdsourcing real-world data with trustless contribution](for-product-leads/access-control/use-cases/crowdsourcing-real-world-data-with-trustless-contribution.md)
-* [Action Control](for-product-leads/action-control/README.md)
-  * [Use Cases](for-product-leads/action-control/use-cases.md)
-  * [Limitations](for-product-leads/action-control/limitations.md)
 * [Trust Assumptions](for-product-leads/trust-assumptions/README.md)
   * [Mainnet Trust Disclosure (Provider Answers)](for-product-leads/trust-assumptions/mainnet-trust-disclosure-provider-answers.md)
   * [Mainnet Trust Model Foundation](for-product-leads/trust-assumptions/mainnet-trust-model-foundation.md)
@@ -81,6 +74,11 @@
 
 ## Reference
 
+* [Action Control](reference/action-control/README.md)
+  * [Quickstart](reference/action-control/quickstart-testnet.md)
+  * [Action Control](reference/action-control/action-control/README.md)
+    * [Use Cases](reference/action-control/action-control/use-cases.md)
+    * [Limitations](reference/action-control/action-control/limitations.md)
 * [Contract Addresses](reference/contract-addresses.md)
 * [Architecture](reference/architecture/README.md)
   * [Protocol Architecture](reference/architecture/protocol-architecture.md)

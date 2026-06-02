@@ -1,16 +1,16 @@
 ---
-description: Conditions-based Threshold Signing
+description: Conditions-based threshold signing
 ---
 
 # Action Control
 
 {% hint style="warning" %}
-TACo Threshold Signing is currently in alpha and available only on the `DEVNET` environment.
+Threshold Action Control is currently in alpha.
 {% endhint %}
 
 _Action Control_ enables the generation of user-controlled, automated, multi-party digital signatures leveraging both signing data-specific and existing conditions available in TACo.
 
-Like access control, action control is executed by a decentralized cohort of nodes, but instead of recovering a plaintext if conditions are satisfied, they collaboratively produce a digital signature. This aggregated signature can be used to authorize account-abstraction blockchain transactions, attest to off-chain data, or approve sensitive workflows – **only if the pre-specified conditions are fulfilled**.&#x20;
+Like access control, action control is executed by a decentralized cohort of nodes, but instead of recovering a plaintext if conditions are satisfied, they collaboratively produce a digital signature. This aggregated signature can be used to authorize account-abstraction blockchain transactions, attest to off-chain data, or approve sensitive workflows – **only if the pre-specified conditions are fulfilled**.
 
 ## Key concepts
 
@@ -30,31 +30,31 @@ Alternatively, integrators can implement their own verification logic:
 
 ### **Conditionality**
 
-Signing conditions are at the heart of TACo Action Control's utility. They can be used as safety mechanisms/guardrails, to program oracle logic, or to facilitate automation workflows. \
+Signing conditions are at the heart of TACo Action Control's utility. They can be used as safety mechanisms/guardrails, to program oracle logic, or to facilitate automation workflows.\
 \
-Conditions are categorized as follows:&#x20;
+Conditions are categorized as follows:
 
-* [Signing Object Conditions](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md) \
-  &#xNAN;_&#x45;xample:_ only sign the UserOperation if the transaction sum is < 0.1 ETH.&#x20;
-* [TimeCondition](../../for-developers/taco-sdk/references/conditions/timecondition.md) \
-  &#xNAN;_&#x45;xample:_ only sign after a certain timestamp.
-* [RpcCondition](../../for-developers/taco-sdk/references/conditions/rpccondition.md) \
-  &#xNAN;_&#x45;xample:_ only sign if the requestor address holds a minimum ETH balance.
+* [Signing Object Conditions](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md)\
+  \&#xNAN;_Example:_ only sign the UserOperation if the transaction sum is < 0.1 ETH.
+* [TimeCondition](../../for-developers/taco-sdk/references/conditions/timecondition.md)\
+  \&#xNAN;_Example:_ only sign after a certain timestamp.
+* [RpcCondition](../../for-developers/taco-sdk/references/conditions/rpccondition.md)\
+  \&#xNAN;_Example:_ only sign if the requestor address holds a minimum ETH balance.
 * [ContractCondition](../../for-developers/taco-sdk/references/conditions/contractcondition/)\
-  &#xNAN;_&#x45;xample:_ only sign if the execution wallet holds a special-purpose NFT.&#x20;
+  \&#xNAN;_Example:_ only sign if the execution wallet holds a special-purpose NFT.
 * [JSON Endpoint Conditions](../../for-developers/taco-sdk/references/conditions/json-endpoint-conditions/)\
-  &#xNAN;_&#x45;xample:_ only sign – enabling an executable discount on event tickets – if the temperature is below freezing, according to a multiple weather APIs.&#x20;
-* [JWTCondition](../../for-developers/taco-sdk/references/conditions/jwtcondition.md) \
-  &#xNAN;_&#x45;xample:_ only sign a pre-generated JWT if it is scoped to expire within 1 minute.&#x20;
+  \&#xNAN;_Example:_ only sign – enabling an executable discount on event tickets – if the temperature is below freezing, according to a multiple weather APIs.
+* [JWTCondition](../../for-developers/taco-sdk/references/conditions/jwtcondition.md)\
+  \&#xNAN;_Example:_ only sign a pre-generated JWT if it is scoped to expire within 1 minute.
 
-Conditions are defined **per chain**. This means that: you can define different signing conditions for different chains (e.g., Ethereum Mainnet vs. Base). However, a single cohort **cannot** have multiple sets of conditions for the **same chain**. This design ensures that policy enforcement remains deterministic and auditable per environment.&#x20;
+Conditions are defined **per chain**. This means that: you can define different signing conditions for different chains (e.g., Ethereum Mainnet vs. Base). However, a single cohort **cannot** have multiple sets of conditions for the **same chain**. This design ensures that policy enforcement remains deterministic and auditable per environment.
 
 ## Signing Flow
 
 At it's simplest, TACo Action Control works as follows:
 
-1. Define top-level signing [conditions](../../for-developers/taco-sdk/references/conditions/) for the cohort of TACo nodes. \
-   This could include introspection of the object being signed, wallet ownership, contract call results, Web 2.0 responses. Only a `cohortAuthority`  can set top-level conditions.
+1. Define top-level signing [conditions](../../for-developers/taco-sdk/references/conditions/) for the cohort of TACo nodes.\
+   This could include introspection of the object being signed, wallet ownership, contract call results, Web 2.0 responses. Only a `cohortAuthority` can set top-level conditions.
 2. Clients submit signing requests to the Action Control cohort, including:
    * The identifier for the cohort.
    * The chain ID for the signature.

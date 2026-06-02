@@ -28,7 +28,7 @@ TACo's security model is built on a sequence of cryptographic operations distrib
 
 This end-to-end encrypted approach ensures no single entity can access the data without meeting the specified conditions. The distribution of cryptographic operations across different actors provides security without centralized trust points.
 
-For a detailed explanation of the end-to-end data sharing flow, including diagrams and examples, see [How TACo Works](../../getting-started/key-concepts/).
+For a detailed explanation of the end-to-end data sharing flow, including diagrams and examples, see [How TACo Works](/broken/pages/9Ozb5lxqTHHni6lJzwo5).
 
 ### Layer Components
 
@@ -152,4 +152,4 @@ This interconnected architecture ensures that the TACo protocol maintains securi
 **Learn More:**
 
 * For a detailed technical explanation of protocol operations, see the [Protocol Flow](protocol-flow.md) document
-* For an end-to-end overview of how data moves through the TACo ecosystem, see [How TACo Works](../../getting-started/key-concepts/)
+* For an end-to-end overview of how data moves through the TACo ecosystem, see [How TACo Works](/broken/pages/9Ozb5lxqTHHni6lJzwo5)

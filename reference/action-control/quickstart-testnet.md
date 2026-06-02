@@ -1,6 +1,6 @@
-# Quickstart (Testnet)
+# Quickstart
 
-## Quickstart Guide (Testnet)
+## Quickstart Guide&#x20;
 
 The TACo SDK allows you to implement conditional signing for [ERC-4337](https://www.erc4337.io/) (a.k.a _Account Abstraction_) UserOperations. In just a few minutes, you'll be able to:
 
@@ -124,7 +124,7 @@ The signature validation happens automatically when the bundler submits the User
 
 ### Next Steps
 
-* **Advanced Conditions**: See the [Signing Object Conditions Guide](../taco-sdk/references/conditions/signing-object-conditions.md) for more complex condition examples
+* **Advanced Conditions**: See the [Signing Object Conditions Guide](../../for-developers/taco-sdk/references/conditions/signing-object-conditions.md) for more complex condition examples
 * **Production Access**: [Contact us](https://docs.taco.build/contact) for a dedicated production cohort
 * **Examples**: Check out [example implementations](https://github.com/nucypher/taco-web/tree/main/examples)
 
